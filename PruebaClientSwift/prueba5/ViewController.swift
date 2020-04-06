@@ -164,7 +164,7 @@ class ViewController: UIViewController {
                     // Handle error
                 }
                 
-                print("Aqui ta manin -->" + (yeyo as String))
+//                print("Aqui ta manin -->" + (yeyo as String))
                 
             }
             
