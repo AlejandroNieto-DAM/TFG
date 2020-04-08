@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A2049DF7243E1D58008FB8D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2049DF5243E1D58008FB8D2 /* Main.storyboard */; };
+		A2049DFA243E3138008FB8D2 /* DoorEjTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2049DF8243E3138008FB8D2 /* DoorEjTableViewCell.swift */; };
+		A2049DFB243E3138008FB8D2 /* DoorEjTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2049DF9243E3138008FB8D2 /* DoorEjTableViewCell.xib */; };
 		A20DC378242F758F00939924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20DC377242F758F00939924 /* AppDelegate.swift */; };
 		A20DC37A242F758F00939924 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20DC379242F758F00939924 /* SceneDelegate.swift */; };
 		A20DC37C242F758F00939924 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20DC37B242F758F00939924 /* ViewController.swift */; };
@@ -18,11 +20,12 @@
 		A228F4562432643900FB61A2 /* UIViewExtensionBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228F4552432643900FB61A2 /* UIViewExtensionBackground.swift */; };
 		A228F4582432669800FB61A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228F4572432669800FB61A2 /* Constants.swift */; };
 		A228F45A2432727A00FB61A2 /* LoggedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228F4592432727A00FB61A2 /* LoggedViewController.swift */; };
-		A276649A243B796600198301 /* DoorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2766499243B796600198301 /* DoorTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A2049DF6243E1D58008FB8D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A2049DF8243E3138008FB8D2 /* DoorEjTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorEjTableViewCell.swift; sourceTree = "<group>"; };
+		A2049DF9243E3138008FB8D2 /* DoorEjTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoorEjTableViewCell.xib; sourceTree = "<group>"; };
 		A20DC374242F758F00939924 /* prueba5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prueba5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20DC377242F758F00939924 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A20DC379242F758F00939924 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +38,6 @@
 		A228F4552432643900FB61A2 /* UIViewExtensionBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionBackground.swift; sourceTree = "<group>"; };
 		A228F4572432669800FB61A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A228F4592432727A00FB61A2 /* LoggedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedViewController.swift; sourceTree = "<group>"; };
-		A2766499243B796600198301 /* DoorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A2049DFC243E3B2D008FB8D2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A20DC37B242F758F00939924 /* ViewController.swift */,
+				A228F4592432727A00FB61A2 /* LoggedViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A2049DFD243E3B68008FB8D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A2049DF8243E3138008FB8D2 /* DoorEjTableViewCell.swift */,
+				A2049DF9243E3138008FB8D2 /* DoorEjTableViewCell.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		A20DC36B242F758F00939924 = {
 			isa = PBXGroup;
 			children = (
@@ -68,17 +88,16 @@
 		A20DC376242F758F00939924 /* prueba5 */ = {
 			isa = PBXGroup;
 			children = (
-				A20DC38D2432619100939924 /* logo_CristoRey_Movil.png */,
 				A20DC377242F758F00939924 /* AppDelegate.swift */,
 				A20DC379242F758F00939924 /* SceneDelegate.swift */,
-				A20DC37B242F758F00939924 /* ViewController.swift */,
-				A228F4552432643900FB61A2 /* UIViewExtensionBackground.swift */,
-				A2049DF5243E1D58008FB8D2 /* Main.storyboard */,
-				A2766499243B796600198301 /* DoorTableViewCell.swift */,
-				A228F4592432727A00FB61A2 /* LoggedViewController.swift */,
 				A228F4572432669800FB61A2 /* Constants.swift */,
+				A228F4552432643900FB61A2 /* UIViewExtensionBackground.swift */,
+				A2049DFD243E3B68008FB8D2 /* Classes */,
+				A2049DFC243E3B2D008FB8D2 /* Controllers */,
 				A20DC380242F759100939924 /* Assets.xcassets */,
+				A2049DF5243E1D58008FB8D2 /* Main.storyboard */,
 				A20DC382242F759100939924 /* LaunchScreen.storyboard */,
+				A20DC38D2432619100939924 /* logo_CristoRey_Movil.png */,
 				A20DC38B2432614500939924 /* logo.png */,
 				A20DC385242F759100939924 /* Info.plist */,
 			);
@@ -145,6 +164,7 @@
 			files = (
 				A20DC38C2432614500939924 /* logo.png in Resources */,
 				A2049DF7243E1D58008FB8D2 /* Main.storyboard in Resources */,
+				A2049DFB243E3138008FB8D2 /* DoorEjTableViewCell.xib in Resources */,
 				A20DC38E2432619100939924 /* logo_CristoRey_Movil.png in Resources */,
 				A20DC384242F759100939924 /* LaunchScreen.storyboard in Resources */,
 				A20DC381242F759100939924 /* Assets.xcassets in Resources */,
@@ -159,7 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A228F4582432669800FB61A2 /* Constants.swift in Sources */,
-				A276649A243B796600198301 /* DoorTableViewCell.swift in Sources */,
+				A2049DFA243E3138008FB8D2 /* DoorEjTableViewCell.swift in Sources */,
 				A228F4562432643900FB61A2 /* UIViewExtensionBackground.swift in Sources */,
 				A228F45A2432727A00FB61A2 /* LoggedViewController.swift in Sources */,
 				A20DC37C242F758F00939924 /* ViewController.swift in Sources */,

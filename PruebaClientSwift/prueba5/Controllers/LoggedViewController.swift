@@ -11,6 +11,7 @@ import UIKit
 class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource  {
 
     var puertas = [String]()
+    var imagenes = [UIImage]()
 
     var inputStream: InputStream!
     var outputStream: OutputStream!
@@ -34,6 +35,7 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
         var door3 = "puerta3"
         
         puertas +=  [door1, door2, door3]
+        imagenes.append(UIImage(named: "logo.png")!)
         
         print("Que es esto -->" , puertas.count)
         
@@ -51,8 +53,8 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     func setupTableView() {
         tableview.delegate = self
         tableview.dataSource = self
-        tableview.register(DoorTableViewCell.self, forCellReuseIdentifier: "Door")
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 1
@@ -60,14 +62,21 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 90
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let cell = tableview.dequeueReusableCell(withIdentifier: "Door", for: indexPath) as! DoorTableViewCell
+        let cell = Bundle.main.loadNibNamed("DoorEjTableViewCell", owner: self, options: nil)?.first as! DoorEjTableViewCell
+        cell.heightAnchor.constraint(equalToConstant: 90).isActive = true
         
-        cell.message = puertas[indexPath.row]
+        cell.viewEsta.layer.cornerRadius = cell.viewEsta.bounds.height / 2
+        cell.viewEsta.backgroundColor = Colors.firstBlue
+        cell.mainImageView.image = imagenes[0]
+        cell.mainImageView.layer.cornerRadius = cell.mainImageView.bounds.height / 2
+        cell.mainImageView.backgroundColor = UIColor.gray
+        cell.mainLabek.text = puertas[indexPath.row]
+        
         
         print("Hey!")
         
