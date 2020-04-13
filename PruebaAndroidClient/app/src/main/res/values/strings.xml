@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gestion Area</string>
+    <string name="title_activity_logged">LoggedActivity</string>
+    <string name="tab_text_1">Puertas</string>
+    <string name="examplePass">1234</string>
+    <string name="tab_text_2">Escaleras</string>
+</resources>
