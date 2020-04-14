@@ -100,7 +100,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void checkLogin(){
-        RequestQueue queue = Volley.newRequestQueue(this);
+
+        Intent intent = new Intent(MainActivity.this, LoggedActivityEx.class);
+        startActivity(intent);
+        finish();
+
+        /*RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://192.168.1.135/login/sesion.php?user=" + login.getText().toString() + "&pwd="+ passwd.getText().toString();
 
         // Request a string response from the provided URL.
@@ -128,7 +133,7 @@ public class MainActivity extends AppCompatActivity{
 
         // Add the request to the RequestQueue.
 
-        queue.add(stringRequest);
+        queue.add(stringRequest);*/
     }
 
 }

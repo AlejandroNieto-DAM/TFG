@@ -71,9 +71,6 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_logged, container, false);
         final TextView textView = root.findViewById(R.id.section_label);
 
-        door1 = (Button) root.findViewById(R.id.button3);
-        door2 = (Button) root.findViewById(R.id.button2);
-
         //TODO CONSULTAR ESTADO DE LAS PUERTAS Y CAMBIAR COLOR
         try {
             checkDoor1();
