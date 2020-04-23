@@ -1,21 +1,36 @@
 import socket
 from ClientThread import ClientThread
 
-# Create a TCP/IP socket
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+class TFGServer:
+    def __init__(self):
+        # Create a TCP/IP socket
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # Bind the socket to the port
+        self.server_address = ('192.168.1.133', 1234)
+        print('starting up on %s port %s' % self.server_address)
+        self.sock.bind(self.server_address)
+        self.sock.listen(1)
+        self.clientsThreads = []
 
-# Bind the socket to the port
-server_address = ('192.168.1.132', 1234)
-print('starting up on %s port %s' % server_address)
-sock.bind(server_address)
 
-sock.listen(1)
+    def startServer(self):
+        while True:
+            # Wait for a connection
+            print('waiting for a connection')
+            (clientsocket, address) = self.sock.accept()
+            # ahora se trata el socket cliente
+            # en este caso, se trata de un servir multihilado
+            ct = ClientThread(clientsocket, self)
+            ct.start()
+            self.clientsThreads.append(ct)
 
-while True:
-    # Wait for a connection
-    print('waiting for a connection')
-    (clientsocket, address) = sock.accept()
-    # ahora se trata el socket cliente
-    # en este caso, se trata de un servir multihilado
-    ct = ClientThread(clientsocket)
-    ct.start()
+
+    def alertOtherClientsADoorWillBeOpened(self, thread_owner):
+        for client in self.clientsThreads:
+            if client.thread_owner != thread_owner and client.thread_owner != "raspberry_client" and client.working == True:
+                client.sendAlertDoorWillBeOpened()
+
+
+
+server = TFGServer()
+server.startServer()
