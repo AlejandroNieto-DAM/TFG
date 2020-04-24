@@ -4,14 +4,14 @@
     android:shape="rectangle">
 
     <!-- Color de fondo de la vista -->
-    <!--<solid
-        //android:color="#2A3849" >
-    </solid>*/-->
+    <solid
+        android:color="#FFFFFF" >
+    </solid>
 
     <!-- Color y ancho del borde del elemento -->
     <stroke
-        android:width="3dp"
-        android:color="#2A3849" >
+
+        android:color="#000000" >
     </stroke>
 
     <!-- Si queremos añadir algún padding
@@ -24,7 +24,7 @@
 
     <!-- Aquí indicamos el radio a aplicar a las esquinas -->
     <corners
-        android:radius="47dp"   >
+        android:radius="44dp"   >
     </corners>
 
 </shape>

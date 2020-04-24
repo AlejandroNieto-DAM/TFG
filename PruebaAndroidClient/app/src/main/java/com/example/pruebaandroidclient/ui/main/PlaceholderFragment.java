@@ -69,7 +69,6 @@ public class PlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_logged, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
 
         //TODO CONSULTAR ESTADO DE LAS PUERTAS Y CAMBIAR COLOR
         try {
@@ -99,7 +98,6 @@ public class PlaceholderFragment extends Fragment {
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
             }
         });
         return root;

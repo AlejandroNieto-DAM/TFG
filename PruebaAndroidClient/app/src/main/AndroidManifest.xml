@@ -10,12 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoggedActivityEx"></activity>
-        <activity
-            android:name=".LoggedActivity"
-            android:label="@string/title_activity_logged"
+        <activity android:name=".LoggedActivityEx"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
+            >
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"

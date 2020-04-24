@@ -5,12 +5,14 @@ public class Door {
     String identifier_name;
     int state;
     int maintenance;
+    String urlphoto;
 
-    public Door (int id, String identifier_name, int state, int maintenance){
+    public Door (int id, String identifier_name, int state, int maintenance, String urlphoto){
         this.id = id;
         this.identifier_name = identifier_name;
         this.state = state;
         this.maintenance = maintenance;
+        this.urlphoto = urlphoto;
     }
 
     public int getId(){
@@ -27,6 +29,10 @@ public class Door {
 
     public int getMaintenance(){
         return this.maintenance;
+    }
+
+    public String getUrlphoto(){
+        return this.urlphoto;
     }
 
 }

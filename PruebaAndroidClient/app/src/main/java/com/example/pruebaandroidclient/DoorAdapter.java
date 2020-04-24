@@ -2,6 +2,7 @@ package com.example.pruebaandroidclient;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,8 +120,10 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
          */
         public void bindMovie(final Door movie, final DoorAdapter.OnItemClickListener listener) {
             identifier_name.setText(movie.getIdentifier_name());
-            File f = new File("drawable/logo.png");
-            Picasso.with(context).load(f).into(image);
+
+            Log.i("Aqui en el adaptador", "ye" + movie.getUrlphoto());
+            Picasso.get().load(movie.getUrlphoto()).into(image);
+
 
             /*Coloco el Listener a la vista)*/
             itemView.setOnClickListener(new View.OnClickListener() {
