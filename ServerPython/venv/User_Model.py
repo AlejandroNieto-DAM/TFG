@@ -9,10 +9,10 @@ class User_Model:
         self.passwd = ""
         self.db = "tfg"
 
-    def getUserByLoginAndPassword(self, name, password):
+    def getUserByLoginAndPassword(self, name):
         conn = pymysql.connect('localhost', 'root', '', 'tfg')
         cur = conn.cursor()
-        cur.execute("SELECT * FROM user WHERE login = '" + name + "' and password = '" + password + "'")
+        cur.execute("SELECT * FROM user WHERE login = '" + name + "'")
 
         datos = []
 
@@ -24,3 +24,17 @@ class User_Model:
 
         return datos
 
+    def existUser(self, name, password):
+        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM user WHERE login = '" + name + "' and password = '" + password + "'")
+
+        exist = False
+
+        if cur.fetchone() != None:
+            exist = True
+
+        cur.close()
+        conn.close()
+
+        return exist

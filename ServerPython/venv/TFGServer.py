@@ -30,6 +30,11 @@ class TFGServer:
             if client.thread_owner != thread_owner and client.thread_owner != "raspberry_client" and client.working == True:
                 client.sendAlertDoorWillBeOpened()
 
+    def signalOpenDoorToRaspberry(self, idDoor):
+        #Buscar en que hebra se encuentra la raspberry y mandarle la señal de abrir
+        #Ponemos raspberry como hebra individual?
+        a = 0
+
 
 
 server = TFGServer()
