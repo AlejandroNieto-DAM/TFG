@@ -2,20 +2,20 @@ package com.example.pruebaandroidclient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.pruebaandroidclient.ui.main.DoorService;
-import com.example.pruebaandroidclient.ui.main.RandomImage;
+import com.example.pruebaandroidclient.RandomPhotoClasses.RetrofitCall.DoorService;
+import com.example.pruebaandroidclient.RandomPhotoClasses.RandomImage;
+import com.example.pruebaandroidclient.RandomPhotoClasses.RetrofitCall.RetrofitInstance;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -28,11 +28,19 @@ public class LoggedActivityEx extends AppCompatActivity {
     DoorAdapter doorAdapter;
     ImageView randomPhoto;
     String photourl = "";
+    ArrayList<Door> allDoors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_logged);
+
+
+        Intent intent = getIntent();
+        Bundle args = intent.getBundleExtra("BUNDLE");
+        allDoors = (ArrayList<Door>) args.getSerializable("DoorArrayList");
+
+
 
         doorRecyclerView = (RecyclerView) findViewById(R.id.doorRecycler);
         randomPhoto = (ImageView) findViewById(R.id.imageView2);
@@ -63,19 +71,16 @@ public class LoggedActivityEx extends AppCompatActivity {
     public void loadSearch(String url){
 
         Log.i("eeee", "t" + photourl);
-        Door d1 = new Door(1, "yeyo", 1, 0, url);
-        Door d2 = new Door(2, "yeyo1", 1, 0, url);
-        Door d3 = new Door(3, "yeyo2", 1, 0, url);
+        for(Door d : allDoors){
+            d.setUrlphoto(url);
+            d.printDoor();
+        }
 
 
         ArrayList<Door> getResults = new ArrayList<>();
-        getResults.add(d1);
-        getResults.add(d2);
-        getResults.add(d3);
-        getResults.add(d3);
-        getResults.add(d3);
-        getResults.add(d3);
-        getResults.add(d3);
+        for(Door d: allDoors){
+            getResults.add(d);
+        }
 
         doorAdapter.swap(getResults);
         doorAdapter.notifyDataSetChanged();

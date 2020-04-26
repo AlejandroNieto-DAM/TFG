@@ -57,11 +57,7 @@ class Protocol:
                 sub_info_door += str(data) + "#"
             door_count += 1
 
-        final_string_to_send += "TOTALDOORS#" + str(door_count) + "#" + sub_info_door + "#END"
+        final_string_to_send += "TOTAL#" + str(door_count) + "#" + sub_info_door + "#END"
         print(final_string_to_send)
         return final_string_to_send
 
-
-server = "yeyo"
-p = Protocol(server)
-p.process("LOGIN")

@@ -11,25 +11,18 @@ class ClientThread(Thread):
         self.working = True
 
     def start(self):
-        while True:
+        while self.working:
             try:
 
                 chunk = self.socket.recv(1024)
                 fromClient = str(chunk)
-                print(fromClient)
+                #print(fromClient)
                 output = self.processInput(fromClient)
-                self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
-                print("Enviao")
+                self.sendBySocket(output)
 
             except ConnectionAbortedError:
                 print("Conexion cerrada")
                 self.working = False
-                self.join()
-
-    def join(self, timeout=None):
-        """ Stop the thread. """
-        self._stopevent.set()
-        self.join(self, timeout)
 
     def processInput(self, fromClient):
         if fromClient.__contains__("PROTOCOL"):
@@ -37,6 +30,7 @@ class ClientThread(Thread):
             return output
 
     def sendBySocket(self, output):
+        print(output)
         self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
     def sendAlertDoorWillBeOpened(self):
