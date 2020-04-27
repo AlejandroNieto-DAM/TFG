@@ -10,13 +10,15 @@ class Protocol:
         #self.server = server
 
     def process(self, from_client):
+        output = ""
         if str(from_client).__contains__("LOGIN"):
             from_client = self.splitString(from_client)
+            #comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
             comprobacionLogin = self.user_controller.existUser("nieto", "1234")
-            self.thread_owner = "nieto"
+            self.thread_owner = from_client[4]
             print(comprobacionLogin)
 
-            output = ""
+
             if comprobacionLogin == True:
                 allDoors = self.door_controller.getAllDoors()
                 #TODO Poner bonita la info de las puertas en el metodo
@@ -26,22 +28,43 @@ class Protocol:
                 datos = "PROTOCOLTFG#LOGINERROR"
 
             output = datos
-            return output
+
 
         elif str(from_client).__contains__("OPENDOOR"):
 
-            couldBeOpened = self.door_controller.doorStatus(1)
-
+            print(from_client)
+            from_client = self.splitString(from_client)
+            print(from_client[4])
+            couldBeOpened = self.door_controller.doorStatus(from_client[4])
+            print(couldBeOpened)
             if couldBeOpened == True:
                 #self.server.alertOtherClientsADoorWillBeOpened(self.thread_owner)
-                self.door_controller.openDoor(1)
+                self.door_controller.openDoor(from_client[4])
+                datos = "PROTOCOLTFG#OPENINGDOOR#" + from_client[4] +  "#END"
 
             else:
-                #TODO Mensaje de error
-                errorMessage = "No se pudo abrir la puerta"
+                datos = "No se pudo abrir la puerta"
 
-        #TODO MISMO METODO QUE EL DE ARRIBA PERO PARA CERRAR
+            output = datos
 
+
+        elif str(from_client).__contains__("CLOSEDOOR"):
+            print(from_client)
+            from_client = self.splitString(from_client)
+            print(from_client[4])
+            couldBeOpened = self.door_controller.doorStatus(from_client[4])
+            print(couldBeOpened)
+            if couldBeOpened == False:
+                # self.server.alertOtherClientsADoorWillBeOpened(self.thread_owner)
+                self.door_controller.closeDoor(from_client[4])
+                datos = "PROTOCOLTFG#CLOSINGDOOR#" + from_client[4] + "#END"
+
+            else:
+                datos = "No se pudo cerrar la puerta"
+
+            output = datos
+
+        return output
 
     def splitString(self, string_from_client):
         splitted_string = string_from_client.split("#")
@@ -57,7 +80,7 @@ class Protocol:
                 sub_info_door += str(data) + "#"
             door_count += 1
 
-        final_string_to_send += "TOTAL#" + str(door_count) + "#" + sub_info_door + "#END"
+        final_string_to_send += "TOTAL#" + str(door_count) + "#" + sub_info_door + "END"
         print(final_string_to_send)
         return final_string_to_send
 

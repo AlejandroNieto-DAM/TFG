@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -17,8 +18,9 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     private MainActivity mainActivity;
     private ClientProtocol myProtocol;
     private ArrayList<Door> allDoors;
+    private LoggedActivityEx myLoggedActivity;
 
-    public ClientThread(MainActivity mainActivity){
+    public ClientThread(MainActivity mainActivity)  {
         out = null;
         in = null;
         this.mainActivity = mainActivity;
@@ -66,6 +68,11 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    public void setMyLoggedActivity(LoggedActivityEx myLoggedActivity){
+        this.myLoggedActivity = myLoggedActivity;
+    }
+
+
     public void sendLogin(String login, String password){
         String output = "PROTOCOLTFG#CLIENT#FECHA#LOGIN#" + login + "#" + password + "#END";
         sendMsg(output);
@@ -75,5 +82,15 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     private void sendMsg(String msg){
         out.write(msg);
         out.flush();
+    }
+
+    public void sendOpenDoor(int id){
+        String output = "PROTOCOLTFG#CLIENT#FECHA#OPENDOOR#" + String.valueOf(id) + "#END";
+        sendMsg(output);
+    }
+
+    public void sendCloseDoor(int id){
+        String output = "PROTOCOLTFG#CLIENT#FECHA#CLOSEDOOR#" + String.valueOf(id) + "#END";
+        sendMsg(output);
     }
 }

@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
 
     ConstraintLayout ct;
     Boolean clickedTextField = false;
-    ClientThread myThread;
+    public static ClientThread myThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

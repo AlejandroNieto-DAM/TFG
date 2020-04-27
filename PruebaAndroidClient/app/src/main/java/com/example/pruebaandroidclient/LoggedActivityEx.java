@@ -30,6 +30,7 @@ public class LoggedActivityEx extends AppCompatActivity {
     String photourl = "";
     ArrayList<Door> allDoors;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class LoggedActivityEx extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("BUNDLE");
         allDoors = (ArrayList<Door>) args.getSerializable("DoorArrayList");
-
+        MainActivity.myThread.setMyLoggedActivity(this);
 
 
         doorRecyclerView = (RecyclerView) findViewById(R.id.doorRecycler);

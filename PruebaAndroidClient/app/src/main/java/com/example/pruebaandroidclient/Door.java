@@ -40,6 +40,10 @@ public class Door implements Parcelable {
         }
     };
 
+    public void setState(int state) {
+        this.state = state;
+    }
+
     public void setUrlphoto(String urlphoto) {
         this.urlphoto = urlphoto;
     }

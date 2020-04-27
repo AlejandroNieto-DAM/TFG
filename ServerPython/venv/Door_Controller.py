@@ -13,3 +13,6 @@ class Door_Controller:
 
     def openDoor(self, idDoor):
         self.door_model.openDoor(idDoor)
+
+    def closeDoor(self, idDoor):
+        self.door_model.closeDoor(idDoor)

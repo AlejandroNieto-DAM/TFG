@@ -1,5 +1,6 @@
 package com.example.pruebaandroidclient;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -20,6 +22,7 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
     public final Context context; //Almacena el contexto donde se ejecutará
     private ArrayList<Door> list; //Almacenará las películas a mostrar
     private DoorAdapter.OnItemClickListener listener; //Listener para cuando se haga click
+
 
     //Defino un interface con el OnItemClickListener
     public interface OnItemClickListener {
@@ -44,16 +47,6 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
             @Override
             public void onItemClick(Door movie) {
 
-                /*Intent intent = new Intent(context, VistaPelicula.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                String message = movie.getTitle();
-                float id = movie.getId();
-
-                MovieDetail movieD = new MovieDetail();
-                intent.putExtra("id", id);
-
-                context.startActivity(intent);*/
 
             }
         };
@@ -101,6 +94,7 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
          */
         TextView identifier_name;
         ImageView image;
+        ConstraintLayout changeColour;
 
         /*
             Constructor, enlazo los atributos con los elementos del layout
@@ -109,6 +103,8 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
             super(itemView);
             identifier_name = (TextView) itemView.findViewById(R.id.textView2);
             image = (ImageView) itemView.findViewById(R.id.imageView);
+            changeColour = (ConstraintLayout) itemView.findViewById(R.id.changeColour);
+
 
         }
 
@@ -122,11 +118,28 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
             Log.i("Aqui en el adaptador", "ye" + movie.getUrlphoto());
             Picasso.get().load(movie.getUrlphoto()).into(image);
 
+            if(movie.getState() == 1){
+                changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitemopen));
+            }
 
             /*Coloco el Listener a la vista)*/
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(movie);
+
+
+                    if(movie.getState() == 1){
+                        changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitem));
+                        MainActivity.myThread.sendCloseDoor(movie.getId());
+                        movie.setState(0);
+                    } else {
+                        changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitemopen));
+                        MainActivity.myThread.sendOpenDoor(movie.getId());
+                        movie.setState(1);
+                    }
+
+
+
                 }
             });
         }
@@ -141,5 +154,6 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
         list.addAll(newListMovies);
         notifyDataSetChanged();
     }
+
 
 }
