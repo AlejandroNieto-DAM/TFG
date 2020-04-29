@@ -1,5 +1,5 @@
-from User_Controller import User_Controller
-from Door_Controller import Door_Controller
+from ServerPython.venv.Controllers.User_Controller import User_Controller
+from ServerPython.venv.Controllers.Door_Controller import Door_Controller
 
 class Protocol:
 
@@ -7,7 +7,7 @@ class Protocol:
         self.user_controller = User_Controller()
         self.door_controller = Door_Controller()
         self.thread_owner = ""
-        #self.server = server
+        self.server = server
 
     def process(self, from_client):
         output = ""
@@ -31,14 +31,14 @@ class Protocol:
 
 
         elif str(from_client).__contains__("OPENDOOR"):
-
-            print(from_client)
+            #print(from_client)
             from_client = self.splitString(from_client)
-            print(from_client[4])
+            #print(from_client[4])
             couldBeOpened = self.door_controller.doorStatus(from_client[4])
-            print(couldBeOpened)
+            #print(couldBeOpened)
             if couldBeOpened == True:
-                #self.server.alertOtherClientsADoorWillBeOpened(self.thread_owner)
+                alert = "PROTOCOLTFG#OPENINGDOOR" + from_client[4] +  "#END"
+                self.server.alertOtherClients(self.thread_owner, alert)
                 self.door_controller.openDoor(from_client[4])
                 datos = "PROTOCOLTFG#OPENINGDOOR#" + from_client[4] +  "#END"
 
@@ -49,13 +49,14 @@ class Protocol:
 
 
         elif str(from_client).__contains__("CLOSEDOOR"):
-            print(from_client)
+            #print(from_client)
             from_client = self.splitString(from_client)
-            print(from_client[4])
+            #print(from_client[4])
             couldBeOpened = self.door_controller.doorStatus(from_client[4])
-            print(couldBeOpened)
+            #print(couldBeOpened)
             if couldBeOpened == False:
-                # self.server.alertOtherClientsADoorWillBeOpened(self.thread_owner)
+                alert = "PROTOCOLTFG#OPENINGDOOR" + from_client[4] + "#END"
+                self.server.alertOtherClients(self.thread_owner, alert)
                 self.door_controller.closeDoor(from_client[4])
                 datos = "PROTOCOLTFG#CLOSINGDOOR#" + from_client[4] + "#END"
 

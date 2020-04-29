@@ -2,14 +2,13 @@ import pymysql
 
 class Door_Model:
     def __init__(self):
-        self.host = "localhost"
-        self.port = "3306"
-        self.user = "root"
-        self.passwd = ""
-        self.db = "tfg"
+        self.__host = "localhost"
+        self.__user = "root"
+        self.__passwd = ""
+        self.__db = "tfg"
 
     def getAllDoors(self):
-        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT * FROM door WHERE maintenance = 0")
 
@@ -24,7 +23,7 @@ class Door_Model:
         return datos
 
     def doorStatus(self, idDoor):
-        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT state FROM door WHERE id = '" + str(idDoor) + "'")
 
@@ -40,7 +39,7 @@ class Door_Model:
         return couldBeOpened
 
     def openDoor(self, idDoor):
-        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE door SET state = 1 WHERE id = '" + str(idDoor) + "'")
 
@@ -49,7 +48,7 @@ class Door_Model:
         conn.close()
 
     def closeDoor(self, idDoor):
-        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE door SET state = 0 WHERE id = '" + str(idDoor) + "'")
 
@@ -58,7 +57,7 @@ class Door_Model:
         conn.close()
 
     def doorInMaintenance(self, idDoor):
-        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE door SET maintenance = 1 WHERE id = '" + str(idDoor) + "'")
 
@@ -67,7 +66,7 @@ class Door_Model:
         conn.close()
 
     def doorNotInMaintenance(self, idDoor):
-        conn = pymysql.connect('localhost', 'root', '', 'tfg')
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE door SET maintenance = 0 WHERE id = '" + str(idDoor) + "'")
 

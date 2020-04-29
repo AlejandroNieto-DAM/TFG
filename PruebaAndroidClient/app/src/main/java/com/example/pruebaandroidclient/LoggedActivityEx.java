@@ -56,7 +56,7 @@ public class LoggedActivityEx extends AppCompatActivity {
         //doorRecyclerView.addItemDecoration(new DividerItemDecoration(doorRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
 
         /* Instancia un objeto de la clase MovieAdapter */
-        doorAdapter = new DoorAdapter(this.getApplicationContext());
+        doorAdapter = new DoorAdapter(this);
 
         /* Establece el adaptador asociado a recyclerView */
         doorRecyclerView.setAdapter(doorAdapter);
@@ -65,34 +65,36 @@ public class LoggedActivityEx extends AppCompatActivity {
         doorRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         loadImage();
-
+        loadSearch("Mis cojones");
 
     }
 
     public void loadSearch(String url){
 
-        Log.i("eeee", "t" + photourl);
         for(Door d : allDoors){
             d.setUrlphoto(url);
-            d.printDoor();
         }
 
-
-        ArrayList<Door> getResults = new ArrayList<>();
-        for(Door d: allDoors){
-            getResults.add(d);
-        }
-
-        doorAdapter.swap(getResults);
+        doorAdapter.swap(this.allDoors);
         doorAdapter.notifyDataSetChanged();
 
     }
 
+
+    public void refresh(ArrayList<Door> allDoors){
+        this.allDoors = allDoors;
+        runOnUiThread(new Runnable() {
+            public void run() {
+                doorAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+
     public void loadImage(){
         /* Crea la instanncia de retrofit */
-        DoorService getMovie = RetrofitInstance.getRetrofitInstance().create(DoorService.class);
+        DoorService getImage = RetrofitInstance.getRetrofitInstance().create(DoorService.class);
         /* Se definen los parámetros de la llamada a la función getTopRated */
-        Call<RandomImage> call = getMovie.getRandomPhoto(RetrofitInstance.getApiKey());
+        Call<RandomImage> call = getImage.getRandomPhoto(RetrofitInstance.getApiKey());
         /* Se hace una llamada asíncrona a la API */
         call.enqueue(new Callback<RandomImage>() {
             @Override
@@ -103,12 +105,10 @@ public class LoggedActivityEx extends AppCompatActivity {
                         /* En el objeto data de la clase MovieFeed se almacena el JSON convertido a objetos*/
                         RandomImage data = response.body();
                         try{
-                            loadSearch(data.getUrls().getRegular());
                             Picasso.get().load(data.getUrls().getRegular()).into(randomPhoto);
                         } catch(RuntimeException e){
 
                         }
-
                         break;
                     case 401:
                         break;

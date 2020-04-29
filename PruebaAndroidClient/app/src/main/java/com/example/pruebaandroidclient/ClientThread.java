@@ -1,15 +1,20 @@
 package com.example.pruebaandroidclient;
 
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ClientThread extends AsyncTask<Void, Void, Void> {
 
@@ -33,7 +38,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         Socket a = null;
         try {
-            a = new Socket("192.168.1.134", 1234);
+            a = new Socket("192.168.1.133", 1234);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,6 +60,23 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
                 if(message.contains("TOTAL")){
                     allDoors = myProtocol.proccesDoors(message);
                     this.mainActivity.startLoggedActivity(allDoors);
+                } else if (message.contains("OPENINGDOOR")){
+                    for(Door d : allDoors){
+                        if(d.getId() == 1){
+                            d.setState(1);
+                        }
+                    }
+
+                    this.myLoggedActivity.refresh(allDoors);
+
+                } else if (message.contains("CLOSINGDOOR")){
+                    for(Door d : allDoors){
+                        if(d.getId() == 1){
+                            d.setState(0);
+                        }
+                    }
+
+                    this.myLoggedActivity.refresh(allDoors);
                 }
 
             }
@@ -67,6 +89,9 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         return null;
     }
+
+
+
 
     public void setMyLoggedActivity(LoggedActivityEx myLoggedActivity){
         this.myLoggedActivity = myLoggedActivity;
@@ -92,5 +117,30 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     public void sendCloseDoor(int id){
         String output = "PROTOCOLTFG#CLIENT#FECHA#CLOSEDOOR#" + String.valueOf(id) + "#END";
         sendMsg(output);
+    }
+
+    private void SaveImage(Bitmap finalBitmap) {
+
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/saved_images");
+        if (!myDir.exists()) {
+            myDir.mkdirs();
+        }
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);
+        String fname = "Image-"+ n +".jpg";
+        File file = new File (myDir, fname);
+        if (file.exists ())
+            file.delete ();
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

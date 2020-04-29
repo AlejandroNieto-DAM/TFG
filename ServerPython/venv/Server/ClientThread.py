@@ -1,16 +1,17 @@
-from threading import Thread
-from Protocol import Protocol
+import threading
+from ServerPython.venv.Server.Protocol import Protocol
 
 
-class ClientThread(Thread):
+class ClientThread(threading.Thread):
 
     def __init__(self, client_socket, server):
+        threading.Thread.__init__(self)
         self.server = server
         self.socket = client_socket
         self.protocol = Protocol(self.server)
         self.working = True
 
-    def start(self):
+    def run(self):
         while self.working:
             try:
 
@@ -22,6 +23,7 @@ class ClientThread(Thread):
 
             except ConnectionAbortedError:
                 print("Conexion cerrada")
+                self.server.deleteThisThread(self.protocol.thread_owner)
                 self.working = False
 
     def processInput(self, fromClient):
@@ -33,8 +35,8 @@ class ClientThread(Thread):
         print(output)
         self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
-    def sendAlertDoorWillBeOpened(self):
-        self.sendBySocket("QUE SE ABRE UNA PUERTA")
+    def getOutputStream(self):
+        return self.socket
 
 
 
