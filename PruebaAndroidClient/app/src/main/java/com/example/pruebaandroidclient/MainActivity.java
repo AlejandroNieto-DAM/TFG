@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.StrictMode;
@@ -22,11 +23,13 @@ public class MainActivity extends AppCompatActivity{
     TextView login;
     TextView passwd;
     Button btnSend;
-    ImageView minimap;
 
     ConstraintLayout ct;
     Boolean clickedTextField = false;
     public static ClientThread myThread;
+
+    SharedPreferences settings;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,24 +40,16 @@ public class MainActivity extends AppCompatActivity{
                 StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        MainActivity.myThread = new ClientThread(this, this.getApplicationContext());
+        MainActivity.myThread.execute();
+
+
         login = findViewById(R.id.editText);
         passwd = findViewById(R.id.editText3);
         btnSend = findViewById(R.id.button);
-        minimap = findViewById(R.id.imageView3);
         ct = findViewById(R.id.yeyo);
 
-        myThread = new ClientThread(this);
-        myThread.execute();
 
-
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkLogin();
-
-            }
-        });
 
         login.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -83,9 +78,20 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
+
+        settings = getSharedPreferences("Login", 0);
+        if(!settings.getString("userLogin", "").isEmpty()){
+            login.setText(settings.getString("userLogin", ""));
+        }
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkLogin(login.getText().toString(), passwd.getText().toString());
+                settings.edit().putString("userLogin", login.getText().toString()).apply();
+            }
+        });
     }
-
-
 
     public void hideKeyboard(View view) {
         ct.scrollTo(ct.getScrollX(), 0);
@@ -94,17 +100,12 @@ public class MainActivity extends AppCompatActivity{
         clickedTextField = false;
     }
 
-    public void checkLogin(){
-        myThread.sendLogin(login.getText().toString(), passwd.getText().toString());
+    public void checkLogin(String login, String pass){
+        MainActivity.myThread.sendLogin(login, pass);
     }
 
     public void startLoggedActivity(ArrayList<Door> allDoors){
         Intent intent = new Intent(MainActivity.this, LoggedActivityEx.class);
-        Log.i("He llegao", "size--> " + allDoors.size());
-
-        Bundle args = new Bundle();
-        args.putSerializable("DoorArrayList",(Serializable)allDoors);
-        intent.putExtra("BUNDLE",args);
         startActivity(intent);
         finish();
     }

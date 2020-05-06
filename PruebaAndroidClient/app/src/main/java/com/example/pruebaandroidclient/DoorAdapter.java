@@ -2,9 +2,11 @@ package com.example.pruebaandroidclient;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -26,7 +31,7 @@ import java.util.List;
 public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder> {
 
     public final Context context; //Almacena el contexto donde se ejecutará
-    private ArrayList<Door> list; //Almacenará las películas a mostrar
+    private ArrayList<Door> list; //Almacenará las dispositivos a mostrar
     private DoorAdapter.OnItemClickListener listener; //Listener para cuando se haga click
 
 
@@ -46,12 +51,12 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
 
     /*
     Asocio al atributo listener el onItemClickListener correspondiente y sobreescribo el método onItemClick pasando como
-    argumento una película
+    argumento una dispositivos
     */
     private void setListener () {
         this.listener = new DoorAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Door movie) {
+            public void onItemClick(Door door) {
 
             }
         };
@@ -70,20 +75,22 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
     }
 
     /*
-    Sobreescribe onViewHolder, haciendo que muestre la película que hay en el arraylist list en la posición que pasamos como
+    Sobreescribe onViewHolder, haciendo que muestre el dispositivo que hay en el arraylist list en la posición que pasamos como
     parámetro
      */
     @Override
     public void onBindViewHolder(doorViewHolder holder, int position) {
 
-        final Door movie = list.get(position);
-
-        holder.bindMovie(movie, listener);
-
+        final Door door = list.get(position);
+        try {
+            holder.bindMovie(door, listener);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*
-    Sobreescribe getItemCount devolviendo el número de películas que tenemos en el arraylist list.
+    Sobreescribe getItemCount devolviendo el número de dispositivos que tenemos en el arraylist list.
      */
     @Override
     public int getItemCount() {
@@ -114,29 +121,21 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
         }
 
         /*
-        Defino un método que servirá para poner los datos de la película en los correspondientes textviews del layout e
+        Defino un método que servirá para poner los datos de en dispositivo en los correspondientes textviews del layout e
         invocará al listener del adaptador cuando se haga click sobre la vista del viewHolder.
          */
-        public void bindMovie(final Door movie, final DoorAdapter.OnItemClickListener listener) {
-            identifier_name.setText(movie.getIdentifier_name());
-            // load image
-            try {
-                // get input stream
-                InputStream ims = context.getAssets().open("logo.png");
-                // load image as Drawable
-                Drawable d = Drawable.createFromStream(ims, null);
-                // set image to ImageView
-                image.setImageDrawable(d);
-            }
-            catch( IOException ex) {
-                Log.i("EXCEPTIOM", ex.toString());
-                return;
-            }
+        public void bindMovie(final Door door, final DoorAdapter.OnItemClickListener listener) throws IOException {
+            identifier_name.setText(door.getIdentifier_name());
 
-            //Log.i("Aqui en el adaptador", "ye" + movie.getUrlphoto());
-            //Picasso.get().load(movie.getUrlphoto()).into(image);
+            /*InputStream ims = context.getAssets().open("logo.png");
+            // load image as Drawable
+            Drawable d = Drawable.createFromStream(ims, null);
+            // set image to ImageView
+            image.setImageDrawable(d);*/
+            String path = "http://192.168.1.133:3000/GetImage/0?ApiKey=yey";
+            Picasso.get().load(path).into(image);
 
-            if(movie.getState() == 1){
+            if(door.getState() == 1){
                 changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitemopen));
             } else {
                 changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitem));
@@ -145,15 +144,15 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
             /*Coloco el Listener a la vista)*/
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    listener.onItemClick(movie);
+                    listener.onItemClick(door);
 
 
-                    if(movie.getState() == 1){
-                        MainActivity.myThread.sendCloseDoor(movie.getId());
-                        movie.setState(0);
+                    if(door.getState() == 1){
+                        MainActivity.myThread.sendCloseDoor(door.getId());
+                        door.setState(0);
                     } else {
-                        MainActivity.myThread.sendOpenDoor(movie.getId());
-                        movie.setState(1);
+                        MainActivity.myThread.sendOpenDoor(door.getId());
+                        door.setState(1);
                     }
 
 
@@ -167,10 +166,17 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
     Método que limpia el array list de contenidos, carga los nuevos contenidos que se le pasan por parámetro e invoca a
     notifyDataSetChanged para hacer que se refresque la vista del RecyclerView
      */
-    public void swap(List<Door> newListMovies) {
+    public void swap(List<Door> newListDoor) {
         list.clear();
-        list.addAll(newListMovies);
+        list.addAll(newListDoor);
         notifyDataSetChanged();
+    }
+
+    private void loadImageFromStorage(String path)
+    {
+
+
+
     }
 
 

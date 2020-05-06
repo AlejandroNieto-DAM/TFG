@@ -9,7 +9,7 @@ class TFGServer(threading.Thread):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Bind the socket to the port
-        self.server_address = ('192.168.1.133', 1234)
+        self.server_address = ('192.168.1.133', 12345)
         print('starting up on %s port %s' % self.server_address)
         self.sock.bind(self.server_address)
         self.sock.listen(1)
@@ -28,7 +28,6 @@ class TFGServer(threading.Thread):
             self.clients_threads.append(ct)
 
     def alertOtherClients(self, thread_owner, output):
-
         for client in self.clients_threads:
             if client.protocol.thread_owner != thread_owner and client.protocol.thread_owner != "raspberry_client" and client.working == True:
                 sock = client.getOutputStream()

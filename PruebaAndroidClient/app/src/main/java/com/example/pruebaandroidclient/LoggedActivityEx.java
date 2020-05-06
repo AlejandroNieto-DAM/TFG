@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,8 +29,7 @@ public class LoggedActivityEx extends AppCompatActivity {
     RecyclerView doorRecyclerView;
     DoorAdapter doorAdapter;
     ImageView randomPhoto;
-    String photourl = "";
-    ArrayList<Door> allDoors;
+    Button btnLogout;
 
 
     @Override
@@ -39,9 +40,9 @@ public class LoggedActivityEx extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("BUNDLE");
-        allDoors = (ArrayList<Door>) args.getSerializable("DoorArrayList");
         MainActivity.myThread.setMyLoggedActivity(this);
 
+        btnLogout = (Button) findViewById(R.id.button2);
 
         doorRecyclerView = (RecyclerView) findViewById(R.id.doorRecycler);
         randomPhoto = (ImageView) findViewById(R.id.imageView2);
@@ -64,27 +65,40 @@ public class LoggedActivityEx extends AppCompatActivity {
         /* Pone la animación por defecto de recyclerView */
         doorRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.myThread.setFinished(true);
+                /*Intent i = getBaseContext().getPackageManager().
+                        getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                finish();*/
+            }
+        });
+
         loadImage();
-        loadSearch("Mis cojones");
+        loadDoors();
 
     }
 
-    public void loadSearch(String url){
+    public void loadDoors(){
 
-        for(Door d : allDoors){
-            d.setUrlphoto(url);
-        }
+        ArrayList<Door> allDoors = MainActivity.myThread.getAllDoors();
 
-        doorAdapter.swap(this.allDoors);
+
+        doorAdapter.swap(allDoors);
         doorAdapter.notifyDataSetChanged();
 
     }
 
 
     public void refresh(ArrayList<Door> allDoors){
-        this.allDoors = allDoors;
         runOnUiThread(new Runnable() {
             public void run() {
+
+                doorAdapter.swap(allDoors);
                 doorAdapter.notifyDataSetChanged();
             }
         });

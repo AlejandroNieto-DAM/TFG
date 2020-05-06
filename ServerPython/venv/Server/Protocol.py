@@ -15,8 +15,8 @@ class Protocol:
             from_client = self.splitString(from_client)
             #comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
             comprobacionLogin = self.user_controller.existUser("nieto", "1234")
-            self.thread_owner = from_client[4]
-            print(comprobacionLogin)
+#            self.thread_owner = from_client[4]
+            #print(comprobacionLogin)
 
 
             if comprobacionLogin == True:
@@ -37,7 +37,7 @@ class Protocol:
             couldBeOpened = self.door_controller.doorStatus(from_client[4])
             #print(couldBeOpened)
             if couldBeOpened == True:
-                alert = "PROTOCOLTFG#OPENINGDOOR" + from_client[4] +  "#END"
+                alert = "PROTOCOLTFG#OPENINGDOOR#" + from_client[4] +  "#END"
                 self.server.alertOtherClients(self.thread_owner, alert)
                 self.door_controller.openDoor(from_client[4])
                 datos = "PROTOCOLTFG#OPENINGDOOR#" + from_client[4] +  "#END"
@@ -55,7 +55,7 @@ class Protocol:
             couldBeOpened = self.door_controller.doorStatus(from_client[4])
             #print(couldBeOpened)
             if couldBeOpened == False:
-                alert = "PROTOCOLTFG#OPENINGDOOR" + from_client[4] + "#END"
+                alert = "PROTOCOLTFG#CLOSINGDOOR#" + from_client[4] + "#END"
                 self.server.alertOtherClients(self.thread_owner, alert)
                 self.door_controller.closeDoor(from_client[4])
                 datos = "PROTOCOLTFG#CLOSINGDOOR#" + from_client[4] + "#END"
@@ -84,4 +84,6 @@ class Protocol:
         final_string_to_send += "TOTAL#" + str(door_count) + "#" + sub_info_door + "END"
         print(final_string_to_send)
         return final_string_to_send
+
+
 

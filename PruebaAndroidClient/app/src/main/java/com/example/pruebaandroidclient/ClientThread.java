@@ -1,12 +1,16 @@
 package com.example.pruebaandroidclient;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Base64;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,45 +28,56 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     private ClientProtocol myProtocol;
     private ArrayList<Door> allDoors;
     private LoggedActivityEx myLoggedActivity;
+    private Context context;
+    Socket a;
+    public boolean finished = false;
 
-    public ClientThread(MainActivity mainActivity)  {
+    public ClientThread(MainActivity mainActivity, Context context)  {
         out = null;
         in = null;
         this.mainActivity = mainActivity;
         this.myProtocol = new ClientProtocol();
+        this.context = context;
+        Log.i("Creada task " , "yeyo");
     }
-
 
     @Override
     protected Void doInBackground(Void... voids) {
+        String message;
 
-        Socket a = null;
+        a = null;
         try {
-            a = new Socket("192.168.1.133", 1234);
+            a = new Socket("192.168.1.133", 12345);
         } catch (IOException e) {
             e.printStackTrace();
+            Log.i("[EXCEPTION] " , e.toString());
         }
 
         try {
             out = new PrintWriter(a.getOutputStream());
             in = new BufferedReader(new InputStreamReader(a.getInputStream()));
+            Log.i("Por aqui hemos pasao", "yeye");
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Log.i("[EXCEPTION] " , e.toString());
 
-        String message;
+        }
 
         try {
 
             while((message = in.readLine()) != null){
                 Log.i("Msg --> ", message);
+                Log.i("Finished --> ", String.valueOf(finished));
 
                 if(message.contains("TOTAL")){
                     allDoors = myProtocol.proccesDoors(message);
                     this.mainActivity.startLoggedActivity(allDoors);
+
                 } else if (message.contains("OPENINGDOOR")){
+
+                    String[] datos = message.split("#");
+
                     for(Door d : allDoors){
-                        if(d.getId() == 1){
+                        if(d.getId() == Integer.parseInt(datos[2])){
                             d.setState(1);
                         }
                     }
@@ -70,16 +85,23 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
                     this.myLoggedActivity.refresh(allDoors);
 
                 } else if (message.contains("CLOSINGDOOR")){
+
+                    String[] datos = message.split("#");
+
                     for(Door d : allDoors){
-                        if(d.getId() == 1){
+                        if(d.getId() == Integer.parseInt(datos[2])){
                             d.setState(0);
                         }
                     }
 
                     this.myLoggedActivity.refresh(allDoors);
+
                 }
 
+
             }
+
+            Log.i("Hemos salio=", "o no =?");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -91,7 +113,15 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     }
 
 
+    public void setFinished(boolean finished) {
 
+        this.finished = finished;
+        Log.i("Finished", String.valueOf(finished));
+    }
+
+    public ArrayList getAllDoors(){
+        return this.allDoors;
+    }
 
     public void setMyLoggedActivity(LoggedActivityEx myLoggedActivity){
         this.myLoggedActivity = myLoggedActivity;
@@ -119,28 +149,4 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
         sendMsg(output);
     }
 
-    private void SaveImage(Bitmap finalBitmap) {
-
-        String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root + "/saved_images");
-        if (!myDir.exists()) {
-            myDir.mkdirs();
-        }
-        Random generator = new Random();
-        int n = 10000;
-        n = generator.nextInt(n);
-        String fname = "Image-"+ n +".jpg";
-        File file = new File (myDir, fname);
-        if (file.exists ())
-            file.delete ();
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

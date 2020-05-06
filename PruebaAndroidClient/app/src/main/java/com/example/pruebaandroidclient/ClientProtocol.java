@@ -11,8 +11,6 @@ public class ClientProtocol {
 
         String[] splittedDoors = inputline.substring(inputline.indexOf("DOOR")).split("#");
 
-        //PROTOCOLTFG#SERVER#FECHA#TOTALDOORS#4#DOOR#id#nombre#estado#enmantenimiento#END
-
         int index = 0;
         int idDoor = 0;
         String doorName = "";
@@ -39,7 +37,7 @@ public class ClientProtocol {
             if((s.equals("DOOR") || s.equals("END")) && index >= 4 ){
                 index = 0;
                 Log.i("Mira una door -->", idDoor + " "  + doorName  + " "  + state  + " "  +  maintenance);
-                Door auxiliar = new Door(idDoor, doorName, state, maintenance, "");
+                Door auxiliar = new Door(idDoor, doorName, state, maintenance);
                 doors.add(auxiliar);
                 idDoor = 0;
                 doorName = "";

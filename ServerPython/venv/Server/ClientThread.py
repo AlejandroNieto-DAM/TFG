@@ -1,4 +1,6 @@
 import threading
+from base64 import b64encode
+
 from ServerPython.venv.Server.Protocol import Protocol
 
 
@@ -11,15 +13,18 @@ class ClientThread(threading.Thread):
         self.protocol = Protocol(self.server)
         self.working = True
 
+
+
     def run(self):
         while self.working:
             try:
 
                 chunk = self.socket.recv(1024)
                 fromClient = str(chunk)
-                #print(fromClient)
+                print(fromClient)
                 output = self.processInput(fromClient)
                 self.sendBySocket(output)
+
 
             except ConnectionAbortedError:
                 print("Conexion cerrada")
@@ -37,6 +42,9 @@ class ClientThread(threading.Thread):
 
     def getOutputStream(self):
         return self.socket
+
+
+
 
 
 

@@ -1,51 +1,31 @@
 package com.example.pruebaandroidclient;
 
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Log;
 
-public class Door implements Parcelable {
+public class Door {
     int id = 0;
     String identifier_name;
     int state;
     int maintenance;
-    String urlphoto;
+    String url;
 
-    public Door (int id, String identifier_name, int state, int maintenance, String urlphoto){
+    public Door (int id, String identifier_name, int state, int maintenance){
         this.id = id;
         this.identifier_name = identifier_name;
         this.state = state;
         this.maintenance = maintenance;
-        this.urlphoto = urlphoto;
     }
 
-    protected Door(Parcel in) {
-        id = in.readInt();
-        identifier_name = in.readString();
-        state = in.readInt();
-        maintenance = in.readInt();
-        urlphoto = in.readString();
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public static final Creator<Door> CREATOR = new Creator<Door>() {
-        @Override
-        public Door createFromParcel(Parcel in) {
-            return new Door(in);
-        }
-
-        @Override
-        public Door[] newArray(int size) {
-            return new Door[size];
-        }
-    };
+    public String getUrl() {
+        return url;
+    }
 
     public void setState(int state) {
         this.state = state;
-    }
-
-    public void setUrlphoto(String urlphoto) {
-        this.urlphoto = urlphoto;
     }
 
     public int getId(){
@@ -64,26 +44,9 @@ public class Door implements Parcelable {
         return this.maintenance;
     }
 
-    public String getUrlphoto(){
-        return this.urlphoto;
-    }
-
     public void printDoor(){
         Log.i("Door -> ", id + " " + identifier_name + " " + state + " " + maintenance);
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(identifier_name);
-        dest.writeInt(state);
-        dest.writeInt(maintenance);
-        dest.writeString(urlphoto);
-    }
 }
 
