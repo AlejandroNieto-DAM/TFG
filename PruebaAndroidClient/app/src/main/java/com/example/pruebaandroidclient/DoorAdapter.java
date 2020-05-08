@@ -127,13 +127,9 @@ public class DoorAdapter extends RecyclerView.Adapter<DoorAdapter.doorViewHolder
         public void bindMovie(final Door door, final DoorAdapter.OnItemClickListener listener) throws IOException {
             identifier_name.setText(door.getIdentifier_name());
 
-            /*InputStream ims = context.getAssets().open("logo.png");
-            // load image as Drawable
-            Drawable d = Drawable.createFromStream(ims, null);
-            // set image to ImageView
-            image.setImageDrawable(d);*/
-            String path = "http://192.168.1.133:3000/GetImage/0?ApiKey=yey";
-            Picasso.get().load(path).into(image);
+            byte[] imageBytes = door.getImage();
+            Bitmap bm = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            image.setImageBitmap(bm);
 
             if(door.getState() == 1){
                 changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitemopen));

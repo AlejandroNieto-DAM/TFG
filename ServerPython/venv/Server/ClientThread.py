@@ -24,6 +24,7 @@ class ClientThread(threading.Thread):
                 print(fromClient)
                 output = self.processInput(fromClient)
                 self.sendBySocket(output)
+                self.sendImage()
 
 
             except ConnectionAbortedError:
@@ -42,6 +43,20 @@ class ClientThread(threading.Thread):
 
     def getOutputStream(self):
         return self.socket
+
+    def sendImage(self):
+        file = open("C:\\Users\\Alejandro\\Downloads\\readFileBytes\\monkeySelfie.jpg", "rb")
+
+        byte = file.read(512)
+
+        while byte:
+            self.sendBySocket("PHOTO#"+ str(b64encode(byte)))
+            print(byte)
+            byte = file.read(512)
+
+        self.sendBySocket("FINIMAGE#YEY")
+
+        file.close()
 
 
 

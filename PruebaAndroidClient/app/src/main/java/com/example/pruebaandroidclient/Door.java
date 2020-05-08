@@ -8,6 +8,7 @@ public class Door {
     int state;
     int maintenance;
     String url;
+    byte[] image;
 
     public Door (int id, String identifier_name, int state, int maintenance){
         this.id = id;
@@ -20,6 +21,13 @@ public class Door {
         this.url = url;
     }
 
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public byte[] getImage(){
+        return image;
+    }
     public String getUrl() {
         return url;
     }

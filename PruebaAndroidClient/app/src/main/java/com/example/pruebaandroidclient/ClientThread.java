@@ -7,8 +7,10 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,6 +34,10 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     Socket a;
     public boolean finished = false;
 
+    ArrayList<String> decode = new ArrayList<>();
+    byte[] outBytes;
+    Boolean contadorPasadaPrimeraVez = false;
+
     public ClientThread(MainActivity mainActivity, Context context)  {
         out = null;
         in = null;
@@ -47,7 +53,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         a = null;
         try {
-            a = new Socket("192.168.1.133", 12345);
+            a = new Socket("192.168.1.135", 12345);
         } catch (IOException e) {
             e.printStackTrace();
             Log.i("[EXCEPTION] " , e.toString());
@@ -70,7 +76,6 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
                 if(message.contains("TOTAL")){
                     allDoors = myProtocol.proccesDoors(message);
-                    this.mainActivity.startLoggedActivity(allDoors);
 
                 } else if (message.contains("OPENINGDOOR")){
 
@@ -95,6 +100,37 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
                     }
 
                     this.myLoggedActivity.refresh(allDoors);
+
+                } else if (message.contains("PHOTO")){
+                    String[] datos = message.split("#");
+                    byte[] data = Base64.decode(datos[1].substring(2, datos[1].lastIndexOf("\'")), Base64.DEFAULT);
+
+                    ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+                    if(contadorPasadaPrimeraVez){
+                        output.write(outBytes);
+                        output.write(data);
+                    } else {
+                        output.write(data);
+                        contadorPasadaPrimeraVez = true;
+                    }
+
+
+                    outBytes = output.toByteArray();
+
+
+
+
+
+                } else if (message.contains(("FINIMAGE"))){
+
+
+                    for(Door d : allDoors){
+                        d.setImage(outBytes);
+                    }
+
+                    this.mainActivity.startLoggedActivity(allDoors);
+
 
                 }
 
