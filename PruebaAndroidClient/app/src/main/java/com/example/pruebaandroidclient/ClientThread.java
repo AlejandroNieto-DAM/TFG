@@ -70,9 +70,8 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         try {
 
-            while((message = in.readLine()) != null){
-                Log.i("Msg --> ", message);
-                Log.i("Finished --> ", String.valueOf(finished));
+            while((message = in.readLine()) != null && !finished){
+                //Log.i("Msg --> ", message);
 
                 if(message.contains("TOTAL")){
                     allDoors = myProtocol.proccesDoors(message);
@@ -118,12 +117,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
                     outBytes = output.toByteArray();
 
-
-
-
-
                 } else if (message.contains(("FINIMAGE"))){
-
 
                     for(Door d : allDoors){
                         d.setImage(outBytes);
@@ -131,13 +125,10 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
                     this.mainActivity.startLoggedActivity(allDoors);
 
-
                 }
 
 
             }
-
-            Log.i("Hemos salio=", "o no =?");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -152,7 +143,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     public void setFinished(boolean finished) {
 
         this.finished = finished;
-        Log.i("Finished", String.valueOf(finished));
+        this.sendMsg("LOGOUT");
     }
 
     public ArrayList getAllDoors(){

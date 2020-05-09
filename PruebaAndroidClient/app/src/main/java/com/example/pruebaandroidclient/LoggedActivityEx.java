@@ -69,12 +69,12 @@ public class LoggedActivityEx extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.myThread.setFinished(true);
-                /*Intent i = getBaseContext().getPackageManager().
+                Intent i = getBaseContext().getPackageManager().
                         getLaunchIntentForPackage(getBaseContext().getPackageName());
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
-                finish();*/
+                finish();
             }
         });
 

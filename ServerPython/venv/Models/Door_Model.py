@@ -4,13 +4,13 @@ class Door_Model:
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
-        self.__passwd = ""
-        self.__db = "tfg"
+        self.__passwd = "root"
+        self.__db = "db_tfg_v1"
 
     def getAllDoors(self):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM door WHERE maintenance = 0")
+        cur.execute("SELECT * FROM device WHERE device.id_device IN (SELECT device_center.id_device FROM device_center, student_center WHERE student_center.id_center = device_center.id_center and student_center.id_student = '45936238A')")
 
         datos = []
 
@@ -25,7 +25,7 @@ class Door_Model:
     def doorStatus(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("SELECT state FROM door WHERE id = '" + str(idDoor) + "'")
+        cur.execute("SELECT device_state FROM device WHERE id_device = '" + str(idDoor) + "'")
 
         couldBeOpened = False
 
@@ -41,7 +41,7 @@ class Door_Model:
     def openDoor(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("UPDATE door SET state = 1 WHERE id = '" + str(idDoor) + "'")
+        cur.execute("UPDATE device SET device_state = 1 WHERE id_device = '" + str(idDoor) + "'")
 
         cur.close()
         conn.commit()
@@ -50,7 +50,7 @@ class Door_Model:
     def closeDoor(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("UPDATE door SET state = 0 WHERE id = '" + str(idDoor) + "'")
+        cur.execute("UPDATE device SET device_state = 0 WHERE id_device = '" + str(idDoor) + "'")
 
         cur.close()
         conn.commit()
@@ -59,7 +59,7 @@ class Door_Model:
     def doorInMaintenance(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("UPDATE door SET maintenance = 1 WHERE id = '" + str(idDoor) + "'")
+        cur.execute("UPDATE device SET device_maintenance = 1 WHERE id_device = '" + str(idDoor) + "'")
 
         cur.close()
         conn.commit()
@@ -68,7 +68,7 @@ class Door_Model:
     def doorNotInMaintenance(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("UPDATE door SET maintenance = 0 WHERE id = '" + str(idDoor) + "'")
+        cur.execute("UPDATE device SET device_maintenance = 0 WHERE id_device = '" + str(idDoor) + "'")
 
         cur.close()
         conn.commit()

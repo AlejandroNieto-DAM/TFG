@@ -24,7 +24,9 @@ class ClientThread(threading.Thread):
                 print(fromClient)
                 output = self.processInput(fromClient)
                 self.sendBySocket(output)
-                self.sendImage()
+
+                if fromClient.__contains__("LOGIN"):
+                    self.sendImage()
 
 
             except ConnectionAbortedError:
@@ -51,7 +53,7 @@ class ClientThread(threading.Thread):
 
         while byte:
             self.sendBySocket("PHOTO#"+ str(b64encode(byte)))
-            print(byte)
+            #print(byte)
             byte = file.read(512)
 
         self.sendBySocket("FINIMAGE#YEY")

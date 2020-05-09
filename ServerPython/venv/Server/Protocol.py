@@ -13,9 +13,9 @@ class Protocol:
         output = ""
         if str(from_client).__contains__("LOGIN"):
             from_client = self.splitString(from_client)
-            #comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
-            comprobacionLogin = self.user_controller.existUser("nieto", "1234")
-#            self.thread_owner = from_client[4]
+            comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
+            #comprobacionLogin = self.user_controller.existUser("nieto", "1234")
+            self.thread_owner = from_client[4]
             #print(comprobacionLogin)
 
 
@@ -64,6 +64,10 @@ class Protocol:
                 datos = "No se pudo cerrar la puerta"
 
             output = datos
+
+        elif str(from_client).__contains__("LOGOUT"):
+            output = "1"
+
 
         return output
 
