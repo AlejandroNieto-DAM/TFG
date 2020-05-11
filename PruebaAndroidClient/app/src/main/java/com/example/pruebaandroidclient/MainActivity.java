@@ -6,29 +6,25 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
 
-    TextView login;
-    TextView passwd;
-    Button btnSend;
+    private TextView login;
+    private TextView passwd;
+    private Button btnSend;
 
-    ConstraintLayout ct;
-    Boolean clickedTextField = false;
+    private ConstraintLayout ct;
+    private Boolean clickedTextField = false;
     public static ClientThread myThread;
 
-    SharedPreferences settings;
+    private SharedPreferences settings;
 
 
     @Override
@@ -93,19 +89,38 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    public void hideKeyboard(View view) {
+    /**
+     * @brief Hide the keyboard.
+     * @param view which is the view in which we will operate.
+     * @pre One of the TextView in the ConstraintLayout has to been touched.
+     * @post The view height will be increased.
+     **/
+    private void hideKeyboard(View view) {
         ct.scrollTo(ct.getScrollX(), 0);
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(MainActivity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         clickedTextField = false;
     }
 
+    /**
+     * @brief Send the first message of protocol by socket to go to the next activity.
+     * @param login which is the textview with the login of the person who wants to get logged
+     * @param pass which is the textview with the password of the person who wants to get logged
+     * @pre One of the TextView in the ConstraintLayout has to been touched.
+     * @post The view height will be increased.
+     **/
     public void checkLogin(String login, String pass){
         MainActivity.myThread.sendLogin(login, pass);
     }
 
-    public void startLoggedActivity(ArrayList<Door> allDoors){
-        Intent intent = new Intent(MainActivity.this, LoggedActivityEx.class);
+    /**
+     * @brief Starts the activity if the login was successful.
+     * @param allDevices which is the textview with the login of the person who wants to get logged.
+     * @pre The login has to be succesful and receive all the devices.
+     * @post LoggedActivity will be started.
+     **/
+    public void startLoggedActivity(ArrayList<Device> allDevices){
+        Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
         startActivity(intent);
         finish();
     }

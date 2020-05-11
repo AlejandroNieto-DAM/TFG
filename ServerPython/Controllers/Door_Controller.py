@@ -1,11 +1,11 @@
-from ServerPython.venv.Models.Door_Model import Door_Model
+from Models.Door_Model import Door_Model
 
 class Door_Controller:
     def __init__(self):
         self.__door_model = Door_Model()
 
-    def getAllDoors(self):
-        datos = self.__door_model.getAllDoors()
+    def getAllDoors(self, id_student):
+        datos = self.__door_model.getAllDoors(id_student)
         return datos
 
     def doorStatus(self, idDoor):

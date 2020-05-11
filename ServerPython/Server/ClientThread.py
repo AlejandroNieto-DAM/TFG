@@ -1,7 +1,7 @@
 import threading
 from base64 import b64encode
 
-from ServerPython.venv.Server.Protocol import Protocol
+from Server.Protocol import Protocol
 
 
 class ClientThread(threading.Thread):
@@ -10,7 +10,7 @@ class ClientThread(threading.Thread):
         threading.Thread.__init__(self)
         self.server = server
         self.socket = client_socket
-        self.protocol = Protocol(self.server)
+        self.protocol = Protocol(self.server, self)
         self.working = True
 
 
@@ -25,19 +25,23 @@ class ClientThread(threading.Thread):
                 output = self.processInput(fromClient)
                 self.sendBySocket(output)
 
-                if fromClient.__contains__("LOGIN"):
-                    self.sendImage()
-
-
             except ConnectionAbortedError:
                 print("Conexion cerrada")
+                self.protocol.setUserDisconnected()
                 self.server.deleteThisThread(self.protocol.thread_owner)
                 self.working = False
 
+
+
     def processInput(self, fromClient):
-        if fromClient.__contains__("PROTOCOL"):
+        if fromClient.__contains__("GETPHOTO"):
+            self.getImage(fromClient)
+        elif fromClient.__contains__("LOGOUT"):
+            self.protocol.setUserDisconnected()
+        else:
             output = self.protocol.process(fromClient)
             return output
+
 
     def sendBySocket(self, output):
         print(output)
@@ -46,19 +50,11 @@ class ClientThread(threading.Thread):
     def getOutputStream(self):
         return self.socket
 
-    def sendImage(self):
-        file = open("C:\\Users\\Alejandro\\Downloads\\readFileBytes\\monkeySelfie.jpg", "rb")
+    def getImage(self, fromClient):
+        self.protocol.getImage(fromClient)
 
-        byte = file.read(512)
-
-        while byte:
-            self.sendBySocket("PHOTO#"+ str(b64encode(byte)))
-            #print(byte)
-            byte = file.read(512)
-
-        self.sendBySocket("FINIMAGE#YEY")
-
-        file.close()
+    def getThreadOwner(self):
+        return self.protocol.thread_owner
 
 
 

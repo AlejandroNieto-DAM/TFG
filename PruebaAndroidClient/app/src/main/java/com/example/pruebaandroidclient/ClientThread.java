@@ -1,26 +1,17 @@
 package com.example.pruebaandroidclient;
 
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ClientThread extends AsyncTask<Void, Void, Void> {
 
@@ -28,41 +19,49 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     private BufferedReader in;
     private MainActivity mainActivity;
     private ClientProtocol myProtocol;
-    private ArrayList<Door> allDoors;
-    private LoggedActivityEx myLoggedActivity;
-    private Context context;
-    Socket a;
-    public boolean finished = false;
+    private ArrayList<Device> allDevices;
+    private LoggedActivity myLoggedActivity;
+    private Socket socket;
+    private boolean finished = false;
+    private byte[] outBytes;
+    private Boolean firstTimePassed;
+    private int getImagesIndex;
+    private String thread_owner;
 
-    ArrayList<String> decode = new ArrayList<>();
-    byte[] outBytes;
-    Boolean contadorPasadaPrimeraVez = false;
-
-    public ClientThread(MainActivity mainActivity, Context context)  {
+    /**
+     * @brief Constructor
+     * @param mainActivity which is the mainactivity in which this class has been instanciated
+     */
+    public ClientThread(MainActivity mainActivity)  {
         out = null;
         in = null;
         this.mainActivity = mainActivity;
-        this.myProtocol = new ClientProtocol();
-        this.context = context;
-        Log.i("Creada task " , "yeyo");
+        this.myProtocol = new ClientProtocol(this);
+        thread_owner = "";
+        getImagesIndex = 0;
+        firstTimePassed = false;
     }
 
+    /**
+     * @brief Start the socket connection and start to listen to the server
+     * @pre The server has to be up to get connected with this socket
+     * @post This app will be listening to the socket and with the possibility to send data to the server
+     */
     @Override
     protected Void doInBackground(Void... voids) {
         String message;
 
-        a = null;
+        socket = null;
         try {
-            a = new Socket("192.168.1.135", 12345);
+            socket = new Socket("192.168.1.135", 12345);
         } catch (IOException e) {
             e.printStackTrace();
             Log.i("[EXCEPTION] " , e.toString());
         }
 
         try {
-            out = new PrintWriter(a.getOutputStream());
-            in = new BufferedReader(new InputStreamReader(a.getInputStream()));
-            Log.i("Por aqui hemos pasao", "yeye");
+            out = new PrintWriter(socket.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
             Log.i("[EXCEPTION] " , e.toString());
 
@@ -71,62 +70,8 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
         try {
 
             while((message = in.readLine()) != null && !finished){
-                //Log.i("Msg --> ", message);
-
-                if(message.contains("TOTAL")){
-                    allDoors = myProtocol.proccesDoors(message);
-
-                } else if (message.contains("OPENINGDOOR")){
-
-                    String[] datos = message.split("#");
-
-                    for(Door d : allDoors){
-                        if(d.getId() == Integer.parseInt(datos[2])){
-                            d.setState(1);
-                        }
-                    }
-
-                    this.myLoggedActivity.refresh(allDoors);
-
-                } else if (message.contains("CLOSINGDOOR")){
-
-                    String[] datos = message.split("#");
-
-                    for(Door d : allDoors){
-                        if(d.getId() == Integer.parseInt(datos[2])){
-                            d.setState(0);
-                        }
-                    }
-
-                    this.myLoggedActivity.refresh(allDoors);
-
-                } else if (message.contains("PHOTO")){
-                    String[] datos = message.split("#");
-                    byte[] data = Base64.decode(datos[1].substring(2, datos[1].lastIndexOf("\'")), Base64.DEFAULT);
-
-                    ByteArrayOutputStream output = new ByteArrayOutputStream();
-
-                    if(contadorPasadaPrimeraVez){
-                        output.write(outBytes);
-                        output.write(data);
-                    } else {
-                        output.write(data);
-                        contadorPasadaPrimeraVez = true;
-                    }
-
-
-                    outBytes = output.toByteArray();
-
-                } else if (message.contains(("FINIMAGE"))){
-
-                    for(Door d : allDoors){
-                        d.setImage(outBytes);
-                    }
-
-                    this.mainActivity.startLoggedActivity(allDoors);
-
-                }
-
+                Log.i("Msg --> ", message);
+                this.processProtocol(message);
 
             }
 
@@ -140,40 +85,218 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     }
 
 
-    public void setFinished(boolean finished) {
+    /**
+     * @brief procces the message received by the server to see if it have all the conditions to know if the message is real
+     * @param message is the message received by the server
+     * @pre the socket has to been connected
+     * @throws IOException
+     */
+    public void processProtocol(String message) throws IOException {
+        if(message.contains("PROTOCOLTFG")){
+            if(message.contains("SERVERTFG")){
+                if(message.contains("TOTAL")){
 
-        this.finished = finished;
-        this.sendMsg("LOGOUT");
+                    this.receiveDevices(message);
+
+                } else if (message.contains("OPENINGDEVICE")){
+
+                    this.refreshOpenDoor(message);
+
+                } else if (message.contains("CLOSINGDEVICE")){
+
+                    this.refreshCloseDoor(message);
+
+                } else if (message.contains("PHOTO")){
+
+                    this.processPhoto(message);
+
+                } else if (message.contains(("FINIMAGE"))){
+
+                    this.finImage(message);
+
+                }
+            }
+        }
+
     }
 
-    public ArrayList getAllDoors(){
-        return this.allDoors;
+    /**
+     * @brief Process the devices received to load it in one array and generates the protocol to get the first device image
+     * @param message which is the message received by the server with all the devices
+     * @pre the socket has to been connected
+     */
+    public void receiveDevices(String message){
+        allDevices = myProtocol.proccesDevices(message);
+        if(allDevices.size() > 0){
+            String output = this.myProtocol.getPhoto(this.allDevices.get(getImagesIndex).getId());
+            this.sendMsg(output);
+        }
+
     }
 
-    public void setMyLoggedActivity(LoggedActivityEx myLoggedActivity){
+    /**
+     * @brief Process the message of the server that says that one door was opened
+     * @param message which is the message received by the server with the id of the opened device
+     * @pre the socket has to been connected
+     * @post the data of the recycler view in the LoggedActivity will be updated with the new value
+     */
+    public void refreshOpenDoor(String message){
+        String[] datos = message.split("#");
+
+        for(Device d : allDevices){
+            if(d.getId() == Integer.parseInt(datos[4])){
+                d.setState(1);
+            }
+        }
+
+        this.myLoggedActivity.refresh(allDevices);
+    }
+
+    /**
+     * @brief Process the message of the server that says that one door was closed
+     * @param message which is the message received by the server with the id of the closed device
+     * @pre the socket has to been connected
+     * @post the data of the recycler view in the LoggedActivity will be updated with the new value
+     */
+    public void refreshCloseDoor(String message){
+        String[] datos = message.split("#");
+
+        for(Device d : allDevices){
+            if(d.getId() == Integer.parseInt(datos[4])){
+                d.setState(0);
+            }
+        }
+
+        this.myLoggedActivity.refresh(allDevices);
+    }
+
+    /**
+     * @brief Process the message received by the server with 512 bytes of the photo and ads it to the previous bytes.
+     * @param message is the message received by the server in which there are 512 bytes of the photo
+     * @pre the socket has to been connected
+     * @post one photo will be formed with all the bytes
+     * @throws IOException
+     */
+    public void processPhoto(String message) throws IOException {
+        String[] datos = message.split("#");
+        byte[] data = Base64.decode(datos[4].substring(2, datos[4].lastIndexOf("\'")), Base64.DEFAULT);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+        if(firstTimePassed){
+            output.write(outBytes);
+            output.write(data);
+        } else {
+            output.write(data);
+            firstTimePassed = true;
+        }
+
+
+        outBytes = output.toByteArray();
+    }
+
+    /**
+     * @brief Forms a image with the bytes previous received and if there is more devices to get their photo arms the protocol to send the msg to the server
+     * @param message which is the message received by the server in which says that the image dont have more bytes.
+     * @pre the socket has to been connected
+     * @post the image finished will be set on the corresponding device
+     */
+    public void finImage(String message){
+
+        if(getImagesIndex == this.allDevices.size() - 1){
+            this.allDevices.get(this.allDevices.size() - 1).setImage(outBytes);
+            this.mainActivity.startLoggedActivity(allDevices);
+
+        } else {
+            this.allDevices.get(getImagesIndex).setImage(outBytes);
+            this.getImagesIndex++;
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            output.reset();
+            outBytes = output.toByteArray();
+            String send = this.myProtocol.getPhoto(this.allDevices.get(getImagesIndex).getId());
+            this.sendMsg(send);
+
+        }
+
+    }
+
+    /**
+     * @brief Is the method called to stop this thread
+     * @pre the socket has to been connected
+     * @post this thread will be stopped
+     */
+    public void setFinished() {
+        this.finished = true;
+        this.sendMsg(this.myProtocol.sendLogout());
+    }
+
+    /**
+     * @return Returns all the devices
+     */
+    public ArrayList getAllDevices(){
+        return this.allDevices;
+    }
+
+    /**
+     * @brief Set the loggedActivity to this class
+     * @param myLoggedActivity which is the second activity
+     * @pre The login has to been sucessful
+     */
+    public void setMyLoggedActivity(LoggedActivity myLoggedActivity){
         this.myLoggedActivity = myLoggedActivity;
     }
 
-
+    /**
+     * @brief Sends to the server the message with the protocol to try to get logged
+     * @param login is the login of the user who wants to get logged
+     * @param password which is the password of the user who wants to get logged
+     * @pre the socket has to been connected
+     * @post if the login is successful the apps goes to the next application
+     */
     public void sendLogin(String login, String password){
-        String output = "PROTOCOLTFG#CLIENT#FECHA#LOGIN#" + login + "#" + password + "#END";
-        sendMsg(output);
-
+        this.thread_owner = login;
+        String output = this.myProtocol.sendLogin(login, password);
+        this.sendMsg(output);
     }
 
+    /**
+     * @return Returns the thread_owner
+     */
+    public String getThreadOwner(){
+        return this.thread_owner;
+    }
+
+    /**
+     * @brief Sends the param msg by the socket to the server
+     * @param msg is the msg that will be sent to the server
+     * @pre the socket has to been connected
+     * @post the server will return an answer
+     */
     private void sendMsg(String msg){
         out.write(msg);
         out.flush();
     }
 
-    public void sendOpenDoor(int id){
-        String output = "PROTOCOLTFG#CLIENT#FECHA#OPENDOOR#" + String.valueOf(id) + "#END";
-        sendMsg(output);
+    /**
+     * @brief Send the message to open a specific device to the server
+     * @param id which is the id of the device we want to open
+     * @pre the socket has to been connected
+     * @post if its possible the specific device will be opened
+     */
+    public void sendOpenDevice(int id){
+        String output = this.myProtocol.sendOpenDevice(id);
+       this.sendMsg(output);
     }
 
-    public void sendCloseDoor(int id){
-        String output = "PROTOCOLTFG#CLIENT#FECHA#CLOSEDOOR#" + String.valueOf(id) + "#END";
-        sendMsg(output);
+    /**
+     * @brief Send the message to close a specific device to the server
+     * @param id which is the id of the device we want to close
+     * @pre the socket has to been connected
+     * @post if its possible the specific device will be closed
+     */
+    public void sendCloseDevice(int id){
+        String output = this.myProtocol.sendCloseDevice(id);
+        this.sendMsg(output);
     }
 
 }

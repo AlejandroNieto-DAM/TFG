@@ -1,6 +1,6 @@
 import socket
 import threading
-from ServerPython.venv.Server.ClientThread import ClientThread
+from Server.ClientThread import ClientThread
 
 
 class TFGServer(threading.Thread):
@@ -16,6 +16,7 @@ class TFGServer(threading.Thread):
         self.clients_threads = []
         self.clients_threads.clear()
 
+
     def run(self):
         while True:
             # Wait for a connection
@@ -27,27 +28,33 @@ class TFGServer(threading.Thread):
             ct.start()
             self.clients_threads.append(ct)
 
-    def alertOtherClients(self, thread_owner, output):
+    def alertOtherClients(self, thread_owner, students_in_same_centre, output):
+
+        for student in students_in_same_centre:
+            for client in self.clients_threads:
+                if student == client.protocol.thread_owner and student != thread_owner:
+                    sock = client.getOutputStream()
+                    sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
+
+    def sendSignalToThisCenter(self, id_center, output):
         for client in self.clients_threads:
-            if client.protocol.thread_owner != thread_owner and client.protocol.thread_owner != "raspberry_client" and client.working == True:
+            if client.protocol.thread_owner == id_center:
                 sock = client.getOutputStream()
                 sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
-    def signalOpenDoorToRaspberry(self, idDoor):
-        # Buscar en que hebra se encuentra la raspberry y mandarle la señal de abrir
-        # Ponemos raspberry como hebra individual?
-        a = 0
+
 
     def deleteThisThread(self, thread_owner):
         position = -1
         contador = 0
         for client in self.clients_threads:
-            if client.protocol.thread_owner == thread_owner:
+            if client.getThreadOwner() == thread_owner:
                 position = contador
             contador += 1
 
         if position != -1:
             self.clients_threads.pop(position)
+
 
 server = TFGServer()
 server.start()
