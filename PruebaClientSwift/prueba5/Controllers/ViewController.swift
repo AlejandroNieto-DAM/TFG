@@ -17,59 +17,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var usernameTextFld: UITextField!
     @IBOutlet weak var passTextFld: UITextField!
-    
-    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
-    var username = ""
-    let maxReadLength = 4096
-    
+    let clientThread = ClientThread()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setUpElements()
-        
-
-        
-        
-        /*
-        
-        let data = "viva willy"
-        //print(Unmanaged.passUnretained(data).toOpaque())
-        outputStream.write(data, maxLength: data.count)
-        
-        
-        print("Que pasa feo")
-        
-
-        DispatchQueue.global(qos: .background).async {
-            while true {
-                let bufferSize = 1024
-                var buffer = Array<UInt8>(repeating: 0, count: bufferSize)
-
-                print("waintig for handshake...")
-                
-                let bytesRead = self.inputStream.read(&buffer, maxLength: bufferSize)
-                if bytesRead >= 0 {
-                    var output = NSString(bytes: &buffer, length: bytesRead, encoding: String.Encoding.utf8.rawValue)
-                    print(output)
-                } else {
-                    // Handle error
-                }
-                
-                
-                self.outputStream.write(data, maxLength: data.count)
-            }
-        }*/
+        self.clientThread.setViewController(mainViewController: self)
+        clientThread.startConnection()
     }
     
     func setUpElements(){
+        
         self.hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         
         
         sendBtn.layer.cornerRadius = 15.0
@@ -93,24 +55,7 @@ class ViewController: UIViewController {
         vmContainer2.layer.cornerRadius = 50.0
         vmContainer2.layer.shouldRasterize = true
         
-        var readStream: Unmanaged<CFReadStream>?
-        var writeStream: Unmanaged<CFWriteStream>?
-
-        // 2
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                           "192.168.1.134" as CFString,
-                                           1234,
-                                           &readStream,
-                                           &writeStream)
         
-        inputStream = readStream!.takeRetainedValue()
-        outputStream = writeStream!.takeRetainedValue()
-        
-        inputStream.schedule(in: .current, forMode: .common)
-        outputStream.schedule(in: .current, forMode: .common)
-        
-        inputStream.open()
-        outputStream.open()
     }
     
     
@@ -144,40 +89,24 @@ class ViewController: UIViewController {
             let username = usernameTextFld.text!
             let pass = passTextFld.text!
             
-            let data = "PROTOCOLOTFG#" + username + "#" + pass
-            outputStream.write(data, maxLength: data.count)
+            self.clientThread.sendLogin(login: username, password: pass)
             
             
-            var yeyo: NSString!
             
-            DispatchQueue.global(qos: .background).async {
-                let bufferSize = 1024
-                var buffer = Array<UInt8>(repeating: 0, count: bufferSize)
+            
+        }
+        
+    }
+    
+    func startsSecondActivity(){
 
-                print("waintig for handshake...")
-                
-                let bytesRead = self.inputStream.read(&buffer, maxLength: bufferSize)
-                if bytesRead >= 0 {
-                    var output = NSString(bytes: &buffer, length: bytesRead, encoding: String.Encoding.utf8.rawValue)
-                    yeyo = output
-                } else {
-                    // Handle error
-                }
-                
-//                print("Aqui ta manin -->" + (yeyo as String))
-                
-            }
+        DispatchQueue.main.async { [unowned self] in
+            let loggedViewController = self.storyboard?.instantiateViewController(identifier: Storyboard.loggedViewController) as? LoggedViewController
             
+            loggedViewController?.setAllDevices(allDevices: self.clientThread.getAllDevices())
             
-            
-            let loggedViewController = storyboard?.instantiateViewController(identifier: Storyboard.loggedViewController) as? LoggedViewController
-            
-            
-            loggedViewController?.setInputStream(inputStream: self.inputStream)
-            loggedViewController?.setOutputStream(outputStream: self.outputStream)
-            
-            view.window?.rootViewController = loggedViewController
-            view.window?.makeKeyAndVisible()
+            self.view.window?.rootViewController = loggedViewController
+            self.view.window?.makeKeyAndVisible()
         }
         
         
