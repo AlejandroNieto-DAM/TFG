@@ -38,9 +38,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.doorViewHo
     }
 
     /**
-    Asocio al atributo listener el onItemClickListener correspondiente y sobreescribo el método onItemClick pasando como
-    argumento una dispositivos
-
      I associate the listener attribute with the corresponding onItemClickListener and override the onItemClick method passing as
      argument a devices
     */

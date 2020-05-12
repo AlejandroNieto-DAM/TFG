@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/Admin_Center_Model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Center_Model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Interaction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Register.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Student_Center.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Alejandro.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Controllers/Admin_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Admin_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Controllers/Door_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Door_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Controllers/User_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/User_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Admin_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Models/Door_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Door_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Center_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Center_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Door_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/User_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/User_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Admin_Center_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Center_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Center_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Door_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Device_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Student_Center.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +39,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/PruebaRaspberry" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -193,25 +192,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589187688613" />
-    <state width="1899" height="266" key="GridCell.Tab.0.bottom" timestamp="1589195168625">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1589221783594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589195168625" />
-    <state width="1899" height="266" key="GridCell.Tab.0.center" timestamp="1589195168625">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
+    <state width="1899" height="266" key="GridCell.Tab.0.bottom" timestamp="1589227741950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589195168625" />
-    <state width="1899" height="266" key="GridCell.Tab.0.left" timestamp="1589195168625">
+    <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
+    <state width="1899" height="266" key="GridCell.Tab.0.center" timestamp="1589227741949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589195168625" />
-    <state width="1899" height="266" key="GridCell.Tab.0.right" timestamp="1589195168625">
+    <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
+    <state width="1899" height="266" key="GridCell.Tab.0.left" timestamp="1589227741949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589195168625" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1589186013944">
+    <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
+    <state width="1899" height="266" key="GridCell.Tab.0.right" timestamp="1589227741950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589186013944" />
+    <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1589217642146">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
   </component>
 </project>

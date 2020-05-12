@@ -4,6 +4,10 @@ from Server.ClientThread import ClientThread
 
 
 class TFGServer(threading.Thread):
+
+    """
+    *   @brief  Constructor. Initialize the server socket on the specific port and address
+    """
     def __init__(self):
         threading.Thread.__init__(self)
         # Create a TCP/IP socket
@@ -16,7 +20,9 @@ class TFGServer(threading.Thread):
         self.clients_threads = []
         self.clients_threads.clear()
 
-
+    """
+    *   @brief Wait for a connection to the server and when there is one accepts the connection and ads the new connection to the clients_threads
+    """
     def run(self):
         while True:
             # Wait for a connection
@@ -28,6 +34,14 @@ class TFGServer(threading.Thread):
             ct.start()
             self.clients_threads.append(ct)
 
+    """
+    *   @brief Send an alert to the clients in the array of students in same centre less the thread owner to let then know there was an action to one of the devices.
+    *   @param thread_owner is the owner of the thread that send the action to one of the devices
+    *   @param students_in_same_centre is the users in the same centre of the user who did the action that are connected to the application
+    *   @param output is the msg to send to the users
+    *   @pre one user has to do an action over one device
+    *   @post the users that are in students_in_same_centre will be alerted by one msg by socket
+    """
     def alertOtherClients(self, thread_owner, students_in_same_centre, output):
 
         for student in students_in_same_centre:
@@ -36,14 +50,25 @@ class TFGServer(threading.Thread):
                     sock = client.getOutputStream()
                     sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
+    """
+        *   @brief Send the signal to the thread of the center in which one user has operate over a device.
+        *   @param id_center is the id of the center in which the device has been operated
+        *   @param output is the message that will be sent to the center
+        *   @pre one user has to do an action over one device
+        *   @post the msg will be sent and the specific device will do an action
+    """
     def sendSignalToThisCenter(self, id_center, output):
         for client in self.clients_threads:
             if client.protocol.thread_owner == id_center:
                 sock = client.getOutputStream()
                 sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
-
-
+    """
+        *   @brief Delete the thread of the specific owner when is disconnected
+        *   @param thread_owner is the id of the user that has been disconected
+        *   @pre one user has to logout
+        *   @post the thread will be deleted
+    """
     def deleteThisThread(self, thread_owner):
         position = -1
         contador = 0

@@ -22,6 +22,21 @@ class Door_Model:
 
         return datos
 
+    def getAllDoorsByCenterId(self, id_center):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM device WHERE id_device IN (SELECT id_device FROM device_center WHERE id_center = '" + id_center + "')")
+
+        datos = []
+
+        for row in cur.fetchall():
+            datos.append(row)
+
+        cur.close()
+        conn.close()
+
+        return datos
+
     def doorStatus(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()

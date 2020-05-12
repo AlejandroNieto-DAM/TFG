@@ -69,3 +69,5 @@ class User_Model:
         m.update(my_string.encode('utf-8'))
         return m.hexdigest()
 
+
+

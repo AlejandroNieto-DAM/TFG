@@ -21,3 +21,28 @@ class Center_Model:
         conn.close()
 
         return id_center
+
+
+    def getCenterStatus(self, id_center):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("SELECT active FROM center WHERE id_center = '" + id_center + "'")
+
+        active = ""
+
+        for row in cur.fetchone():
+            active = True
+
+        cur.close()
+        conn.close()
+
+        return active
+
+    def setActive(self, id_center, state):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("UPDATE center SET active = " + state + " WHERE id_center = '" + id_center + "'")
+
+        cur.close()
+        conn.commit()
+        conn.close()
