@@ -19,22 +19,33 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     
     var allDevices = [Device]()
 
+    let cellSpacingHeight: CGFloat = 15
     
-    @IBOutlet weak var image: UIImageView!
     
     var apiURL = "https://api.unsplash.com/photos/random?client_id=jZIYt--FtgynjvcmEHVcbHEbViKIogcA_KY4wzhE-7Y"
     
+    var clientThread: ClientThread!
     
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var image: UIImageView!
+
     
     override func viewDidLoad() {
         loadBackgroundPhoto()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        setUpElements()
         loadSampleDoors()
         setupTableView()
+    }
+    
+    func setUpElements(){
+        backView.backgroundColor = Colors.yellow
+        backView.layer.cornerRadius = 50.0
+        backView.layer.shouldRasterize = true
+        
     }
     
     private func loadBackgroundPhoto(){
@@ -59,20 +70,27 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
             
             print(yeyo.substring(with: first..<second))
             
-            let imageRandom = URL(fileURLWithPath: yeyo.substring(with: first..<second))
+            let imageRandom = URL(string: yeyo.substring(with: first..<second))
             
-            self.image.load(url: imageRandom)
-            //self.image.backgroundColor = Colors.firstBlue
-    
+            
+            do {
+                let data = try Data(contentsOf: imageRandom!)
+                self.image.image = UIImage(data: data)
+                print("Funciona?")
+            } catch _ {
+                print("Error")
+            }
+                
         }
     }
     
     private func loadSampleDoors() {
         imagenes.append(UIImage(named: "logo.png")!)
+        self.allDevices = self.clientThread.getAllDevices()
     }
     
-    func setAllDevices(allDevices: [Device]){
-        self.allDevices = allDevices
+    func setClientThread(clientThread: ClientThread){
+        self.clientThread = clientThread
     }
 
     
@@ -81,35 +99,76 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
         tableview.dataSource = self
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.allDevices.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 1
-        return allDevices.count
+        return 1
+
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = Bundle.main.loadNibNamed("DoorEjTableViewCell", owner: self, options: nil)?.first as! DoorEjTableViewCell
-        cell.heightAnchor.constraint(equalToConstant: 90).isActive = true
         
+        self.tableview.backgroundColor = Colors.yellow
+        
+        cell.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        cell.contentView.backgroundColor = Colors.yellow
         cell.viewEsta.layer.cornerRadius = cell.viewEsta.bounds.height / 2
-        cell.viewEsta.backgroundColor = Colors.firstBlue
-        cell.mainImageView.image = imagenes[0]
+        
+        
+        if self.allDevices[indexPath.section].getState() == 1 {
+            cell.viewEsta.backgroundColor = Colors.open
+        } else {
+            cell.viewEsta.backgroundColor = UIColor.white
+        }
+        
+        cell.mainImageView.image = self.allDevices[indexPath.section].getImage()
         cell.mainImageView.layer.cornerRadius = cell.mainImageView.bounds.height / 2
         cell.mainImageView.backgroundColor = UIColor.gray
-        cell.mainLabek.text = self.allDevices[indexPath.row].getIdentifierName()
- 
-        print("Hey!")
         
+        cell.mainLabek.text = self.allDevices[indexPath.section].getIdentifierName()
+ 
         return cell
     }
     
+    func refresh(){
+        DispatchQueue.main.async { [unowned self] in
+            self.tableview.reloadData()
+        }
+    }
     
     
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // note that indexPath.section is used rather than indexPath.row
+        if self.allDevices[indexPath.section].getState() == 1 {
+            self.clientThread.sendCloseDevice(id_device: self.allDevices[indexPath.section].getID())
+            //self.allDevices[indexPath.section].setState(state: "0")
+        } else {
+            self.clientThread.sendOpenDevice(id_device: self.allDevices[indexPath.section].getID())
+            //self.allDevices[indexPath.section].setState(state: "1")
+        }
+        
+        self.tableview.reloadData()
+    }
     
 
     /*
@@ -122,20 +181,6 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     }
     */
 
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
 }
 
 extension String {

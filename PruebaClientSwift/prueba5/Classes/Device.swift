@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Device {
     
@@ -14,7 +15,7 @@ class Device {
     var identifier_name: String?
     var state: Int?
     var maintenance: Int?
-    var image = [UInt8]()
+    var image : UIImage!
 
     init(id: String, identifier_name: String, state: String, maintenance: String) {
         self.id = Int(id)
@@ -23,7 +24,7 @@ class Device {
         self.maintenance = Int(maintenance)
     }
     
-    func setImage(image: [UInt8]){
+    func setImage(image: UIImage){
         self.image = image
     }
     
@@ -43,7 +44,7 @@ class Device {
         return self.state!
     }
     
-    func getImage() -> [UInt8] {
+    func getImage() -> UIImage {
         return self.image
     }
 }

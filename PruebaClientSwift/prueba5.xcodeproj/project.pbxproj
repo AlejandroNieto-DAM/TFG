@@ -18,12 +18,12 @@
 		A20DC384242F759100939924 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20DC382242F759100939924 /* LaunchScreen.storyboard */; };
 		A20DC38C2432614500939924 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A20DC38B2432614500939924 /* logo.png */; };
 		A20DC38E2432619100939924 /* logo_CristoRey_Movil.png in Resources */ = {isa = PBXBuildFile; fileRef = A20DC38D2432619100939924 /* logo_CristoRey_Movil.png */; };
+		A20FF1FB246C10A600C4CA34 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FF1FA246C10A600C4CA34 /* Protocol.swift */; };
 		A228F4562432643900FB61A2 /* UIViewExtensionBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228F4552432643900FB61A2 /* UIViewExtensionBackground.swift */; };
 		A228F4582432669800FB61A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228F4572432669800FB61A2 /* Constants.swift */; };
 		A228F45A2432727A00FB61A2 /* LoggedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228F4592432727A00FB61A2 /* LoggedViewController.swift */; };
 		A253B50D246A93F000C33D33 /* ClientThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = A253B50C246A93F000C33D33 /* ClientThread.swift */; };
 		A253B50F246AB9F200C33D33 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A253B50E246AB9F200C33D33 /* Device.swift */; };
-		A2AFCAE5246B19270063B9C9 /* RandomPhotoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AFCAE4246B19270063B9C9 /* RandomPhotoImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,12 +41,12 @@
 		A20DC385242F759100939924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20DC38B2432614500939924 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		A20DC38D2432619100939924 /* logo_CristoRey_Movil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_CristoRey_Movil.png; sourceTree = "<group>"; };
+		A20FF1FA246C10A600C4CA34 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		A228F4552432643900FB61A2 /* UIViewExtensionBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionBackground.swift; sourceTree = "<group>"; };
 		A228F4572432669800FB61A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A228F4592432727A00FB61A2 /* LoggedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedViewController.swift; sourceTree = "<group>"; };
 		A253B50C246A93F000C33D33 /* ClientThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientThread.swift; sourceTree = "<group>"; };
 		A253B50E246AB9F200C33D33 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		A2AFCAE4246B19270063B9C9 /* RandomPhotoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoImage.swift; sourceTree = "<group>"; };
 		B290CCC3E2CE476C549FB169 /* Pods-prueba5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prueba5.release.xcconfig"; path = "Target Support Files/Pods-prueba5/Pods-prueba5.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 				A20DC37B242F758F00939924 /* ViewController.swift */,
 				A228F4592432727A00FB61A2 /* LoggedViewController.swift */,
 				A253B50C246A93F000C33D33 /* ClientThread.swift */,
-				A2AFCAE4246B19270063B9C9 /* RandomPhotoImage.swift */,
+				A20FF1FA246C10A600C4CA34 /* Protocol.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -256,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A228F4582432669800FB61A2 /* Constants.swift in Sources */,
-				A2AFCAE5246B19270063B9C9 /* RandomPhotoImage.swift in Sources */,
 				A2049DFA243E3138008FB8D2 /* DoorEjTableViewCell.swift in Sources */,
 				A228F4562432643900FB61A2 /* UIViewExtensionBackground.swift in Sources */,
 				A253B50F246AB9F200C33D33 /* Device.swift in Sources */,
@@ -265,6 +264,7 @@
 				A20DC37C242F758F00939924 /* ViewController.swift in Sources */,
 				A20DC378242F758F00939924 /* AppDelegate.swift in Sources */,
 				A20DC37A242F758F00939924 /* SceneDelegate.swift in Sources */,
+				A20FF1FB246C10A600C4CA34 /* Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

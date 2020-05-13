@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.setUpElements()
         self.clientThread.setViewController(mainViewController: self)
-        clientThread.startConnection()
+        clientThread.startConnection() 
     }
     
     func setUpElements(){
@@ -34,14 +34,12 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         
-        sendBtn.layer.cornerRadius = 15.0
-        sendBtn.layer.backgroundColor = Colors.firstBlue.cgColor
+        sendBtn.layer.cornerRadius = 25.0
+        sendBtn.layer.borderColor = UIColor.black.cgColor
+        sendBtn.layer.borderWidth = 2
         
-        usernameTextFld.layer.cornerRadius = 15.0
-        usernameTextFld.layer.borderColor = Colors.firstBlue.cgColor
-        
-        passTextFld.layer.cornerRadius = 15.0
-        passTextFld.layer.borderColor = Colors.firstBlue.cgColor
+        usernameTextFld.layer.cornerRadius = 25.0
+        passTextFld.layer.cornerRadius = 25.0
         
         vmContainer.layer.cornerRadius = 50.0
         vmContainer.layer.shadowColor = UIColor.gray.cgColor
@@ -50,8 +48,9 @@ class ViewController: UIViewController {
         vmContainer.layer.shadowRadius = 50.0
         vmContainer.layer.shadowPath = UIBezierPath(rect: vmContainer.bounds).cgPath
         vmContainer.layer.shouldRasterize = true
+        vmContainer.layer.backgroundColor = Colors.yellow.cgColor
         
-        vmContainer2.setGradientBackground(colorOne: Colors.firstBlue, colorTwo: Colors.secondBlue)
+        vmContainer2.backgroundColor = Colors.gray
         vmContainer2.layer.cornerRadius = 50.0
         vmContainer2.layer.shouldRasterize = true
         
@@ -91,9 +90,6 @@ class ViewController: UIViewController {
             
             self.clientThread.sendLogin(login: username, password: pass)
             
-            
-            
-            
         }
         
     }
@@ -103,7 +99,9 @@ class ViewController: UIViewController {
         DispatchQueue.main.async { [unowned self] in
             let loggedViewController = self.storyboard?.instantiateViewController(identifier: Storyboard.loggedViewController) as? LoggedViewController
             
-            loggedViewController?.setAllDevices(allDevices: self.clientThread.getAllDevices())
+            loggedViewController?.setClientThread(clientThread: self.clientThread)
+            
+            self.clientThread.setLoggedViewController(loggedViewController: loggedViewController!)
             
             self.view.window?.rootViewController = loggedViewController
             self.view.window?.makeKeyAndVisible()
