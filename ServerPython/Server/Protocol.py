@@ -1,9 +1,11 @@
 from base64 import b64encode
 
-from Controllers.User_Controller import User_Controller
-from Controllers.Device_Controller import Door_Controller
-from Controllers.Center_Controller import Center_Controller
+from ServerPython.Controllers.User_Controller import User_Controller
+from ServerPython.Controllers.Device_Controller import Door_Controller
+from ServerPython.Controllers.Center_Controller import Center_Controller
 from datetime import datetime
+import time
+
 
 
 class Protocol:
@@ -51,11 +53,11 @@ class Protocol:
             else:
                 print("UserNormal")
                 # comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
+                self.thread_owner = "45936238A"
                 comprobacionCenterActive = self.center_controller.getCenterStatus(
                 self.center_controller.getCenterByIdStudent(self.thread_owner))
 
                 if comprobacionCenterActive:
-                    self.thread_owner = "45936238A"
                     if comprobacionLogin:
                         self.user_controller.setUserState(self.thread_owner, "1")
 
@@ -153,7 +155,7 @@ class Protocol:
     *   @return returns the message that will be sent to the user
     """
     def compoundDoorsToSend(self, doors_data):
-        final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#START#"
+        final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
         door_count = 0;
         sub_info_door = ""
         for door in doors_data:
@@ -195,10 +197,13 @@ class Protocol:
         file = open("C:\\Users\\Alejandro\\Downloads\\readFileBytes\\" + str(from_client[6]) + ".jpg", "rb")
 
         byte = file.read(512)
+        time.sleep(0.08)
 
         while byte:
             self.client_thread.sendBySocket("PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)))
             byte = file.read(512)
+            time.sleep(0.08)
+
 
         self.client_thread.sendBySocket(
             "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#FINIMAGE#" + str(from_client[6]))

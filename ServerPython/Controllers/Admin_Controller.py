@@ -1,4 +1,4 @@
-from Models.Admin_Model import Admin_Model
+from ServerPython.Models.Admin_Model import Admin_Model
 
 class Admin_Controller:
     def __init__(self):

@@ -1,6 +1,6 @@
 import socket
 import threading
-from Server.ClientThread import ClientThread
+from ServerPython.Server.ClientThread import ClientThread
 
 
 class TFGServer(threading.Thread):

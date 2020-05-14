@@ -1,7 +1,7 @@
 import threading
 from base64 import b64encode
 
-from Server.Protocol import Protocol
+from ServerPython.Server.Protocol import Protocol
 
 
 class ClientThread(threading.Thread):
