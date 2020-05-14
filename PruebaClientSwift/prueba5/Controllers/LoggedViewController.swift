@@ -20,8 +20,7 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     var allDevices = [Device]()
 
     let cellSpacingHeight: CGFloat = 15
-    
-    
+
     var apiURL = "https://api.unsplash.com/photos/random?client_id=jZIYt--FtgynjvcmEHVcbHEbViKIogcA_KY4wzhE-7Y"
     
     var clientThread: ClientThread!
@@ -29,13 +28,14 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var image: UIImageView!
-
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
-        loadBackgroundPhoto()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadBackgroundPhoto()
         setUpElements()
         loadSampleDoors()
         setupTableView()
@@ -48,10 +48,12 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
         
     }
     
+    /**
+    * @brief Call to get a random image from one API to load it in the ImageView.
+    * @post One image random from api will be loaded into the ImageView
+    */
     private func loadBackgroundPhoto(){
-        // 1
         let request = AF.request(apiURL)
-        // 2
         request.responseJSON { (data) in
             //print(data)
             let yeyo = data.description
@@ -68,15 +70,14 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
             second = first + distance2
             second = second - 22
             
-            print(yeyo.substring(with: first..<second))
+            //print(yeyo.substring(with: first..<second))
             
             let imageRandom = URL(string: yeyo.substring(with: first..<second))
-            
             
             do {
                 let data = try Data(contentsOf: imageRandom!)
                 self.image.image = UIImage(data: data)
-                print("Funciona?")
+                //print("Funciona?")
             } catch _ {
                 print("Error")
             }
@@ -139,8 +140,11 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
         } else {
             cell.viewEsta.backgroundColor = UIColor.white
         }
+                
+        //cell.mainImageView.image = self.allDevices[indexPath.section].getImage()
         
-        cell.mainImageView.image = self.allDevices[indexPath.section].getImage()
+        cell.mainImageView.image = self.imagenes[0]
+        
         cell.mainImageView.layer.cornerRadius = cell.mainImageView.bounds.height / 2
         cell.mainImageView.backgroundColor = UIColor.gray
         
@@ -149,6 +153,11 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
         return cell
     }
     
+    /**
+    * @brief When one device state has changed this method  repaint the TableView.
+    * @pre TableView has to load some information previous to call this method.
+    * @post TableView will be repainted.
+    */
     func refresh(){
         DispatchQueue.main.async { [unowned self] in
             self.tableview.reloadData()
@@ -158,28 +167,25 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // note that indexPath.section is used rather than indexPath.row
         if self.allDevices[indexPath.section].getState() == 1 {
             self.clientThread.sendCloseDevice(id_device: self.allDevices[indexPath.section].getID())
-            //self.allDevices[indexPath.section].setState(state: "0")
         } else {
             self.clientThread.sendOpenDevice(id_device: self.allDevices[indexPath.section].getID())
-            //self.allDevices[indexPath.section].setState(state: "1")
         }
         
         self.tableview.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func setFinished(_ sender: Any) {
+        self.clientThread.setFinished()
+        self.clientThread.sendLogout()
+        DispatchQueue.main.async { [unowned self] in
+            let viewController = self.storyboard?.instantiateViewController(identifier: Storyboard.viewController) as? ViewController
+            
+            self.view.window?.rootViewController = viewController
+            self.view.window?.makeKeyAndVisible()
+        }
     }
-    */
 
 }
 

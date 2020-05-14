@@ -11,12 +11,13 @@ import UIKit
 
 class Device {
     
-    var id: Int?
-    var identifier_name: String?
-    var state: Int?
-    var maintenance: Int?
-    var image : UIImage!
-
+    private var id: Int?
+    private var identifier_name: String?
+    private var state: Int?
+    private var maintenance: Int?
+    private var image : UIImage!
+    
+    //Constructor
     init(id: String, identifier_name: String, state: String, maintenance: String) {
         self.id = Int(id)
         self.identifier_name = identifier_name
@@ -24,27 +25,33 @@ class Device {
         self.maintenance = Int(maintenance)
     }
     
-    func setImage(image: UIImage){
+    //Set the byte[] as the actual image
+    public func setImage(image: UIImage){
         self.image = image
     }
     
-    func setState(state: String){
+    //Set the state as the actual state
+    public func setState(state: String){
         self.state = Int(state)
     }
     
-    func getID() -> Int {
+    //Get the id of the Device
+    public func getID() -> Int {
         return self.id!
     }
     
-    func getIdentifierName() -> String {
+    //Get the identifier_name of the Device
+    public func getIdentifierName() -> String {
         return self.identifier_name!
     }
     
-    func getState() -> Int {
+    //Get the state of the Device
+    public func getState() -> Int {
         return self.state!
     }
     
-    func getImage() -> UIImage {
-        return self.image
+    //Get the image of the Device
+    public func getImage() -> UIImage {
+        return self.image!
     }
 }

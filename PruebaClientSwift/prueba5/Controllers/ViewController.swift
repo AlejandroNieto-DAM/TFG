@@ -17,18 +17,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var usernameTextFld: UITextField!
     @IBOutlet weak var passTextFld: UITextField!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    let clientThread = ClientThread()
+    var clientThread: ClientThread!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.clientThread = ClientThread()
         self.setUpElements()
         self.clientThread.setViewController(mainViewController: self)
         clientThread.startConnection() 
     }
     
-    func setUpElements(){
+    private func setUpElements(){
         
         self.hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -54,10 +54,11 @@ class ViewController: UIViewController {
         vmContainer2.layer.cornerRadius = 50.0
         vmContainer2.layer.shouldRasterize = true
         
-        
     }
     
-    
+    /**
+        * @brief
+     */
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -67,13 +68,18 @@ class ViewController: UIViewController {
     }
 
     
-    
+    /**
+     
+     */
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
+    /**
+     
+     */
     @objc func dismissKeyboard() {
         view.endEditing(true)
         if self.view.frame.origin.y != 0 {

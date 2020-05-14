@@ -22,5 +22,5 @@ struct Colors {
 struct Storyboard {
     
     static let loggedViewController = "LoggedVC"
-    
+    static let viewController = "VC"
 }
