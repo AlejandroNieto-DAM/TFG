@@ -9,11 +9,11 @@ class ClientThread(threading.Thread):
     """
     *   @brief Constructor. Is the thread of the socket client that generates the socket server.
     """
-    def __init__(self, client_socket, server):
+    def __init__(self, client_socket, server, user_controller, device_controller, center_controller):
         threading.Thread.__init__(self)
         self.server = server
         self.socket = client_socket
-        self.protocol = Protocol(self.server, self)
+        self.protocol = Protocol(self.server, self, user_controller, device_controller, center_controller)
         self.working = True
 
     """

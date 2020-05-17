@@ -1,6 +1,9 @@
 import socket
 import threading
 from ServerPython.Server.ClientThread import ClientThread
+from ServerPython.Controllers.User_Controller import User_Controller
+from ServerPython.Controllers.Device_Controller import Door_Controller
+from ServerPython.Controllers.Center_Controller import Center_Controller
 
 
 class TFGServer(threading.Thread):
@@ -19,6 +22,9 @@ class TFGServer(threading.Thread):
         self.sock.listen(1)
         self.clients_threads = []
         self.clients_threads.clear()
+        self.user_controller = User_Controller()
+        self.door_controller = Door_Controller()
+        self.center_controller = Center_Controller()
 
     """
     *   @brief Wait for a connection to the server and when there is one accepts the connection and ads the new connection to the clients_threads
@@ -30,7 +36,7 @@ class TFGServer(threading.Thread):
             (clientsocket, address) = self.sock.accept()
             # ahora se trata el socket cliente
             # en este caso, se trata de un servir multihilado
-            ct = ClientThread(clientsocket, self)
+            ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller)
             ct.start()
             self.clients_threads.append(ct)
 

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity{
                 StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        MainActivity.myThread = new ClientThread(this, this.getApplicationContext());
+        MainActivity.myThread = new ClientThread(this);
         MainActivity.myThread.execute();
 
 

@@ -1,8 +1,6 @@
 from base64 import b64encode
 
-from ServerPython.Controllers.User_Controller import User_Controller
-from ServerPython.Controllers.Device_Controller import Door_Controller
-from ServerPython.Controllers.Center_Controller import Center_Controller
+
 from datetime import datetime
 import time
 
@@ -12,10 +10,10 @@ class Protocol:
     """
     *   @brief Constructor
     """
-    def __init__(self, server, client_thread):
-        self.user_controller = User_Controller()
-        self.door_controller = Door_Controller()
-        self.center_controller = Center_Controller()
+    def __init__(self, server, client_thread, user_controller, device_controller, center_controller):
+        self.user_controller = user_controller
+        self.door_controller = device_controller
+        self.center_controller = center_controller
         self.thread_owner = ""
         self.server = server
         self.client_thread = client_thread
