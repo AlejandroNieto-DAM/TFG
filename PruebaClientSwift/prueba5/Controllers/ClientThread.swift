@@ -11,21 +11,21 @@ import UIKit
 
 class ClientThread {
     
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
+    private var inputStream: InputStream!
+    private var outputStream: OutputStream!
     
-    var mainViewController: ViewController!
-    var loggedViewController: LoggedViewController!
+    private var mainViewController: ViewController!
+    private var loggedViewController: LoggedViewController!
     
-    var threadOwner: String!
+    private var threadOwner: String!
     
-    var allDevices: [Device]
-    var decodedData: Data!
-    var imagePhotoIndex: Int!
+    private var allDevices: [Device]
+    private var decodedData: Data!
+    private var imagePhotoIndex: Int!
     
-    var mProtocol: Protocol!
+    private var mProtocol: Protocol!
     
-    var listening = true
+    private var listening = true
     
     /**
     * @brief Constructor
@@ -126,11 +126,11 @@ class ClientThread {
         }
         else if from_clientS.contains("OPENINGDEVICE"){
             
-            self.openDevice(from_client: from_clientS)
+            self.openedDevice(from_client: from_clientS)
             
         } else if from_clientS.contains("CLOSINGDEVICE"){
 
-            self.closeDevice(from_client: from_clientS)
+            self.closedDevice(from_client: from_clientS)
             
         } else if from_clientS.contains("PHOTO"){
 
@@ -252,7 +252,7 @@ class ClientThread {
     * @pre the socket has to been connected
     * @post the data of the recycler view in the LoggedActivity will be updated with the new value
     */
-    func openDevice(from_client: String){
+    func openedDevice(from_client: String){
         
         let sttms = from_client.split(separator: "#")
         
@@ -271,7 +271,7 @@ class ClientThread {
     * @pre the socket has to been connected
     * @post the data of the recycler view in the LoggedActivity will be updated with the new value
     */
-    func closeDevice(from_client: String){
+    func closedDevice(from_client: String){
         
         let sttms = from_client.split(separator: "#")
         

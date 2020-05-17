@@ -18,8 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var usernameTextFld: UITextField!
     @IBOutlet weak var passTextFld: UITextField!
     
-    var clientThread: ClientThread!
+    private var clientThread: ClientThread!
     
+    /**
+     *  @brief This method add additional initializations to the view of this controller
+     *  @post the variables will be initialized
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.clientThread = ClientThread()
@@ -28,6 +32,12 @@ class ViewController: UIViewController {
         clientThread.startConnection() 
     }
     
+    
+    /**
+     *  @brief This method set the styles of some components of the View
+     *  @pre The view has to have the components that we are going to style
+     *  @post The componentes will change their style for this
+     */
     private func setUpElements(){
         
         self.hideKeyboardWhenTappedAround()
@@ -57,9 +67,12 @@ class ViewController: UIViewController {
     }
     
     /**
-        * @brief
+     *  @brief This method show the keyboard when its needed
+     *  @param notification which is the notification of a component that needs the keyboard
+     *  @pre One component thats need a keyboard has been tapped
+     *  @post The layout will be moved up the keyboard size
      */
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height /  2
@@ -69,25 +82,34 @@ class ViewController: UIViewController {
 
     
     /**
-     
+     *  @brief Hide de keyboard when the user tap in another side that doesnt need the keyboard
+     *  @pre the keyboard has to been active
+     *  @post the keyboard will be hide
      */
-    func hideKeyboardWhenTappedAround() {
+    private func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
     /**
-     
+     *  @brief moves the layout to the original position
+     *  @pre The user has been tapped in another component that doesnt need the keyboard
+     *  @post the layout will go to the original position``
      */
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
     }
     
-    @IBAction func signInBtnTapped(_ sender: Any) {
+    /**
+     *  @brief When the button signIn is tapped and the textFields are filled this method will call a thread method to send a msg to the server
+     *  @pre the textfields have to be filled
+     *  @post a msg will be sent to the server with the login and password
+     */
+    @IBAction private func signInBtnTapped(_ sender: Any) {
         
         if usernameTextFld.text != nil && passTextFld.text != nil {
             
@@ -100,13 +122,17 @@ class ViewController: UIViewController {
         
     }
     
-    func startsSecondActivity(){
+    /**
+     *  @brief Starts the second activity in the main thread
+     *  @pre the login has been successful
+     *  @post the sencond activity will start
+     */
+    public func startsSecondActivity(){
 
         DispatchQueue.main.async { [unowned self] in
             let loggedViewController = self.storyboard?.instantiateViewController(identifier: Storyboard.loggedViewController) as? LoggedViewController
             
             loggedViewController?.setClientThread(clientThread: self.clientThread)
-            
             self.clientThread.setLoggedViewController(loggedViewController: loggedViewController!)
             
             self.view.window?.rootViewController = loggedViewController
