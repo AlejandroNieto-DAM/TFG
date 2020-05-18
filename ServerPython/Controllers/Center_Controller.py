@@ -1,4 +1,5 @@
-from ServerPython.Models.Center_Model import Center_Model
+from Models.Center_Model import Center_Model
+
 
 class Center_Controller:
     def __init__(self):
@@ -10,6 +11,7 @@ class Center_Controller:
     *   @pre the student has to be registered in the system
     *   @return the id of the center of the student will be given
     """
+
     def getCenterByIdStudent(self, id_student):
         id_center = self.__center_model.getCenterByIdStudent(id_student)
         return id_center
@@ -20,6 +22,7 @@ class Center_Controller:
     *   @pre the center has to be registered in the system
     *   @return the status of the specific center
     """
+
     def getCenterStatus(self, id_center):
         status = self.__center_model.getCenterStatus(id_center)
         return status
@@ -31,5 +34,10 @@ class Center_Controller:
     *   @pre the center has to been registered
     *   @post the state of the specific center will be changed
     """
+
     def setActive(self, id_center, state):
         self.__center_model.setActive(id_center, state)
+
+    def getCenterByIdAdmin(self, id_admin):
+        data = self.__center_model.getCenterByIdAdmin(id_admin)
+        return data

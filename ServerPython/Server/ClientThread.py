@@ -1,7 +1,7 @@
 import threading
 from base64 import b64encode
 
-from ServerPython.Server.Protocol import Protocol
+from Server.Protocol import Protocol
 
 
 class ClientThread(threading.Thread):
@@ -9,11 +9,11 @@ class ClientThread(threading.Thread):
     """
     *   @brief Constructor. Is the thread of the socket client that generates the socket server.
     """
-    def __init__(self, client_socket, server, user_controller, device_controller, center_controller):
+    def __init__(self, client_socket, server, user_controller, device_controller, center_controller, admin_controller):
         threading.Thread.__init__(self)
         self.server = server
         self.socket = client_socket
-        self.protocol = Protocol(self.server, self, user_controller, device_controller, center_controller)
+        self.protocol = Protocol(self.server, self, user_controller, device_controller, center_controller, admin_controller)
         self.working = True
 
     """

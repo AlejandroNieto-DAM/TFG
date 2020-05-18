@@ -1,9 +1,10 @@
 import socket
 import threading
-from ServerPython.Server.ClientThread import ClientThread
-from ServerPython.Controllers.User_Controller import User_Controller
-from ServerPython.Controllers.Device_Controller import Door_Controller
-from ServerPython.Controllers.Center_Controller import Center_Controller
+from Server.ClientThread import ClientThread
+from Controllers.User_Controller import User_Controller
+from Controllers.Device_Controller import Door_Controller
+from Controllers.Center_Controller import Center_Controller
+from Controllers.Admin_Controller import Admin_Controller
 
 
 class TFGServer(threading.Thread):
@@ -16,7 +17,7 @@ class TFGServer(threading.Thread):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Bind the socket to the port
-        self.server_address = ('192.168.1.135', 12345)
+        self.server_address = ('192.168.1.136', 1238)
         print('starting up on %s port %s' % self.server_address)
         self.sock.bind(self.server_address)
         self.sock.listen(1)
@@ -25,6 +26,7 @@ class TFGServer(threading.Thread):
         self.user_controller = User_Controller()
         self.door_controller = Door_Controller()
         self.center_controller = Center_Controller()
+        self.admin_controller = Admin_Controller()
 
     """
     *   @brief Wait for a connection to the server and when there is one accepts the connection and ads the new connection to the clients_threads
@@ -36,7 +38,7 @@ class TFGServer(threading.Thread):
             (clientsocket, address) = self.sock.accept()
             # ahora se trata el socket cliente
             # en este caso, se trata de un servir multihilado
-            ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller)
+            ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller, self.admin_controller)
             ct.start()
             self.clients_threads.append(ct)
 

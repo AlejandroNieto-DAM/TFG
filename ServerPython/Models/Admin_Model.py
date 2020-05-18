@@ -6,3 +6,6 @@ class Admin_Model:
         self.__user = "root"
         self.__passwd = ""
         self.__db = "tfg"
+
+
+

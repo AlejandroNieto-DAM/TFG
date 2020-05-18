@@ -1,4 +1,4 @@
-from ServerPython.Models.Device_Model import Door_Model
+from Models.Device_Model import Door_Model
 
 class Door_Controller:
     def __init__(self):
@@ -68,3 +68,8 @@ class Door_Controller:
     """
     def doorNotInMaintenance(self, id_device):
         self.__door_model.doorNotInMaintenance(id_device)
+
+
+    def getDoorById(self, id_device):
+        data = self.__door_model.getDoorById(id_device)
+        return data

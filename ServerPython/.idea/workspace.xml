@@ -2,19 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Alejandro.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebTfg/.idea/WebTfg.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebTfg/App2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebTfg/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebTfg/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PruebaServerSocketPython.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PruebaServerSocketPython.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Admin_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Admin_Controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Center_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Center_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Door_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/User_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/User_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Admin_Center_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Admin_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/Center_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Center_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Door_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Device_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Student_Center.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Device_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Device_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/edit-contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +47,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/PruebaRaspberry" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -55,6 +63,69 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.TFGServer (3)">
+    <configuration name="Center_Controller" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PruebaServerSocketPython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/Center_Controller.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Center_Model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PruebaServerSocketPython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Center_Model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Device_Model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PruebaServerSocketPython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Device_Model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="TFGServer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -76,27 +147,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TFGServer (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PruebaServerSocketPython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/Server" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/Server/TFGServer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="TFGServer (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -104,9 +154,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/envs/ServerPython/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Server" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Server/TFGServer.py" />
@@ -118,55 +168,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="User_Controller" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PruebaServerSocketPython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/User_Controller.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="User_Model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PruebaServerSocketPython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/User_Model.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.TFGServer (3)" />
+        <item itemvalue="Python.Device_Model" />
+        <item itemvalue="Python.Center_Controller" />
+        <item itemvalue="Python.Center_Model" />
         <item itemvalue="Python.TFGServer (1)" />
-        <item itemvalue="Python.User_Model" />
-        <item itemvalue="Python.TFGServer (2)" />
-        <item itemvalue="Python.User_Controller" />
       </list>
     </recent_temporary>
   </component>
@@ -188,6 +196,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1585180240424" />
+    <state x="415" y="42" key="#TFGServer_(3)" timestamp="1589760249633">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="415" y="42" key="#TFGServer_(3)/0.23.1440.809@0.23.1440.809" timestamp="1589760249633" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589187688613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -196,25 +208,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1899" height="266" key="GridCell.Tab.0.bottom" timestamp="1589227741950">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1379" height="168" key="GridCell.Tab.0.bottom" timestamp="1589802078158">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1899" height="266" key="GridCell.Tab.0.center" timestamp="1589227741949">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1379" height="168" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1589802078158" />
+    <state width="1379" height="168" key="GridCell.Tab.0.center" timestamp="1589802078157">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1899" height="266" key="GridCell.Tab.0.left" timestamp="1589227741949">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1379" height="168" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1589802078157" />
+    <state width="1379" height="168" key="GridCell.Tab.0.left" timestamp="1589802078157">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1899" height="266" key="GridCell.Tab.0.right" timestamp="1589227741950">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1379" height="168" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1589802078157" />
+    <state width="1379" height="168" key="GridCell.Tab.0.right" timestamp="1589802078158">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1589217642146">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1379" height="168" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1589802078158" />
+    <state x="221" y="66" key="SettingsEditor" timestamp="1589760393498">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1589760393498" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1589760154204">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1589760154204" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-from ServerPython.Models.User_Model import User_Model
+from Models.User_Model import User_Model
 
 
 class User_Controller:

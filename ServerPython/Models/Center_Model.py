@@ -5,8 +5,8 @@ class Center_Model:
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
-        self.__passwd = "root"
-        self.__db = "db_tfg_v1"
+        self.__passwd = ""
+        self.__db = "db1_tfg_v1"
 
     """
     *   @brief Consult to BD for the centre in which is the student of the id given
@@ -24,6 +24,23 @@ class Center_Model:
 
         for row in cur.fetchone():
             id_center = row
+
+        cur.close()
+        conn.close()
+
+        return id_center
+
+    def getCenterByIdAdmin(self, id_admin):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("SELECT id_center FROM admin_center WHERE id_admin = '" + str(id_admin) + "'")
+
+        id_center = ""
+
+       # for row in cur.fetchone():
+        #    id_center = row
+
+        id_center = cur.fetchone()[0]
 
         cur.close()
         conn.close()

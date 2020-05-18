@@ -7,8 +7,8 @@ class User_Model:
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
-        self.__passwd = "root"
-        self.__db = "db_tfg_v1"
+        self.__passwd = ""
+        self.__db = "db1_tfg_v1"
 
     """
     *   @brief Consult to the bd to know is the name and password given are registered

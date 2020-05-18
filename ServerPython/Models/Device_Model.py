@@ -5,8 +5,8 @@ class Door_Model:
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
-        self.__passwd = "root"
-        self.__db = "db_tfg_v1"
+        self.__passwd = ""
+        self.__db = "db1_tfg_v1"
 
     """
     *   @brief Get all the devices of the centre in which the student is registered
@@ -45,7 +45,7 @@ class Door_Model:
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute(
-            "SELECT * FROM device WHERE id_device IN (SELECT id_device FROM device_center WHERE id_center = '" + id_center + "')")
+            "SELECT * FROM device WHERE id_device IN (SELECT id_device FROM device_center WHERE id_center = '" + str(id_center) + "')")
 
         datos = []
 
@@ -63,6 +63,7 @@ class Door_Model:
     *   @pre a center has to been registered and has devices.
     *   @return returns the status of the specific device
     """
+
     def doorStatus(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -85,6 +86,7 @@ class Door_Model:
     *   @pre the selected device has to be not in maintenance
     *   @post the status of the device will be changed
     """
+
     def openDoor(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -100,6 +102,7 @@ class Door_Model:
     *   @pre the selected device has to be not in maintenance
     *   @post the status of the device will be changed
     """
+
     def closeDoor(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -115,6 +118,7 @@ class Door_Model:
     *   @pre the selected device has to be not in maintenance
     *   @post the state of maintenance of the device will be changed
     """
+
     def doorInMaintenance(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -130,6 +134,7 @@ class Door_Model:
     *   @pre the selected device has to be in maintenance
     *   @post the state of maintenance of the device will be changed
     """
+
     def doorNotInMaintenance(self, idDoor):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -138,3 +143,17 @@ class Door_Model:
         cur.close()
         conn.commit()
         conn.close()
+
+    def getDoorById(self, id_device):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM device WHERE id_device = '" + str(id_device) + "'")
+
+        data = cur.fetchone()
+
+        cur.close()
+        conn.close()
+
+        return data
+
+

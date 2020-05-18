@@ -1,19 +1,19 @@
 from base64 import b64encode
 
-
 from datetime import datetime
 import time
-
 
 
 class Protocol:
     """
     *   @brief Constructor
     """
-    def __init__(self, server, client_thread, user_controller, device_controller, center_controller):
+
+    def __init__(self, server, client_thread, user_controller, device_controller, center_controller, admin_controller):
         self.user_controller = user_controller
         self.door_controller = device_controller
         self.center_controller = center_controller
+        self.admin_controller = admin_controller
         self.thread_owner = ""
         self.server = server
         self.client_thread = client_thread
@@ -24,6 +24,7 @@ class Protocol:
     *   @pre we have to receive a msg from the client
     *   @post an answer will be generated to for the client if its needed 
     """
+
     def process(self, from_client):
         output = ""
 
@@ -48,12 +49,23 @@ class Protocol:
                     allDevices = self.door_controller.getAllDoorsByIdCenter("100")
                     datos = self.compoundDoorsToSend(allDevices)
 
+            elif str(from_client).__contains__("LOGINWEB"):
+                print("UserAdmin")
+                self.thread_owner = "52516946A"
+
+                # if self.center_controller.getCenterStatus("100") == 1:
+                #    comprobacionLogin = True
+
+                if comprobacionLogin:
+                    # TODO Poner admin conectado
+                    datos = "LOGINSUCCESFULLY"
+
             else:
                 print("UserNormal")
                 # comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
                 self.thread_owner = "45936238A"
                 comprobacionCenterActive = self.center_controller.getCenterStatus(
-                self.center_controller.getCenterByIdStudent(self.thread_owner))
+                    self.center_controller.getCenterByIdStudent(self.thread_owner))
 
                 if comprobacionCenterActive:
                     if comprobacionLogin:
@@ -67,6 +79,19 @@ class Protocol:
 
             output = datos
 
+        elif str(from_client).__contains__("WEB#GETDEVICES"):
+            id_center = self.center_controller.getCenterByIdAdmin("52516946A")
+            output = self.compoundDoorsToSend(self.door_controller.getAllDoorsByIdCenter(id_center))
+
+        elif str(from_client).__contains__("WEB#GETDEVICE"):
+            from_client = self.splitString(from_client)
+            output = self.compoundDoorToSend(self.door_controller.getDoorById(from_client[3]))
+
+        elif str(from_client).__contains__("WEB#DELETEDEVICE"):
+            pass
+
+        elif str(from_client).__contains__("WEB#UPDATEDEVICE"):
+            pass
 
         elif str(from_client).__contains__("OPENDEVICE"):
             output = self.open_device(from_client)
@@ -86,6 +111,7 @@ class Protocol:
     *   @post if all the checks to the device are well the action will take place
     *   @return returns an answer to the client if the action was good or not
     """
+
     def open_device(self, from_client):
         from_client = self.splitString(from_client)
         couldBeOpened = self.door_controller.doorStatus(from_client[6])
@@ -114,6 +140,7 @@ class Protocol:
     *   @post if all the checks to the device are well the action will take place
     *   @return returns an answer to the client if the action was good or not
     """
+
     def close_device(self, from_client):
 
         from_client = self.splitString(from_client)
@@ -141,6 +168,7 @@ class Protocol:
     *   @param string_from_client which is the string we will split
     *   @return returns the string[] generated
     """
+
     def splitString(self, string_from_client):
         splitted_string = string_from_client.split("#")
         return splitted_string
@@ -152,6 +180,7 @@ class Protocol:
     *   @post the correct message of the protocol will be generated
     *   @return returns the message that will be sent to the user
     """
+
     def compoundDoorsToSend(self, doors_data):
         final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
         door_count = 0;
@@ -171,12 +200,14 @@ class Protocol:
     *   @pre The client has to been logged successful
     *   @post the user will be disconnected
     """
+
     def setUserDisconnected(self):
         self.user_controller.setUserState(self.thread_owner, "0")
 
     """
     *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)
     """
+
     def getDateTime(self):
         timestamp = 1545730073
         dt_object = datetime.fromtimestamp(timestamp)
@@ -188,6 +219,7 @@ class Protocol:
     *   @pre the msg have the specific word GETPHOTO
     *   @post the image will be sent to the user
     """
+
     def getImage(self, fromClient):
 
         from_client = fromClient.split("#")
@@ -198,12 +230,21 @@ class Protocol:
         time.sleep(0.08)
 
         while byte:
-            self.client_thread.sendBySocket("PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)))
+            self.client_thread.sendBySocket(
+                "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)))
             byte = file.read(512)
             time.sleep(0.08)
-
 
         self.client_thread.sendBySocket(
             "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#FINIMAGE#" + str(from_client[6]))
 
         file.close()
+
+    def compoundDoorToSend(self, data):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#DEVICE"
+        for row in data:
+            output += "#" + str(row)
+
+        output += "#END"
+
+        return output
