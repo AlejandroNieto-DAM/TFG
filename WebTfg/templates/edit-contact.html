@@ -8,14 +8,34 @@
           <div class="form-group">
             <input type="text" name="name" value="{{device.name}}" class="form-control">
           </div>
-          <div class="form-group">
-            <input type="text" name="state" value="{{device.state}}" class="form-control">
+          <div class="from-group">
+            <select id="state" name="state" class="form-control">
+              {% if '1' in device.state %}
+              <option selected="selected" value="1">Abierto</option>
+              <option value="0">Cerrado</option>
+              {% endif %}
+
+              {% if '0' in device.state %}
+              <option value="1">Abierto</option>
+              <option selected="selected" value="0">Cerrado</option>
+              {% endif %}
+            </select>
+          </div>
+          <div class="from-group">
+            <select id="maintenance" name="maintenance" class="form-control">
+              {% if '1' in device.maintenance %}
+              <option selected="selected" value="1">En mantenimiento</option>
+              <option value="0">Funcional</option>
+              {% endif %}
+
+              {% if '0' in device.maintenance %}
+              <option value="1">En mantenimiento</option>
+              <option selected="selected" value="0">Funcional</option>
+              {% endif %}
+            </select>
           </div>
           <div class="form-group">
-            <input type="text" name="maintenance" value="{{device.maintenance}}" class="form-control">
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10%;">
               Update
             </button>
           </div>

@@ -85,13 +85,19 @@ class Protocol:
 
         elif str(from_client).__contains__("WEB#GETDEVICE"):
             from_client = self.splitString(from_client)
-            output = self.compoundDoorToSend(self.door_controller.getDoorById(from_client[3]))
+            output = self.compoundDoorToSend(self.door_controller.getDoorById(from_client[5]))
 
         elif str(from_client).__contains__("WEB#DELETEDEVICE"):
-            pass
+            from_client = self.splitString(from_client)
+            self.door_controller.deleteDeviceById(from_client[5])
 
         elif str(from_client).__contains__("WEB#UPDATEDEVICE"):
-            pass
+            from_client = self.splitString(from_client)
+            self.door_controller.updateDeviceById(from_client[5], from_client[6], from_client[7], from_client[8])
+
+        elif str(from_client).__contains__("WEB#ADDDEVICE"):
+            from_client = self.splitString(from_client)
+            self.door_controller.addDevice("52516946A", from_client[5], from_client[6], from_client[7])
 
         elif str(from_client).__contains__("OPENDEVICE"):
             output = self.open_device(from_client)

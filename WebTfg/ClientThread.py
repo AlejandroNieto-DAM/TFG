@@ -1,18 +1,26 @@
 import threading
 import socket
 from Device import Device
+from datetime import datetime
 #from App2 import redirect_to_profile
 
 
 class ClientThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.136", 1238)
+        self.address = ("192.168.1.136", 1233)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
+        self.thread_owner = ""
 
-    def sendLogin(self, username, passoword):
-        message = b'PROTOCOLTFG#LOGINWEB#ElAdmin'
+    def getDateTime(self):
+        timestamp = 1545730073
+        dt_object = datetime.fromtimestamp(timestamp)
+        return dt_object
+
+    def sendLogin(self, username, password):
+        self.thread_owner = username
+        message = "PROTOCOLTFG#LOGINWEB#" + str(self.getDateTime()) + "#" + username + "#" + password + "#END"
         self.sendBySocket(message)
         chunk = self.sock.recv(1024)
         fromServer = str(chunk)
@@ -23,7 +31,7 @@ class ClientThread(threading.Thread):
         self.sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
     def getAllDevices(self):
-        message = b'PROTOCOLTFG#WEB#GETDEVICES'
+        message = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETDEVICES#" + "idAdmin" + "#END"
         self.sendBySocket(message)
         chunk = self.sock.recv(1024)
         fromServer = str(chunk)
@@ -32,7 +40,6 @@ class ClientThread(threading.Thread):
 
     def processDoors(self, fromServer):
 
-        #print(fromServer[fromServer.index("DEVICE") + 7: -5])
         fromServer = fromServer[fromServer.index("DEVICE") + 7: -5]
         fromServer = fromServer.split("#")
 
@@ -67,16 +74,20 @@ class ClientThread(threading.Thread):
 
         return devices
 
+    def addDevice(self, name, state, maintenance):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#ADDDEVICE#" + "idADmin#" + name + "#" + state + "#" + maintenance + "#END"
+        self.sendBySocket(output)
+
     def updateDevice(self, id, name, state, maintenance):
-        output = "PROTOCOLTFG#WEB#UPDATE#" + id + "#" + name + "#" + state + "#" + maintenance + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPDATEDEVICE#" + "idAdmin#" + id + "#" + name + "#" + state + "#" + maintenance + "#END"
         self.sendBySocket(output)
 
     def deleteDevice(self, id):
-        output = "PROTOCOLTFG#WEB#DELETEDEVICE#" + id + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#DELETEDEVICE#" + "idAdmin#" + id + "#END"
         self.sendBySocket(output)
 
     def getDevice(self, id):
-        output = "PROTOCOLTFG#WEB#GETDEVICE#" + str(id) + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETDEVICE#" + "idAdmin#" + str(id) + "#END"
         self.sendBySocket(output)
         chunk = self.sock.recv(1024)
         fromServer = str(chunk)

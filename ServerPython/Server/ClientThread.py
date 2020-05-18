@@ -57,7 +57,11 @@ class ClientThread(threading.Thread):
     """
     def sendBySocket(self, output):
         print(output)
-        self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
+        try :
+            self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
+        except e:
+            print("broken pipe")
+
 
     """
     *   @return Returns the socket of the client

@@ -63,6 +63,15 @@ def profile():
 
     return render_template('profile.html')
 
+@app.route('/add_device', methods=['POST'])
+def add_device():
+    if request.method == 'POST':
+        name = request.form['name']
+        state = request.form['state']
+        maintenance = request.form['maintenance']
+        client_thread.addDevice(name, state, maintenance)
+
+    return redirect(url_for('Index'))
 
 @app.route('/devices')
 def Index():

@@ -156,4 +156,36 @@ class Door_Model:
 
         return data
 
+    def deleteDeviceById(self, id_device):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("DELETE FROM device WHERE id_device = '" + str(id_device) + "'")
+        cur.execute("DELETE FROM device_center WHERE id_device = '" + str(id_device) + "'")
+        cur.close()
+        conn.commit()
+        conn.close()
 
+    def updaDeviceById(self, id_device, name, state, maintenance):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("UPDATE device SET  device_name = '" + name + "'," +
+                                        "device_state = '" + state + "'," +
+                                        "device_maintenance = '" + maintenance + "'"
+                                        "WHERE id_device = '" + str(id_device) + "'")
+        cur.close()
+        conn.commit()
+        conn.close()
+
+    def addDevice(self, id_center, name, state, maintenance):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("SELECT Max(id_device) FROM Device")
+
+        max_id = int(cur.fetchone()[0]) + 1
+
+        cur.execute("INSERT INTO Device VALUES ('" + str(max_id) + "', '" + name + "', '" + state + "', '" + maintenance + "')")
+        cur.execute("INSERT INTO device_center VALUES ('" + str(id_center) + "', '" + str(max_id)+ "')")
+
+        cur.close()
+        conn.commit()
+        conn.close()

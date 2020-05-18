@@ -1,8 +1,10 @@
 from Models.Device_Model import Door_Model
+from Models.Center_Model import Center_Model
 
 class Door_Controller:
     def __init__(self):
         self.__door_model = Door_Model()
+        self.__center_model = Center_Model()
 
     """
     *   @brief Call a model method to get all the devices of the centre in which the student is registered
@@ -73,3 +75,14 @@ class Door_Controller:
     def getDoorById(self, id_device):
         data = self.__door_model.getDoorById(id_device)
         return data
+
+    def deleteDeviceById(self, id_device):
+        self.__door_model.deleteDeviceById(id_device)
+
+
+    def addDevice(self, id_admin, name, state, maintenance):
+        id_center = self.__center_model.getCenterByIdAdmin(id_admin)
+        self.__door_model.addDevice(id_center, name, state, maintenance)
+
+    def updateDeviceById(self, id_device, name, state, maintenance):
+        self.__door_model.updaDeviceById(id_device, name, state, maintenance)
