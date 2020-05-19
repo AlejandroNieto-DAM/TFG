@@ -15,11 +15,11 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#">Hidden brand</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="devices">Devices<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login">Login</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="users">Users<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
@@ -48,20 +48,26 @@
       {% endif %}
       {% endwith %}
       <div class="card card-body">
-        <form action="{{url_for('add_device')}}" method="POST">
+        <form action="{{url_for('add_user')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" placeholder="DNI">
+          </div>
           <div class="form-group">
             <input type="text" class="form-control" name="name" placeholder="Name">
           </div>
-          <div class="from-group">
-            <select id="state" name="state" class="form-control">
-              <option value="1">Abierto</option>
-              <option value="0">Cerrado</option>
-            </select>
+          <div class="form-group">
+            <input type="text" class="form-control" name="surname" placeholder="Surname">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="lastname" placeholder="Lastname">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="password" placeholder="Password">
           </div>
           <div class="from-group">
-            <select id="maintenance" name="maintenance" class="form-control">
-              <option value="1">En mantenimiento</option>
-              <option value="0">Funcional</option>
+            <select id="active" name="active" class="form-control">
+              <option value="1">Activo</option>
+              <option value="0">No activo</option>
             </select>
           </div>
           <button class="btn btn-primary btn-block" style="margin-top: 10%;">
@@ -76,20 +82,22 @@
             <tr>
               <td>ID</td>
               <td>Name</td>
-              <td>State</td>
-              <td>Maintenance</td>
+              <td>Surname</td>
+              <td>Lastname</td>
+              <td>Activo</td>
             </tr>
           </thead>
           <tbody>
-          {% for device in devices %}
+          {% for user in users %}
             <tr>
-              <td>{{device.id}}</td>
-              <td>{{device.name}}</td>
-              <td>{{device.state}}</td>
-              <td>{{device.maintenance}}</td>
+              <td>{{user.id}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.surname}}</td>
+              <td>{{user.lastname}}</td>
+              <td>{{user.active}}</td>
               <td>
-                <a href="/editdevice/{{device.id}}" class="btn btn-secondary">edit</a>
-                <a href="/deletedevice/{{device.id}}" class="btn btn-danger btn-delete">delete</a>
+                <a href="/edituser/{{user.id}}" class="btn btn-secondary">edit</a>
+                <a href="/deleteuser/{{user.id}}" class="btn btn-danger btn-delete">delete</a>
               </td>
             </tr>
             {% endfor %}

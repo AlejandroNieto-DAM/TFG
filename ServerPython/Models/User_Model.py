@@ -80,5 +80,69 @@ class User_Model:
         m.update(my_string.encode('utf-8'))
         return m.hexdigest()
 
+    def getUsersByIdCenter(self, id_center):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * FROM student WHERE id_student IN (SELECT id_student FROM student_center WHERE id_center = '" + str(id_center) + "')")
+
+        datos = []
+
+        for row in cur.fetchall():
+            datos.append(row)
+
+        cur.close()
+        conn.close()
+
+        return datos
+
+    def getUserById(self, id_user):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM student WHERE id_student = '" + str(id_user) + "'")
+
+        data = cur.fetchone()
+
+        cur.close()
+        conn.close()
+
+        return data
+
+    def deleteUserById(self, id_user):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("DELETE FROM student_center WHERE id_student = '" + str(id_user) + "'")
+        cur.execute("DELETE FROM student WHERE id_student = '" + str(id_user) + "'")
+        cur.close()
+        conn.commit()
+        conn.close()
+
+    def updateUserById(self, id_user, name, surname, lastname, password, active):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("UPDATE student SET  student_name = '" + name + "'," +
+                    "student_surname1 = '" + surname + "'," +
+                    "student_surname2 = '" + lastname + "'," +
+                    "password = '" + password + "'," +
+                    "active = '" + active + "'"
+                                            "WHERE id_student = '" + str(id_user) + "'")
+        cur.close()
+        conn.commit()
+        conn.close()
+
+    def addUser(self, id_center, id_admin, id_user, name, surname, lastname, password, active):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+
+        cur.execute(
+            "INSERT INTO Student VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" + password + "', '" + str(0) + "', '" + active + "')")
+        cur.execute("INSERT INTO register VALUES ('" + id_user + "', '" + id_admin + "')")
+        cur.execute("INSERT INTO student_center VALUES ('" + str(id_center) + "', '" + id_user + "')")
+
+        cur.close()
+        conn.commit()
+        conn.close()
 
 
+ct = User_Model()
+ct.deleteUserById(1)

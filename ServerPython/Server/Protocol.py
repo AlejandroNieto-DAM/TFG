@@ -51,14 +51,15 @@ class Protocol:
 
             elif str(from_client).__contains__("LOGINWEB"):
                 print("UserAdmin")
-                self.thread_owner = "52516946A"
+
+                self.thread_owner = from_client[3]
 
                 # if self.center_controller.getCenterStatus("100") == 1:
                 #    comprobacionLogin = True
 
                 if comprobacionLogin:
                     # TODO Poner admin conectado
-                    datos = "LOGINSUCCESFULLY"
+                    datos = "LOGINSUCCESFULLY#END"
 
             else:
                 print("UserNormal")
@@ -80,7 +81,7 @@ class Protocol:
             output = datos
 
         elif str(from_client).__contains__("WEB#GETDEVICES"):
-            id_center = self.center_controller.getCenterByIdAdmin("52516946A")
+            id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
             output = self.compoundDoorsToSend(self.door_controller.getAllDoorsByIdCenter(id_center))
 
         elif str(from_client).__contains__("WEB#GETDEVICE"):
@@ -97,7 +98,28 @@ class Protocol:
 
         elif str(from_client).__contains__("WEB#ADDDEVICE"):
             from_client = self.splitString(from_client)
-            self.door_controller.addDevice("52516946A", from_client[5], from_client[6], from_client[7])
+            self.door_controller.addDevice(self.thread_owner, from_client[5], from_client[6], from_client[7])
+
+        #USER
+        elif str(from_client).__contains__("WEB#GETUSERS"):
+            id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+            output = self.compoundUsersToSend(self.user_controller.getAllUsersByIdCenter(id_center))
+
+        elif str(from_client).__contains__("WEB#GETUSER"):
+            from_client = self.splitString(from_client)
+            output = self.compoundUserToSend(self.user_controller.getUserById(from_client[5]))
+
+        elif str(from_client).__contains__("WEB#DELETEUSER"):
+            from_client = self.splitString(from_client)
+            self.user_controller.deleteUserById(from_client[5])
+
+        elif str(from_client).__contains__("WEB#UPDATEUSER"):
+            from_client = self.splitString(from_client)
+            self.user_controller.updateUserById(from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
+
+        elif str(from_client).__contains__("WEB#ADDUSER"):
+            from_client = self.splitString(from_client)
+            self.user_controller.addUser(self.thread_owner, from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
 
         elif str(from_client).__contains__("OPENDEVICE"):
             output = self.open_device(from_client)
@@ -189,7 +211,7 @@ class Protocol:
 
     def compoundDoorsToSend(self, doors_data):
         final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
-        door_count = 0;
+        door_count = 0
         sub_info_door = ""
         for door in doors_data:
             sub_info_door += "DEVICE#"
@@ -248,6 +270,30 @@ class Protocol:
 
     def compoundDoorToSend(self, data):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#DEVICE"
+        for row in data:
+            output += "#" + str(row)
+
+        output += "#END"
+
+        return output
+
+
+    def compoundUsersToSend(self, users_data):
+        final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
+        user_count = 0
+        sub_info_user = ""
+        for user in users_data:
+            sub_info_user += "USER#"
+            for data in user:
+                sub_info_user += str(data) + "#"
+            user_count += 1
+
+        final_string_to_send += "TOTAL#" + str(user_count) + "#" + sub_info_user + "END"
+        print(final_string_to_send)
+        return final_string_to_send
+
+    def compoundUserToSend(self, data):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#USER"
         for row in data:
             output += "#" + str(row)
 

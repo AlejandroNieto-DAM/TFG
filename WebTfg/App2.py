@@ -13,55 +13,28 @@ import time
 from ClientThread import ClientThread
 
 
-class User:
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
-
-    def __repr__(self):
-        return f'<User: {self.username}>'
-
-
 app = Flask(__name__)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
 client_thread = ClientThread()
 client_thread.start()
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        session.pop('user_id', None)
 
         username = request.form['username']
         password = request.form['password']
 
-        if client_thread.sendLogin(username, password).__contains__("LOGINSUCCESFULLY"):
-            session['user_id'] = 1
-            return redirect(url_for('profile'))
+        potential_login = client_thread.sendLogin(username, password)
 
-        # user = [x for x in users if x.username == username][0]
-        # if user and user.password == password:
-        #    session['user_id'] = user.id
-        #    return redirect(url_for('profile'))
+        if potential_login.__contains__("LOGINSUCCESFULLY"):
+            return redirect(url_for('IndexUser'))
 
         return redirect(url_for('login'))
 
     return render_template('login.html')
 
-
-def redirect_to_profile():
-    session['user_id'] = 1
-    return redirect(url_for('profile'))
-
-
-@app.route('/profile')
-def profile():
-    if not g.user:
-        return redirect(url_for('login'))
-
-    return render_template('profile.html')
 
 @app.route('/add_device', methods=['POST'])
 def add_device():
@@ -70,25 +43,22 @@ def add_device():
         state = request.form['state']
         maintenance = request.form['maintenance']
         client_thread.addDevice(name, state, maintenance)
-
-    return redirect(url_for('Index'))
+        return redirect(url_for('Index'))
 
 @app.route('/devices')
 def Index():
     data = client_thread.getAllDevices()
-    if data != None:
-        return render_template('index.html', devices=data)
-    else:
-        data = client_thread.getAllDevices()
-        return render_template('index.html', devices=data)
+    return render_template('index.html', devices=data)
 
-@app.route('/edit/<id>', methods = ['POST', 'GET'])
-def get_contact(id):
+
+@app.route('/editdevice/<id>', methods = ['POST', 'GET'])
+def get_device(id):
     device = client_thread.getDevice(id)
-    return render_template('edit-contact.html', device = device)
+    print(device)
+    return render_template('edit-device.html', device = device)
 
-@app.route('/update/<id>', methods=['POST'])
-def update_contact(id):
+@app.route('/updatedevice/<id>', methods=['POST'])
+def update_device(id):
     if request.method == 'POST':
         name = request.form['name']
         state = request.form['state']
@@ -99,11 +69,57 @@ def update_contact(id):
         return redirect(url_for('Index'))
 
 
-@app.route('/delete/<string:id>', methods = ['POST','GET'])
-def delete_contact(id):
+@app.route('/deletedevice/<string:id>', methods = ['POST','GET'])
+def delete_device(id):
     client_thread.deleteDevice(id)
     flash('Contact Removed Successfully')
     return redirect(url_for('Index'))
+
+
+# USER
+
+@app.route('/add_user', methods=['POST'])
+def add_user():
+    if request.method == 'POST':
+        dni = request.form['id']
+        name = request.form['name']
+        surname = request.form['surname']
+        lastname = request.form['lastname']
+        password = request.form['password']
+        active = request.form['active']
+        client_thread.addUser(dni, name, surname, lastname, password, active)
+        return redirect(url_for('IndexUser'))
+
+@app.route('/users')
+def IndexUser():
+    data = client_thread.getAllUsers()
+    return render_template('users.html', users=data)
+
+
+@app.route('/edituser/<id>', methods = ['POST', 'GET'])
+def get_user(id):
+    user = client_thread.getUser(id)
+    return render_template('edit-user.html', user = user)
+
+@app.route('/updateuser/<id>', methods=['POST'])
+def update_user(id):
+    if request.method == 'POST':
+        name = request.form['name']
+        surname = request.form['surname']
+        lastname = request.form['lastname']
+        password = request.form['password']
+        active = request.form['active']
+
+        client_thread.updateUser(id, name, surname, lastname, password, active)
+        flash('User Updated Successfully')
+        return redirect(url_for('IndexUser'))
+
+
+@app.route('/deleteuser/<string:id>', methods = ['POST','GET'])
+def delete_user(id):
+    client_thread.deleteUser(id)
+    flash('User Removed Successfully')
+    return redirect(url_for('IndexUser'))
 
 if __name__ == '__main__':
     app.run(port=12348, debug=True)

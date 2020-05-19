@@ -35,6 +35,13 @@ class ClientThread(threading.Thread):
                 self.server.deleteThisThread(self.getThreadOwner())
                 self.working = False
 
+            except ConnectionResetError:
+                print("Conexion cerrada")
+                #self.protocol.setUserDisconnected()
+                self.server.deleteThisThread(self.getThreadOwner())
+                self.working = False
+
+
     """
     *   @brief Process the msg received by the client.
     *   @param fromClient which is the msg received by the client
@@ -59,7 +66,7 @@ class ClientThread(threading.Thread):
         print(output)
         try :
             self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
-        except e:
+        except BrokenPipeError:
             print("broken pipe")
 
 

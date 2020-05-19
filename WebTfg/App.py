@@ -42,7 +42,7 @@ def get_contact(id):
     data = cur.fetchall()
     cur.close()
     print(data[0])
-    return render_template('edit-contact.html', contact = data[0])
+    return render_template('edit-device.html', contact = data[0])
 
 @app.route('/update/<id>', methods=['POST'])
 def update_contact(id):

@@ -1,14 +1,16 @@
 import threading
 import socket
 from Device import Device
+from User import User
 from datetime import datetime
-#from App2 import redirect_to_profile
+
 
 
 class ClientThread(threading.Thread):
     def __init__(self):
+        print("Constructor")
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.136", 1233)
+        self.address = ("192.168.1.136", 1234)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
         self.thread_owner = ""
@@ -20,10 +22,10 @@ class ClientThread(threading.Thread):
 
     def sendLogin(self, username, password):
         self.thread_owner = username
-        message = "PROTOCOLTFG#LOGINWEB#" + str(self.getDateTime()) + "#" + username + "#" + password + "#END"
+        message = "PROTOCOLTFG#" + str(self.getDateTime()) + "#LOGINWEB" + "#" + username + "#" + password + "#END"
         self.sendBySocket(message)
-        chunk = self.sock.recv(1024)
-        fromServer = str(chunk)
+
+        fromServer = self.myreceive()
         print(fromServer)
         return fromServer
 
@@ -31,15 +33,17 @@ class ClientThread(threading.Thread):
         self.sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
     def getAllDevices(self):
-        message = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETDEVICES#" + "idAdmin" + "#END"
+        message = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETDEVICES#" + self.thread_owner + "#END"
         self.sendBySocket(message)
-        chunk = self.sock.recv(1024)
-        fromServer = str(chunk)
+        fromServer = self.myreceive()
         fromServer = self.processDoors(fromServer)
+
+
+
         return fromServer
 
     def processDoors(self, fromServer):
-
+        print("ProcessDoors ", fromServer)
         fromServer = fromServer[fromServer.index("DEVICE") + 7: -5]
         fromServer = fromServer.split("#")
 
@@ -75,22 +79,21 @@ class ClientThread(threading.Thread):
         return devices
 
     def addDevice(self, name, state, maintenance):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#ADDDEVICE#" + "idADmin#" + name + "#" + state + "#" + maintenance + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#ADDDEVICE#" + self.thread_owner + "#" + name + "#" + state + "#" + maintenance + "#END"
         self.sendBySocket(output)
 
     def updateDevice(self, id, name, state, maintenance):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPDATEDEVICE#" + "idAdmin#" + id + "#" + name + "#" + state + "#" + maintenance + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPDATEDEVICE#" + self.thread_owner + "#" + id + "#" + name + "#" + state + "#" + maintenance + "#END"
         self.sendBySocket(output)
 
     def deleteDevice(self, id):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#DELETEDEVICE#" + "idAdmin#" + id + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#DELETEDEVICE#" + self.thread_owner + "#" + id + "#END"
         self.sendBySocket(output)
 
     def getDevice(self, id):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETDEVICE#" + "idAdmin#" + str(id) + "#END"
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETDEVICE#" + self.thread_owner + "#" + str(id) + "#END"
         self.sendBySocket(output)
-        chunk = self.sock.recv(1024)
-        fromServer = str(chunk)
+        fromServer = self.myreceive()
         device = self.processDevice(fromServer)
         return device
 
@@ -99,8 +102,94 @@ class ClientThread(threading.Thread):
         device = Device(fromServer[4], fromServer[5], fromServer[6], fromServer[7])
         return device
 
+    #USER
+    def getAllUsers(self):
+        message = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETUSERS#" + self.thread_owner + "#END"
+        self.sendBySocket(message)
+        fromServer = self.myreceive()
+        fromServer = self.processUsers(fromServer)
+        return fromServer
 
-ct = ClientThread()
-ct.getDevice("1")
+    def processUsers(self, fromServer):
+        fromServer = fromServer[fromServer.index("USER") + 5: -5]
+        fromServer = fromServer.split("#")
+
+        users = []
+        index = 1
+        id = ""
+        name = ""
+        surname = ""
+        lastname = ""
+        password = ""
+        connected = ""
+        active = ""
+
+
+        for row in fromServer:
+            if index == 1:
+                id = row
+
+            if index == 2:
+                name = row
+
+            if index == 3:
+                surname = row
+
+            if index == 4:
+                lastname = row
+
+            if index == 5:
+                password = row
+
+            if index == 6:
+                connected = row
+
+            if index == 7:
+                active = row
+
+            if row == "USER" or row == "END":
+                aux = User(id, name, surname, lastname, password, connected, active)
+                print(id, name, surname, lastname, password, connected, active)
+                users.append(aux)
+                index = 0
+
+            index += 1
+
+        return users
+
+    def addUser(self, dni, name, surname, lastname, password, active):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#ADDUSER#" + self.thread_owner + "#" + dni + "#" + name + "#" + surname + "#" + lastname + "#" + password + "#" + active + "#END"
+        self.sendBySocket(output)
+
+    def updateUser(self, id, name, surname, lastname, password, active):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPDATEUSER#" + self.thread_owner + "#" + id + "#" + name + "#" + surname + "#" + lastname + "#" + password + "#" + active + "#END"
+        self.sendBySocket(output)
+
+    def deleteUser(self, id):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#DELETEUSER#" + self.thread_owner + "#" + id + "#END"
+        self.sendBySocket(output)
+
+    def getUser(self, id):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETUSER#" + self.thread_owner + "#" + str(id) + "#END"
+        self.sendBySocket(output)
+        fromServer = self.myreceive()
+        user = self.processUser(fromServer)
+        return user
+
+    def processUser(self, fromServer):
+        fromServer = fromServer.split("#")
+        user = User(fromServer[4], fromServer[5], fromServer[6], fromServer[7], fromServer[8], fromServer[9], fromServer[10])
+        return user
+
+    def myreceive(self):
+        msg = ""
+        while not msg.__contains__("#END"):
+            chunk = self.sock.recv(1024)
+            if chunk == '':
+                print("conexión interrumpida")
+            msg = msg + str(chunk)
+
+        return msg
+
 
 
