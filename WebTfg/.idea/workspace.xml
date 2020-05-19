@@ -2,21 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c53b24-cedd-490e-9a00-05455f5eb7bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit-user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/User_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/User_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Interaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Register.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/User_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/App.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App2.py" beforeDir="false" afterPath="$PROJECT_DIR$/App2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppRunTfg.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit-contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-device.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit-device.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -145,22 +147,22 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="445" y="237" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.809@0.23.1440.809" timestamp="1589797792335" />
-    <state width="1379" height="195" key="GridCell.Tab.0.bottom" timestamp="1589884879870">
+    <state width="1379" height="195" key="GridCell.Tab.0.bottom" timestamp="1589909758493">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1589884879870" />
-    <state width="1379" height="195" key="GridCell.Tab.0.center" timestamp="1589884879870">
+    <state width="1379" height="195" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1589909758493" />
+    <state width="1379" height="195" key="GridCell.Tab.0.center" timestamp="1589909758492">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1589884879870" />
-    <state width="1379" height="195" key="GridCell.Tab.0.left" timestamp="1589884879869">
+    <state width="1379" height="195" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1589909758492" />
+    <state width="1379" height="195" key="GridCell.Tab.0.left" timestamp="1589909758492">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1589884879869" />
-    <state width="1379" height="195" key="GridCell.Tab.0.right" timestamp="1589884879870">
+    <state width="1379" height="195" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1589909758492" />
+    <state width="1379" height="195" key="GridCell.Tab.0.right" timestamp="1589909758493">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1589884879870" />
+    <state width="1379" height="195" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1589909758493" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1589790265851">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

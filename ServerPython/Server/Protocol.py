@@ -52,7 +52,10 @@ class Protocol:
             elif str(from_client).__contains__("LOGINWEB"):
                 print("UserAdmin")
 
-                self.thread_owner = from_client[3]
+                if not from_client[3] == "":
+                    self.thread_owner = from_client[3]
+                else:
+                    comprobacionLogin = False
 
                 # if self.center_controller.getCenterStatus("100") == 1:
                 #    comprobacionLogin = True
@@ -60,6 +63,8 @@ class Protocol:
                 if comprobacionLogin:
                     # TODO Poner admin conectado
                     datos = "LOGINSUCCESFULLY#END"
+                else :
+                    datos = "OSTIALOGINERROr#END"
 
             else:
                 print("UserNormal")
@@ -81,45 +86,55 @@ class Protocol:
             output = datos
 
         elif str(from_client).__contains__("WEB#GETDEVICES"):
-            id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
-            output = self.compoundDoorsToSend(self.door_controller.getAllDoorsByIdCenter(id_center))
+            if self.thread_owner != "":
+                id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+                output = self.compoundDoorsToSend(self.door_controller.getAllDoorsByIdCenter(id_center))
 
         elif str(from_client).__contains__("WEB#GETDEVICE"):
-            from_client = self.splitString(from_client)
-            output = self.compoundDoorToSend(self.door_controller.getDoorById(from_client[5]))
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                output = self.compoundDoorToSend(self.door_controller.getDoorById(from_client[5]))
 
         elif str(from_client).__contains__("WEB#DELETEDEVICE"):
-            from_client = self.splitString(from_client)
-            self.door_controller.deleteDeviceById(from_client[5])
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.door_controller.deleteDeviceById(from_client[5])
 
         elif str(from_client).__contains__("WEB#UPDATEDEVICE"):
-            from_client = self.splitString(from_client)
-            self.door_controller.updateDeviceById(from_client[5], from_client[6], from_client[7], from_client[8])
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.door_controller.updateDeviceById(from_client[5], from_client[6], from_client[7], from_client[8])
 
         elif str(from_client).__contains__("WEB#ADDDEVICE"):
-            from_client = self.splitString(from_client)
-            self.door_controller.addDevice(self.thread_owner, from_client[5], from_client[6], from_client[7])
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.door_controller.addDevice(self.thread_owner, from_client[5], from_client[6], from_client[7])
 
         #USER
         elif str(from_client).__contains__("WEB#GETUSERS"):
-            id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
-            output = self.compoundUsersToSend(self.user_controller.getAllUsersByIdCenter(id_center))
+            if self.thread_owner != "":
+                id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+                output = self.compoundUsersToSend(self.user_controller.getAllUsersByIdCenter(id_center))
 
         elif str(from_client).__contains__("WEB#GETUSER"):
-            from_client = self.splitString(from_client)
-            output = self.compoundUserToSend(self.user_controller.getUserById(from_client[5]))
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                output = self.compoundUserToSend(self.user_controller.getUserById(from_client[5]))
 
         elif str(from_client).__contains__("WEB#DELETEUSER"):
-            from_client = self.splitString(from_client)
-            self.user_controller.deleteUserById(from_client[5])
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.user_controller.deleteUserById(from_client[5])
 
         elif str(from_client).__contains__("WEB#UPDATEUSER"):
-            from_client = self.splitString(from_client)
-            self.user_controller.updateUserById(from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.user_controller.updateUserById(from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
 
         elif str(from_client).__contains__("WEB#ADDUSER"):
-            from_client = self.splitString(from_client)
-            self.user_controller.addUser(self.thread_owner, from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.user_controller.addUser(self.thread_owner, from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
 
         elif str(from_client).__contains__("OPENDEVICE"):
             output = self.open_device(from_client)

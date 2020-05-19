@@ -87,7 +87,6 @@ class User_Model:
             "SELECT * FROM student WHERE id_student IN (SELECT id_student FROM student_center WHERE id_center = '" + str(id_center) + "')")
 
         datos = []
-
         for row in cur.fetchall():
             datos.append(row)
 
@@ -144,5 +143,3 @@ class User_Model:
         conn.close()
 
 
-ct = User_Model()
-ct.deleteUserById(1)

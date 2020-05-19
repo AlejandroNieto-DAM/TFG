@@ -10,7 +10,7 @@ class ClientThread(threading.Thread):
     def __init__(self):
         print("Constructor")
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.136", 1234)
+        self.address = ("192.168.1.136", 1233)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
         self.thread_owner = ""

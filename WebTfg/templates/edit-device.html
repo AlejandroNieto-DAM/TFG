@@ -1,47 +1,54 @@
-{% extends "layout.html" %}
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>FLASK CRUD</title>
+    <!-- BOOSTRAP 4 -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <div class="card card-body">
+          <form action="/updatedevice/{{device.id}}" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" value="{{device.name}}" class="form-control">
+            </div>
+            <div class="from-group">
+              <select id="state" name="state" class="form-control">
+                {% if '1' in device.state %}
+                <option selected="selected" value="1">Abierto</option>
+                <option value="0">Cerrado</option>
+                {% endif %}
 
-  <div class="row">
-    <div class="col-md-4 offset-md-4">
-      <div class="card card-body">
-        <form action="/updatedevice/{{device.id}}" method="POST">
-          <div class="form-group">
-            <input type="text" name="name" value="{{device.name}}" class="form-control">
-          </div>
-          <div class="from-group">
-            <select id="state" name="state" class="form-control">
-              {% if '1' in device.state %}
-              <option selected="selected" value="1">Abierto</option>
-              <option value="0">Cerrado</option>
-              {% endif %}
+                {% if '0' in device.state %}
+                <option value="1">Abierto</option>
+                <option selected="selected" value="0">Cerrado</option>
+                {% endif %}
+              </select>
+            </div>
+            <div class="from-group">
+              <select id="maintenance" name="maintenance" class="form-control">
+                {% if '1' in device.maintenance %}
+                <option selected="selected" value="1">En mantenimiento</option>
+                <option value="0">Funcional</option>
+                {% endif %}
 
-              {% if '0' in device.state %}
-              <option value="1">Abierto</option>
-              <option selected="selected" value="0">Cerrado</option>
-              {% endif %}
-            </select>
-          </div>
-          <div class="from-group">
-            <select id="maintenance" name="maintenance" class="form-control">
-              {% if '1' in device.maintenance %}
-              <option selected="selected" value="1">En mantenimiento</option>
-              <option value="0">Funcional</option>
-              {% endif %}
-
-              {% if '0' in device.maintenance %}
-              <option value="1">En mantenimiento</option>
-              <option selected="selected" value="0">Funcional</option>
-              {% endif %}
-            </select>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10%;">
-              Update
-            </button>
-          </div>
-        </form>
+                {% if '0' in device.maintenance %}
+                <option value="1">En mantenimiento</option>
+                <option selected="selected" value="0">Funcional</option>
+                {% endif %}
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10%;">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-
-{% endblock %}
+  </body>
+</html>
