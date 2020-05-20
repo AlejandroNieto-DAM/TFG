@@ -9,8 +9,7 @@ from flask import (
     flash
 )
 
-from base64 import b64encode
-
+import time
 from ClientThread import ClientThread
 
 app = Flask(__name__)
@@ -76,10 +75,8 @@ def Index():
 @app.route('/editdevice/<id>', methods = ['POST', 'GET'])
 def get_device(id):
     device = getMyThread(session['username']).getDevice(id)
-    image = getMyThread(session['username']).getPhoto(id)
-    #device.set_image(image)
-    print(device)
-    return render_template('edit-device.html', device = device, image = image)
+
+    return render_template('edit-device.html', device = device, image = id)
 
 @app.route('/updatedevice/<id>', methods=['POST'])
 def update_device(id):

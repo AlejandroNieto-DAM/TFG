@@ -14,7 +14,7 @@ class ClientThread(threading.Thread):
     def __init__(self):
         print("Constructor")
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.128", 1232)
+        self.address = ("192.168.1.128", 1233)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
         self.thread_owner = ""
@@ -212,21 +212,18 @@ class ClientThread(threading.Thread):
                 #print("MSG --> " + rawMsg)
                 msg = rawMsg.split("#")
                 rawBase64 = msg[4][2: -1]
-                #data = base64.b64decode(rawBase64)
-                #print(data)
-                image.append(rawBase64)
+                data = base64.b64decode(rawBase64)
+                #print("Sin -->" + str(data))
+                #print("Con--> " + str(data)[2:-1])
+                image.append(data)
 
-
-        peaso = ""
+        f = open('templates/' + str(id) + '.jpg', 'wb')
         for row in image:
-            peaso += str(row)
+            f.write(row)
 
-        peaso = peaso.encode("utf-8")
-        print("pesao --> " + str(peaso))
-
+        f.close()
 
 
-        return str(peaso)[2:-1]
 
     def myreceive(self):
         msg = ""

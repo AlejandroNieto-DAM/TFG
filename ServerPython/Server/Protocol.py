@@ -278,12 +278,12 @@ class Protocol:
 
         from_client = fromClient.split("#")
         print(str(from_client[6]))
-        #file = open("/Users/alejandronietoalarcon/Downloads/" + str(from_client[6]) + ".jpg", "rb")
-        file = open("/Users/alejandronietoalarcon/Downloads/1.jpg", "rb")
+        file = open("/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg", "rb")
         byte = file.read(512)
         time.sleep(0.08)
 
         while byte:
+            print("bytes --> " + str(byte))
             self.client_thread.sendBySocket(
                 "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)) + "#END")
             byte = file.read(512)

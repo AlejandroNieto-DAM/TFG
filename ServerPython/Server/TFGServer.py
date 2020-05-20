@@ -17,7 +17,7 @@ class TFGServer(threading.Thread):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Bind the socket to the port
-        self.server_address = ('192.168.1.128', 1232)
+        self.server_address = ('192.168.1.128', 1233)
         print('starting up on %s port %s' % self.server_address)
         self.sock.bind(self.server_address)
         self.sock.listen(1)
