@@ -3,6 +3,10 @@ import socket
 from Device import Device
 from User import User
 from datetime import datetime
+from base64 import b64encode
+import base64
+
+
 
 
 
@@ -10,7 +14,7 @@ class ClientThread(threading.Thread):
     def __init__(self):
         print("Constructor")
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.136", 1233)
+        self.address = ("192.168.1.128", 1232)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
         self.thread_owner = ""
@@ -181,6 +185,49 @@ class ClientThread(threading.Thread):
         user = User(fromServer[4], fromServer[5], fromServer[6], fromServer[7], fromServer[8], fromServer[9], fromServer[10])
         return user
 
+    # USER
+    def getAllAdmins(self):
+        message = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#GETADMINS#" + self.thread_owner + "#END"
+        self.sendBySocket(message)
+        fromServer = self.myreceive()
+        fromServer = self.processUsers(fromServer)
+        return fromServer
+
+    def addAdmin(self, dni, name, surname, lastname, password, active):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#ADDADMIN#" + self.thread_owner + "#" + dni + "#" + name + "#" + surname + "#" + lastname + "#" + password + "#" + active + "#END"
+        self.sendBySocket(output)
+
+    def getPhoto(self, id):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#CLIENT#WEB#" + self.thread_owner + "#GETPHOTO#" + id + "#END";
+        self.sendBySocket(output)
+
+        image = []
+        print("yey")
+
+        rawMsg = ""
+
+        while not rawMsg.__contains__("FINIMAGE"):
+            rawMsg = self.myreceive()
+            if not rawMsg.__contains__("FINIMAGE"):
+                #print("MSG --> " + rawMsg)
+                msg = rawMsg.split("#")
+                rawBase64 = msg[4][2: -1]
+                #data = base64.b64decode(rawBase64)
+                #print(data)
+                image.append(rawBase64)
+
+
+        peaso = ""
+        for row in image:
+            peaso += str(row)
+
+        peaso = peaso.encode("utf-8")
+        print("pesao --> " + str(peaso))
+
+
+
+        return str(peaso)[2:-1]
+
     def myreceive(self):
         msg = ""
         while not msg.__contains__("#END"):
@@ -190,6 +237,3 @@ class ClientThread(threading.Thread):
             msg = msg + str(chunk)
 
         return msg
-
-
-

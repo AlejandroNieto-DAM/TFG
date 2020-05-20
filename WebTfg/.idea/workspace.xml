@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c53b24-cedd-490e-9a00-05455f5eb7bd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/admins.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Interaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/User_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Admin_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/Admin_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/Admin_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App2.py" beforeDir="false" afterPath="$PROJECT_DIR$/App2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppRunTfg.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/Device.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit-device.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-device.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -121,10 +117,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="base64" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="WebTfg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/opt/anaconda3/envs/ServerPython/lib/python3.7" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/opt/anaconda3/envs/ServerPython/lib/python3.7/base64.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.App2" />
         <item itemvalue="Python.ClientThread" />
+        <item itemvalue="Python.base64" />
         <item itemvalue="Python.AppRunTfg" />
       </list>
     </recent_temporary>
@@ -147,22 +165,22 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="445" y="237" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.809@0.23.1440.809" timestamp="1589797792335" />
-    <state width="1379" height="195" key="GridCell.Tab.0.bottom" timestamp="1589909758493">
+    <state width="1379" height="195" key="GridCell.Tab.0.bottom" timestamp="1589977301208">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1589909758493" />
-    <state width="1379" height="195" key="GridCell.Tab.0.center" timestamp="1589909758492">
+    <state width="1379" height="195" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1589977301208" />
+    <state width="1379" height="195" key="GridCell.Tab.0.center" timestamp="1589977301208">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1589909758492" />
-    <state width="1379" height="195" key="GridCell.Tab.0.left" timestamp="1589909758492">
+    <state width="1379" height="195" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1589977301208" />
+    <state width="1379" height="195" key="GridCell.Tab.0.left" timestamp="1589977301207">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1589909758492" />
-    <state width="1379" height="195" key="GridCell.Tab.0.right" timestamp="1589909758493">
+    <state width="1379" height="195" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1589977301207" />
+    <state width="1379" height="195" key="GridCell.Tab.0.right" timestamp="1589977301208">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1379" height="195" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1589909758493" />
+    <state width="1379" height="195" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1589977301208" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1589790265851">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

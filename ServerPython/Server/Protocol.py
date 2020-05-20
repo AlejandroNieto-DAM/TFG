@@ -136,6 +136,17 @@ class Protocol:
                 from_client = self.splitString(from_client)
                 self.user_controller.addUser(self.thread_owner, from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
 
+        #ADMIN
+        elif str(from_client).__contains__("WEB#ADDADMIN"):
+            if self.thread_owner != "":
+                from_client = self.splitString(from_client)
+                self.admin_controller.addAdmin(self.thread_owner, from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
+
+        elif str(from_client).__contains__("WEB#GETADMINS"):
+            if self.thread_owner != "":
+                id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+                output = self.compoundUsersToSend(self.admin_controller.getAllAdminsByIdCenter(id_center))
+
         elif str(from_client).__contains__("OPENDEVICE"):
             output = self.open_device(from_client)
 
@@ -267,19 +278,19 @@ class Protocol:
 
         from_client = fromClient.split("#")
         print(str(from_client[6]))
-        file = open("C:\\Users\\Alejandro\\Downloads\\readFileBytes\\" + str(from_client[6]) + ".jpg", "rb")
-
+        #file = open("/Users/alejandronietoalarcon/Downloads/" + str(from_client[6]) + ".jpg", "rb")
+        file = open("/Users/alejandronietoalarcon/Downloads/1.jpg", "rb")
         byte = file.read(512)
         time.sleep(0.08)
 
         while byte:
             self.client_thread.sendBySocket(
-                "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)))
+                "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)) + "#END")
             byte = file.read(512)
             time.sleep(0.08)
 
         self.client_thread.sendBySocket(
-            "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#FINIMAGE#" + str(from_client[6]))
+            "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#FINIMAGE#" + str(from_client[6]) + "#END")
 
         file.close()
 
