@@ -1,3 +1,4 @@
+import base64
 from base64 import b64encode
 
 from datetime import datetime
@@ -17,6 +18,7 @@ class Protocol:
         self.thread_owner = ""
         self.server = server
         self.client_thread = client_thread
+        self.decoded = []
 
     """
     *   @brief Process the msg received by the client
@@ -146,6 +148,20 @@ class Protocol:
             if self.thread_owner != "":
                 id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
                 output = self.compoundUsersToSend(self.admin_controller.getAllAdminsByIdCenter(id_center))
+
+        elif str(from_client).__contains__("WEB#UPLOADPHOTO"):
+            from_client = self.splitString(from_client)
+            rawBase64 = from_client[4][2: -1]
+            print(rawBase64)
+            data = base64.b64decode(rawBase64)
+            self.decoded.append(data)
+
+        elif str(from_client).__contains__("WEB#FINUPLOADPHOTO"):
+            from_client = self.splitString(from_client)
+            f = open('/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/' + from_client[4] + '.jpg', 'wb')
+            for row in self.decoded:
+                f.write(row)
+            f.close()
 
         elif str(from_client).__contains__("OPENDEVICE"):
             output = self.open_device(from_client)

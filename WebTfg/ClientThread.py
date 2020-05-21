@@ -5,6 +5,7 @@ from User import User
 from datetime import datetime
 from base64 import b64encode
 import base64
+import time
 
 
 
@@ -217,13 +218,29 @@ class ClientThread(threading.Thread):
                 #print("Con--> " + str(data)[2:-1])
                 image.append(data)
 
-        f = open('templates/' + str(id) + '.jpg', 'wb')
+        f = open('Images/' + str(id) + '.jpg', 'wb')
         for row in image:
             f.write(row)
 
         f.close()
 
+    def updatePhoto(self, id):
 
+        file = open("Images/" + id + ".jpg", "rb")
+        byte = file.read(512)
+        time.sleep(0.08)
+
+        while byte:
+            #print("bytes --> " + str(byte))
+            self.sendBySocket(
+                "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPLOADPHOTO#" + str(b64encode(byte)) + "#END")
+            byte = file.read(512)
+            time.sleep(0.08)
+
+        self.sendBySocket(
+            "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#FINUPLOADPHOTO#" + id + "#END")
+
+        file.close()
 
     def myreceive(self):
         msg = ""

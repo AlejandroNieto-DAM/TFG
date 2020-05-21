@@ -6,8 +6,11 @@ from flask import (
     request,
     session,
     url_for,
-    flash
+    flash,
 )
+
+import os
+import base64
 
 import time
 from ClientThread import ClientThread
@@ -75,12 +78,28 @@ def Index():
 @app.route('/editdevice/<id>', methods = ['POST', 'GET'])
 def get_device(id):
     device = getMyThread(session['username']).getDevice(id)
+    getMyThread(session['username']).getPhoto(id)
 
-    return render_template('edit-device.html', device = device, image = id)
+    with open("Images/2.jpg", "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+
+    final = str(encoded_string)
+    final.encode("utf-8")
+
+    return render_template('edit-device.html', device = device, image = final)
+
+
+app.config["IMAGE_UPLOADS"] = "Images"
 
 @app.route('/updatedevice/<id>', methods=['POST'])
 def update_device(id):
     if request.method == 'POST':
+        if request.files:
+            uploadIma = request.files["uploadImage"]
+            uploadIma.save(os.path.join(app.config["IMAGE_UPLOADS"], str(id) + ".jpg"))
+            getMyThread(session['username']).updatePhoto(id)
+
+
         name = request.form['name']
         state = request.form['state']
         maintenance = request.form['maintenance']
