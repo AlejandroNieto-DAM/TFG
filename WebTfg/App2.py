@@ -21,6 +21,7 @@ app.secret_key = 'somesecretkeythatonlyishouldknow'
 threads = []
 
 
+
 def getMyThread(owner):
     for thread in threads:
         if thread.thread_owner == owner:
@@ -59,6 +60,11 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    getMyThread(session['username']).logout()
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 @app.route('/add_device', methods=['POST'])
 def add_device():

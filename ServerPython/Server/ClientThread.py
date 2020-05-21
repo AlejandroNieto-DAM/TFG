@@ -49,7 +49,8 @@ class ClientThread(threading.Thread):
         if fromClient.__contains__("GETPHOTO"):
             self.getImage(fromClient)
         elif fromClient.__contains__("LOGOUT"):
-            self.protocol.setUserDisconnected()
+            pass
+            #self.protocol.setUserDisconnected()
         else:
             output = self.protocol.process(fromClient)
             return output
