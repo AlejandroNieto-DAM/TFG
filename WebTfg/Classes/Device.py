@@ -5,7 +5,3 @@ class Device:
         self.name = name
         self.state = state
         self.maintenance = maintenante
-        self.image = []
-
-    def set_image(self, image):
-        self.image = image

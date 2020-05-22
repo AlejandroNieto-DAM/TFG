@@ -9,7 +9,6 @@ class Protocol:
     """
     *   @brief Constructor
     """
-
     def __init__(self, server, client_thread, user_controller, device_controller, center_controller, admin_controller):
         self.user_controller = user_controller
         self.door_controller = device_controller
@@ -26,7 +25,6 @@ class Protocol:
     *   @pre we have to receive a msg from the client
     *   @post an answer will be generated to for the client if its needed 
     """
-
     def process(self, from_client):
         output = ""
 
@@ -49,7 +47,7 @@ class Protocol:
                 if comprobacionLogin:
                     self.center_controller.setActive(self.thread_owner, "1")
                     allDevices = self.door_controller.getAllDoorsByIdCenter("100")
-                    datos = self.compoundDoorsToSend(allDevices)
+                    datos = self.makeDoorsToSend(allDevices)
 
             elif str(from_client).__contains__("LOGINWEB"):
                 print("UserAdmin")
@@ -81,7 +79,7 @@ class Protocol:
 
                 if comprobacionLogin:
                     allDoors = self.door_controller.getAllDoors(self.thread_owner)
-                    datos = self.compoundDoorsToSend(allDoors)
+                    datos = self.makeDoorsToSend(allDoors)
                 else:
                     datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#LOGINERROR"
 
@@ -90,12 +88,12 @@ class Protocol:
         elif str(from_client).__contains__("WEB#GETDEVICES"):
             if self.thread_owner != "":
                 id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
-                output = self.compoundDoorsToSend(self.door_controller.getAllDoorsByIdCenter(id_center))
+                output = self.makeDoorsToSend(self.door_controller.getAllDoorsByIdCenter(id_center))
 
         elif str(from_client).__contains__("WEB#GETDEVICE"):
             if self.thread_owner != "":
                 from_client = self.splitString(from_client)
-                output = self.compoundDoorToSend(self.door_controller.getDoorById(from_client[5]))
+                output = self.makeDoorToSend(self.door_controller.getDoorById(from_client[5]))
 
         elif str(from_client).__contains__("WEB#DELETEDEVICE"):
             if self.thread_owner != "":
@@ -116,12 +114,12 @@ class Protocol:
         elif str(from_client).__contains__("WEB#GETUSERS"):
             if self.thread_owner != "":
                 id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
-                output = self.compoundUsersToSend(self.user_controller.getAllUsersByIdCenter(id_center))
+                output = self.makeUsersToSend(self.user_controller.getAllUsersByIdCenter(id_center))
 
         elif str(from_client).__contains__("WEB#GETUSER"):
             if self.thread_owner != "":
                 from_client = self.splitString(from_client)
-                output = self.compoundUserToSend(self.user_controller.getUserById(from_client[5]))
+                output = self.makeUserToSend(self.user_controller.getUserById(from_client[5]))
 
         elif str(from_client).__contains__("WEB#DELETEUSER"):
             if self.thread_owner != "":
@@ -147,7 +145,7 @@ class Protocol:
         elif str(from_client).__contains__("WEB#GETADMINS"):
             if self.thread_owner != "":
                 id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
-                output = self.compoundUsersToSend(self.admin_controller.getAllAdminsByIdCenter(id_center))
+                output = self.makeUsersToSend(self.admin_controller.getAllAdminsByIdCenter(id_center))
 
         elif str(from_client).__contains__("WEB#UPLOADPHOTO"):
             from_client = self.splitString(from_client)
@@ -181,7 +179,6 @@ class Protocol:
     *   @post if all the checks to the device are well the action will take place
     *   @return returns an answer to the client if the action was good or not
     """
-
     def open_device(self, from_client):
         from_client = self.splitString(from_client)
         couldBeOpened = self.door_controller.doorStatus(from_client[6])
@@ -210,7 +207,6 @@ class Protocol:
     *   @post if all the checks to the device are well the action will take place
     *   @return returns an answer to the client if the action was good or not
     """
-
     def close_device(self, from_client):
 
         from_client = self.splitString(from_client)
@@ -238,20 +234,18 @@ class Protocol:
     *   @param string_from_client which is the string we will split
     *   @return returns the string[] generated
     """
-
     def splitString(self, string_from_client):
         splitted_string = string_from_client.split("#")
         return splitted_string
 
     """
-    *   @brief Compounds the device of the centre in which the client is to send them to his app
+    *   @brief Makes a string with all the devices of the centre in which the client is to send them to his app
     *   @param doors_data which is the array of device that we get in the database
     *   @pre the user has to been logged successful
     *   @post the correct message of the protocol will be generated
     *   @return returns the message that will be sent to the user
     """
-
-    def compoundDoorsToSend(self, doors_data):
+    def makeDoorsToSend(self, doors_data):
         final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
         door_count = 0
         sub_info_door = ""
@@ -270,14 +264,12 @@ class Protocol:
     *   @pre The client has to been logged successful
     *   @post the user will be disconnected
     """
-
     def setUserDisconnected(self):
         self.user_controller.setUserState(self.thread_owner, "0")
 
     """
     *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)
     """
-
     def getDateTime(self):
         timestamp = 1545730073
         dt_object = datetime.fromtimestamp(timestamp)
@@ -289,7 +281,6 @@ class Protocol:
     *   @pre the msg have the specific word GETPHOTO
     *   @post the image will be sent to the user
     """
-
     def getImage(self, fromClient):
 
         from_client = fromClient.split("#")
@@ -310,7 +301,7 @@ class Protocol:
 
         file.close()
 
-    def compoundDoorToSend(self, data):
+    def makeDoorToSend(self, data):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#DEVICE"
         for row in data:
             output += "#" + str(row)
@@ -320,7 +311,7 @@ class Protocol:
         return output
 
 
-    def compoundUsersToSend(self, users_data):
+    def makeUsersToSend(self, users_data):
         final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
         user_count = 0
         sub_info_user = ""
@@ -334,7 +325,7 @@ class Protocol:
         print(final_string_to_send)
         return final_string_to_send
 
-    def compoundUserToSend(self, data):
+    def makeUserToSend(self, data):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#USER"
         for row in data:
             output += "#" + str(row)

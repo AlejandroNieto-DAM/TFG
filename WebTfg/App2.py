@@ -17,23 +17,19 @@ from ClientThread import ClientThread
 
 app = Flask(__name__)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
-
+app.config["IMAGE_UPLOADS"] = "Images"
 threads = []
 
-
-
+"""
+*   @brief return a thread by a name
+*   @param owner which is the name of the owner of that thread
+*   @pre there is an existing thread
+*   @return the correct thread of the owner
+"""
 def getMyThread(owner):
     for thread in threads:
         if thread.thread_owner == owner:
             return thread
-
-def count():
-    contador = 0
-    for thread in threads:
-        contador += 1
-
-    return contador
-
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -46,10 +42,7 @@ def login():
         client_thread.start()
         threads.append(client_thread)
 
-        print("Remote addrs " + request.remote_addr)
-        print("Mira cuantas hay --> " + str(count()))
         session['username'] = username
-        print("Username? --> " + session['username'])
 
         potential_login = client_thread.sendLogin(username, password)
 
@@ -94,9 +87,6 @@ def get_device(id):
 
     return render_template('edit-device.html', device = device, image = final)
 
-
-app.config["IMAGE_UPLOADS"] = "Images"
-
 @app.route('/updatedevice/<id>', methods=['POST'])
 def update_device(id):
     if request.method == 'POST':
@@ -121,9 +111,6 @@ def delete_device(id):
     flash('Contact Removed Successfully')
     return redirect(url_for('Index'))
 
-
-# USER
-
 @app.route('/add_user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
@@ -140,7 +127,6 @@ def add_user():
 def IndexUser():
     data = getMyThread(session['username']).getAllUsers()
     return render_template('users.html', users=data)
-
 
 @app.route('/edituser/<id>', methods = ['POST', 'GET'])
 def get_user(id):
@@ -160,14 +146,12 @@ def update_user(id):
         flash('User Updated Successfully')
         return redirect(url_for('IndexUser'))
 
-
 @app.route('/deleteuser/<string:id>', methods = ['POST','GET'])
 def delete_user(id):
     getMyThread(session['username']).deleteUser(id)
     flash('User Removed Successfully')
     return redirect(url_for('IndexUser'))
 
-#ADMIN
 @app.route('/add_admin', methods=['POST'])
 def add_admin():
     if request.method == 'POST':

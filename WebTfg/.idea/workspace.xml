@@ -2,9 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c53b24-cedd-490e-9a00-05455f5eb7bd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../PruebaAndroidClient/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/Door.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/DoorAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/LoggedActivityEx.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ui/main/PageViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ui/main/PlaceholderFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ui/main/SectionsPagerAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/activity_logged.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/activity_logged_ex.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/fragment_logged.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/layout_door_item.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App2.py" beforeDir="false" afterPath="$PROJECT_DIR$/App2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClientThread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,10 +220,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1590054866801" />
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1590048638118">
+    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1590134878066">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1590048638118" />
+    <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1590134878066" />
     <state x="283" y="169" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589999829382">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

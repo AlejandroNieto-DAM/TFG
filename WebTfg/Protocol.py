@@ -43,7 +43,7 @@ class Protocol:
     *   @pre the admin has been logged successfully
     *   @return an array with all the devices
     """
-    def processDoors(self, fromServer):
+    def processDevices(self, fromServer):
         print("ProcessDoors ", fromServer)
         fromServer = fromServer[fromServer.index("DEVICE") + 7: -5]
         fromServer = fromServer.split("#")
