@@ -2,28 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../PruebaAndroidClient/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/Door.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/DoorAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/LoggedActivityEx.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ui/main/PageViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ui/main/PlaceholderFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ui/main/SectionsPagerAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/activity_logged.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/activity_logged_ex.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/fragment_logged.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/res/layout/layout_door_item.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Device_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Device_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/App2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/App2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/Classes/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/Classes/Device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/Protocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,9 +158,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.TFGServer (3)" />
+        <item itemvalue="Python.Device_Model" />
         <item itemvalue="Python.Admin_Model" />
         <item itemvalue="Python.User_Model" />
-        <item itemvalue="Python.Device_Model" />
         <item itemvalue="Python.Center_Controller" />
       </list>
     </recent_temporary>
@@ -210,26 +195,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1379" height="168" key="GridCell.Tab.0.bottom" timestamp="1590138948760">
+    <state width="1419" height="168" key="GridCell.Tab.0.bottom" timestamp="1590489540112">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1379" height="168" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590138948760" />
-    <state width="1379" height="168" key="GridCell.Tab.0.center" timestamp="1590138948759">
+    <state width="1419" height="168" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590489540112" />
+    <state width="1419" height="168" key="GridCell.Tab.0.center" timestamp="1590489540111">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1379" height="168" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590138948759" />
-    <state width="1379" height="168" key="GridCell.Tab.0.left" timestamp="1590138948759">
+    <state width="1419" height="168" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590489540111" />
+    <state width="1419" height="168" key="GridCell.Tab.0.left" timestamp="1590489540111">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1379" height="168" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590138948759" />
-    <state width="1379" height="168" key="GridCell.Tab.0.right" timestamp="1590138948759">
+    <state width="1419" height="168" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590489540111" />
+    <state width="1419" height="168" key="GridCell.Tab.0.right" timestamp="1590489540111">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1379" height="168" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590138948759" />
+    <state width="1419" height="168" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590489540111" />
     <state width="1379" height="242" key="GridCell.Tab.1.bottom" timestamp="1590001188384">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -250,10 +235,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1589760393498" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1589994811229">
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1590395491062">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1589994811229" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1590395491062" />
   </component>
 </project>

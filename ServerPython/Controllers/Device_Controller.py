@@ -86,3 +86,7 @@ class Door_Controller:
 
     def updateDeviceById(self, id_device, name, state, maintenance):
         self.__door_model.updaDeviceById(id_device, name, state, maintenance)
+
+
+    def getDevicesForCenter(self, id_center):
+        return self.__door_model.getDevicesForCenter(id_center)

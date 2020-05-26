@@ -28,6 +28,8 @@ class Protocol:
     def process(self, from_client):
         output = ""
 
+
+
         if str(from_client).__contains__("LOGIN"):
 
             from_client = self.splitString(from_client)
@@ -46,7 +48,7 @@ class Protocol:
 
                 if comprobacionLogin:
                     self.center_controller.setActive(self.thread_owner, "1")
-                    allDevices = self.door_controller.getAllDoorsByIdCenter("100")
+                    allDevices = self.door_controller.getDevicesForCenter("100")
                     datos = self.makeDoorsToSend(allDevices)
 
             elif str(from_client).__contains__("LOGINWEB"):
@@ -85,6 +87,30 @@ class Protocol:
 
             output = datos
 
+        elif str(from_client).__contains__("#OPENDEVICE#"):
+            self.open_device(from_client)
+
+        elif str(from_client).__contains__("CLOSEDEVICE"):
+            self.close_device(from_client)
+
+        elif str(from_client).__contains__("CENTER#CLOSEDDEVICE"):
+            from_client = self.splitString(from_client)
+            alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[4] + "#END"
+            students_in_same_centre = self.user_controller.getAllUsersByIdCenter(self.thread_owner)
+            self.server.alertOtherClients(students_in_same_centre, alert)
+            self.door_controller.closeDoor(from_client[4])
+            print("Cerrao")
+
+        elif str(from_client).__contains__("LOGOUT"):
+            output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#1"
+
+        elif str(from_client.__contains__("CENTER#OPENEDDEVICE")):
+            from_client = self.splitString(from_client)
+            alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#OPENINGDEVICE#" + from_client[4] + "#END"
+            students_in_same_centre = self.user_controller.getAllUsersByIdCenter(self.thread_owner)
+            self.server.alertOtherClients(students_in_same_centre, alert)
+            self.door_controller.openDoor(from_client[4])
+            
         elif str(from_client).__contains__("WEB#GETDEVICES"):
             if self.thread_owner != "":
                 id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
@@ -150,7 +176,6 @@ class Protocol:
         elif str(from_client).__contains__("WEB#UPLOADPHOTO"):
             from_client = self.splitString(from_client)
             rawBase64 = from_client[4][2: -1]
-            print(rawBase64)
             data = base64.b64decode(rawBase64)
             self.decoded.append(data)
 
@@ -161,14 +186,14 @@ class Protocol:
                 f.write(row)
             f.close()
 
-        elif str(from_client).__contains__("OPENDEVICE"):
-            output = self.open_device(from_client)
 
-        elif str(from_client).__contains__("CLOSEDEVICE"):
-            output = self.close_device(from_client)
 
-        elif str(from_client).__contains__("LOGOUT"):
-            output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#1"
+
+
+
+
+        else :
+            print("No he entrao")
 
         return output
 
@@ -182,23 +207,22 @@ class Protocol:
     def open_device(self, from_client):
         from_client = self.splitString(from_client)
         couldBeOpened = self.door_controller.doorStatus(from_client[6])
-        print(from_client[6])
+
 
         if couldBeOpened:
-            alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#OPENINGDEVICE#" + from_client[6] + "#END"
-            students_in_same_centre = self.user_controller.getUsersInSameCentre(self.thread_owner)
+
             id_center = self.center_controller.getCenterByIdStudent(self.thread_owner)
-            self.server.alertOtherClients(self.thread_owner, students_in_same_centre, alert)
-            self.server.sendSignalToThisCenter(id_center, "PROTOCOLOTOCENTER")
-            self.door_controller.openDoor(from_client[6])
-            datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#OPENINGDEVICE#" + from_client[6] + "#END"
+            signal = "PROTOCOLTFG#FECHA#SERVER#OPENDEVICE#END"
+            self.server.sendSignalToThisCenter(str(id_center), signal)
+            #datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYOPENING#" + from_client[6] + "#END"
 
             # TODO Introducir datos cuando se ha abierto en la tabla de interaction
 
         else:
-            datos = "No se pudo abrir la puerta"
+            print("Se puede abrir_? "  + str(couldBeOpened))
+            #datos = "No se pudo abrir la puerta"
 
-        return datos
+
 
     """
     *   @brief Makes all the checks to know if the device in which has operated could be active or not and if its true the device will be closed
@@ -211,23 +235,20 @@ class Protocol:
 
         from_client = self.splitString(from_client)
         couldBeOpened = self.door_controller.doorStatus(from_client[6])
-        print(from_client[6])
 
         if couldBeOpened == False:
-            alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
-            students_in_same_centre = self.user_controller.getUsersInSameCentre(self.thread_owner)
             id_center = self.center_controller.getCenterByIdStudent(self.thread_owner)
-            self.server.alertOtherClients(self.thread_owner, students_in_same_centre, alert)
-            self.server.sendSignalToThisCenter(id_center, "PROTOCOLOTOCENTER")
-            self.door_controller.closeDoor(from_client[6])
-            datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
+            signal = "PROTOCOLTFG#FECHA#SERVER#CLOSEDEVICE#END"
+            self.server.sendSignalToThisCenter(str(id_center), signal)
+            #datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
 
             # TODO Introducir datos cuando se ha abierto en la tabla de interaction
 
         else:
-            datos = "No se pudo abrir la puerta"
+            print("Coudl be close false es que se puede --> " + str(couldBeOpened))
+            #datos = "No se pudo abrir la puerta"
 
-        return datos
+
 
     """
     *   @brief Splits the string
@@ -256,7 +277,6 @@ class Protocol:
             door_count += 1
 
         final_string_to_send += "TOTAL#" + str(door_count) + "#" + sub_info_door + "END"
-        print(final_string_to_send)
         return final_string_to_send
 
     """
@@ -284,13 +304,11 @@ class Protocol:
     def getImage(self, fromClient):
 
         from_client = fromClient.split("#")
-        print(str(from_client[6]))
         file = open("/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg", "rb")
         byte = file.read(512)
         time.sleep(0.08)
 
         while byte:
-            print("bytes --> " + str(byte))
             self.client_thread.sendBySocket(
                 "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)) + "#END")
             byte = file.read(512)
@@ -322,7 +340,6 @@ class Protocol:
             user_count += 1
 
         final_string_to_send += "TOTAL#" + str(user_count) + "#" + sub_info_user + "END"
-        print(final_string_to_send)
         return final_string_to_send
 
     def makeUserToSend(self, data):

@@ -17,7 +17,7 @@ class TFGServer(threading.Thread):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Bind the socket to the port
-        self.server_address = ('192.168.1.133', 1233)
+        self.server_address = ('192.168.1.143', 1234)
         print('starting up on %s port %s' % self.server_address)
         self.sock.bind(self.server_address)
         self.sock.listen(1)
@@ -50,13 +50,13 @@ class TFGServer(threading.Thread):
     *   @pre one user has to do an action over one device
     *   @post the users that are in students_in_same_centre will be alerted by one msg by socket
     """
-    def alertOtherClients(self, thread_owner, students_in_same_centre, output):
+    def alertOtherClients(self, students_in_same_centre, output):
 
         for student in students_in_same_centre:
             for client in self.clients_threads:
-                if student == client.protocol.thread_owner and student != thread_owner:
-                    sock = client.getOutputStream()
-                    sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
+                print(student, " -- ", client.protocol.thread_owner)
+                if student == client.protocol.thread_owner:
+                    client.sendBySocket(output)
 
     """
         *   @brief Send the signal to the thread of the center in which one user has operate over a device.
@@ -66,10 +66,10 @@ class TFGServer(threading.Thread):
         *   @post the msg will be sent and the specific device will do an action
     """
     def sendSignalToThisCenter(self, id_center, output):
+        print("output que envio -> " + output)
         for client in self.clients_threads:
             if client.protocol.thread_owner == id_center:
-                sock = client.getOutputStream()
-                sock.send(bytes(str(output) + "\r\n", 'UTF-8'))
+                client.sendBySocket(output)
 
     """
         *   @brief Delete the thread of the specific owner when is disconnected

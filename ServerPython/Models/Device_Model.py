@@ -18,7 +18,7 @@ class Door_Model:
     def getAllDoors(self, id_student):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("SELECT * " +
+        cur.execute("SELECT id_device, device_name, device_state, device_maintenance " +
                     "FROM device " +
                     "WHERE device_maintenance = 0 and device.id_device IN (SELECT device_center.id_device " +
                     "FROM device_center, student_center " +
@@ -45,7 +45,8 @@ class Door_Model:
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute(
-            "SELECT * FROM device WHERE id_device IN (SELECT id_device FROM device_center WHERE id_center = '" + str(id_center) + "')")
+            "SELECT id_device, device_name, device_state, device_maintenance" +
+            " FROM device WHERE id_device IN (SELECT id_device FROM device_center WHERE id_center = '" + str(id_center) + "')")
 
         datos = []
 
@@ -147,7 +148,7 @@ class Door_Model:
     def getDoorById(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM device WHERE id_device = '" + str(id_device) + "'")
+        cur.execute("SELECT id_device, device_name, device_state, device_maintenance FROM device WHERE id_device = '" + str(id_device) + "'")
 
         data = cur.fetchone()
 
@@ -189,3 +190,23 @@ class Door_Model:
         cur.close()
         conn.commit()
         conn.close()
+
+
+    def getDevicesForCenter(self, id_center):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT id_device, pin_led, pin_button, pin_servo, device_state" +
+            " FROM device WHERE device_maintenance = 0 and id_device IN "
+            "(SELECT id_device FROM device_center WHERE id_center = '" + str(
+                id_center) + "')")
+
+        datos = []
+
+        for row in cur.fetchall():
+            datos.append(row)
+
+        cur.close()
+        conn.close()
+
+        return datos

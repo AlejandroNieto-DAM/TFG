@@ -29,8 +29,9 @@ class ClientThread(threading.Thread):
                 output = self.processInput(fromClient)
                 self.sendBySocket(output)
 
-            except:
+            except Exception as err:
                 print("Conexion cerrada")
+                print(err)
                 self.protocol.setUserDisconnected()
                 self.server.deleteThisThread(self.getThreadOwner())
                 self.working = False

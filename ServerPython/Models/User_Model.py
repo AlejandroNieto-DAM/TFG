@@ -84,11 +84,11 @@ class User_Model:
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute(
-            "SELECT * FROM student WHERE id_student IN (SELECT id_student FROM student_center WHERE id_center = '" + str(id_center) + "')")
+            "SELECT id_student FROM student WHERE id_student IN (SELECT id_student FROM student_center WHERE id_center = '" + str(id_center) + "')")
 
         datos = []
         for row in cur.fetchall():
-            datos.append(row)
+            datos.append(row[0])
 
         cur.close()
         conn.close()

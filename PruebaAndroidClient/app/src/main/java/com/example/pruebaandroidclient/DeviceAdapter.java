@@ -133,10 +133,10 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.doorViewHo
 
                     if(device.getState() == 1){
                         MainActivity.myThread.sendCloseDevice(device.getId());
-                        device.setState(0);
+
                     } else {
                         MainActivity.myThread.sendOpenDevice(device.getId());
-                        device.setState(1);
+
                     }
 
 
