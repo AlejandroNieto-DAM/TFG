@@ -2,6 +2,8 @@ import threading
 from base64 import b64encode
 
 from Server.Protocol import Protocol
+from Server.ProtocolCenter import ProtocolCenter
+from Server.ProtocolWeb import ProtocolWeb
 
 
 class ClientThread(threading.Thread):
@@ -12,8 +14,15 @@ class ClientThread(threading.Thread):
         threading.Thread.__init__(self)
         self.server = server
         self.socket = client_socket
-        self.protocol = Protocol(self.server, self, user_controller, device_controller, center_controller,
-                                 admin_controller)
+
+        self.user_controller = user_controller
+        self.device_controller = device_controller
+        self.center_controller = center_controller
+        self.admin_controller = admin_controller
+
+        self.user = ""
+
+        self.protocol = None
         self.working = True
 
     """
@@ -32,7 +41,7 @@ class ClientThread(threading.Thread):
             except Exception as err:
                 print("Conexion cerrada")
                 print(err)
-                self.protocol.setUserDisconnected()
+                self.protocol.setDisconnected()
                 self.server.deleteThisThread(self.getThreadOwner())
                 self.working = False
 
@@ -47,9 +56,24 @@ class ClientThread(threading.Thread):
         if fromClient.__contains__("GETPHOTO"):
             self.getImage(fromClient)
         elif fromClient.__contains__("LOGOUT"):
-            pass
-            #self.protocol.setUserDisconnected()
+            self.protocol.setDisconnected()
         else:
+
+            if fromClient.__contains__("LOGINWEB"):
+                self.protocol = ProtocolWeb(self.server, self, self.user_controller, self. device_controller,  self.center_controller, self.admin_controller)
+                self.server.addAdmin(self)
+                self.user = "WEB"
+            elif fromClient.__contains__("LOGINCENTER"):
+                self.protocol = ProtocolCenter(self.server, self, self.user_controller, self.device_controller,
+                                            self.center_controller, self.admin_controller)
+                self.server.addCenter(self)
+                self.user = "CENTER"
+            elif fromClient.__contains__("LOGIN"):
+                self.protocol = Protocol(self.server, self, self.user_controller, self. device_controller,  self.center_controller, self.admin_controller)
+                self.server.addUser(self)
+                self.user = "STUDENT"
+
+
             output = self.protocol.process(fromClient)
             return output
 

@@ -54,6 +54,9 @@ class Protocol:
         name = ""
         state = ""
         maintenance = ""
+        pin_led = ""
+        pin_button = ""
+        pin_servo = ""
 
         for row in fromServer:
             if index == 1:
@@ -69,9 +72,17 @@ class Protocol:
             if index == 4:
                 maintenance = row
 
+            if index == 5:
+                pin_led = row
+
+            if index == 6:
+                pin_button = row
+
+            if index == 7:
+                pin_servo = row
+
             if row == "DEVICE" or row == "END":
-                aux = Device(id, name, state, maintenance)
-                #print(id, name, state, maintenance)
+                aux = Device(id, name, state, maintenance, pin_led, pin_button, pin_servo)
                 devices.append(aux)
                 index = 0
 
@@ -88,9 +99,9 @@ class Protocol:
     *   @return de correct msg to send to the server
     *   @post the new device will be added to the center
     """
-    def addDevice(self, name, state, maintenance):
+    def addDevice(self, name, state, maintenance, pin_led, pin_button, pin_servo):
         output = "PROTOCOLTFG#" + str(
-            self.getDateTime()) + "#WEB#ADDDEVICE#" + self.clientThread.thread_owner + "#" + name + "#" + state + "#" + maintenance + "#END"
+            self.getDateTime()) + "#WEB#ADDDEVICE#" + self.clientThread.thread_owner + "#" + name + "#" + state + "#" + maintenance + "#" + pin_led + "#" + pin_button + "#" + pin_servo + "#END"
         return output
 
     """
@@ -103,8 +114,8 @@ class Protocol:
     *   @return the correct protocol msg
     *   @post the device will be change his values for this.
     """
-    def updateDevice(self, id, name, state, maintenance):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPDATEDEVICE#" + self.clientThread.thread_owner + "#" + id + "#" + name + "#" + state + "#" + maintenance + "#END"
+    def updateDevice(self, id, name, state, maintenance, pin_led, pin_button, pin_servo):
+        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#WEB#UPDATEDEVICE#" + self.clientThread.thread_owner + "#" + id + "#" + name + "#" + state + "#" + maintenance + "#" + pin_led + "#" + pin_button + "#" + pin_servo + "#END"
         return output
 
     """
@@ -136,7 +147,7 @@ class Protocol:
     """
     def processDevice(self, fromServer):
         fromServer = fromServer.split("#")
-        device = Device(fromServer[4], fromServer[5], fromServer[6], fromServer[7])
+        device = Device(fromServer[4], fromServer[5], fromServer[6], fromServer[7], fromServer[8], fromServer[9], fromServer[10])
         return device
 
     """

@@ -1,4 +1,5 @@
 import pymysql
+import hashlib
 
 class Admin_Model:
     def __init__(self):
@@ -34,3 +35,33 @@ class Admin_Model:
         conn.close()
 
         return datos
+
+    def setConnected(self, id_admin, state):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute("UPDATE admin SET connected = " + state + " WHERE id_admin = '" + id_admin + "'")
+
+        cur.close()
+        conn.commit()
+        conn.close()
+
+    def couldLogin(self, id, password):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * FROM admin WHERE connected = 0 and active = 1 and id_admin = '" + id + "' and password = '" + password + "'")
+
+        exist = False
+
+        if cur.fetchone() is not None:
+            exist = True
+
+        cur.close()
+        conn.close()
+
+        return exist
+
+    def computeMD5hash(self, my_string):
+        m = hashlib.md5()
+        m.update(my_string.encode('utf-8'))
+        return m.hexdigest()

@@ -9,7 +9,7 @@ from Protocol import Protocol
 class ClientThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.128", 1233)
+        self.address = ("192.168.1.143", 1234)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
         self.thread_owner = ""
@@ -59,8 +59,8 @@ class ClientThread(threading.Thread):
     *   @pre the user has been logged succesfully
     *   @post a new device will be added
     """
-    def addDevice(self, name, state, maintenance):
-        output = self.protocol.addDevice(name, state, maintenance)
+    def addDevice(self, name, state, maintenance, pin_led, pin_button, pin_servo):
+        output = self.protocol.addDevice(name, state, maintenance, pin_led, pin_button, pin_servo)
         self.sendBySocket(output)
 
     """
@@ -73,8 +73,8 @@ class ClientThread(threading.Thread):
     *   @pre the admin has been logged successfully
     *   @post the selected device will be change his values by this
     """
-    def updateDevice(self, id, name, state, maintenance):
-        output = self.protocol.updateDevice(id, name, state, maintenance)
+    def updateDevice(self, id, name, state, maintenance, pin_led, pin_button, pin_servo):
+        output = self.protocol.updateDevice(id, name, state, maintenance, pin_led, pin_button, pin_servo)
         self.sendBySocket(output)
 
     """

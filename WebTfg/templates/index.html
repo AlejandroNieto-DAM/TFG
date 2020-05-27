@@ -63,6 +63,15 @@
               <option value="0">Funcional</option>
             </select>
           </div>
+          <div class="form-group">
+            <input type="text" name="pin_led" class="form-control" placeholder="Pin LED">
+          </div>
+          <div class="form-group">
+            <input type="text" name="pin_button" class="form-control" placeholder="Pin Button">
+          </div>
+          <div class="form-group">
+            <input type="text" name="pin_servo" class="form-control" placeholder="Pin Servo">
+          </div>
           <button class="btn btn-primary btn-block" style="margin-top: 10%;">
             Save
           </button>
@@ -77,6 +86,9 @@
               <td>Name</td>
               <td>State</td>
               <td>Maintenance</td>
+              <td>Pin LED</td>
+              <td>Pin Button</td>
+              <td>Pin Server</td>
             </tr>
           </thead>
           <tbody>
@@ -86,6 +98,9 @@
               <td>{{device.name}}</td>
               <td>{{device.state}}</td>
               <td>{{device.maintenance}}</td>
+              <td>{{device.pin_led}}</td>
+              <td>{{device.pin_button}}</td>
+              <td>{{device.pin_servo}}</td>
               <td>
                 <a href="/editdevice/{{device.id}}" class="btn btn-secondary">edit</a>
                 <a href="/deletedevice/{{device.id}}" class="btn btn-danger btn-delete">delete</a>

@@ -80,13 +80,24 @@ class Door_Controller:
         self.__door_model.deleteDeviceById(id_device)
 
 
-    def addDevice(self, id_admin, name, state, maintenance):
+    def addDevice(self, id_admin, name, state, maintenance, pin_led, pin_button, pin_servo):
         id_center = self.__center_model.getCenterByIdAdmin(id_admin)
-        self.__door_model.addDevice(id_center, name, state, maintenance)
+        self.__door_model.addDevice(id_center, name, state, maintenance, pin_led, pin_button, pin_servo)
 
-    def updateDeviceById(self, id_device, name, state, maintenance):
-        self.__door_model.updaDeviceById(id_device, name, state, maintenance)
+    def updateDeviceById(self, id_device, name, state, maintenance, pin_led, pin_button, pin_servo):
+        self.__door_model.updaDeviceById(id_device, name, state, maintenance, pin_led, pin_button, pin_servo)
 
 
     def getDevicesForCenter(self, id_center):
         return self.__door_model.getDevicesForCenter(id_center)
+
+    """
+        *   @brief Call a model method to get all the devices of the centre
+        *   @param id_center which is the center of we want to know their devices
+        *   @pre the center has to been registered in the system
+        *   @return returns all the devices that arent in maintenance of the centre
+        """
+
+    def getAllDoorsByIdCenterToWeb(self, id_center):
+        datos = self.__door_model.getAllDoorsByIdCenterToWeb(id_center)
+        return datos

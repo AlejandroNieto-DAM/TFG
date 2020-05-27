@@ -148,7 +148,7 @@ class Door_Model:
     def getDoorById(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("SELECT id_device, device_name, device_state, device_maintenance FROM device WHERE id_device = '" + str(id_device) + "'")
+        cur.execute("SELECT * FROM device WHERE id_device = '" + str(id_device) + "'")
 
         data = cur.fetchone()
 
@@ -166,25 +166,28 @@ class Door_Model:
         conn.commit()
         conn.close()
 
-    def updaDeviceById(self, id_device, name, state, maintenance):
+    def updaDeviceById(self, id_device, name, state, maintenance, pin_led, pin_button, pin_servo):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE device SET  device_name = '" + name + "'," +
                                         "device_state = '" + state + "'," +
-                                        "device_maintenance = '" + maintenance + "'"
+                                        "device_maintenance = '" + maintenance + "'," +
+                                        "pin_led = '" + pin_led + "'," +
+                                        "pin_button = '" + pin_button + "'," +
+                                        "pin_servo = '" + pin_servo + "'" +
                                         "WHERE id_device = '" + str(id_device) + "'")
         cur.close()
         conn.commit()
         conn.close()
 
-    def addDevice(self, id_center, name, state, maintenance):
+    def addDevice(self, id_center, name, state, maintenance, pin_led, pin_button, pin_servo):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT Max(id_device) FROM Device")
 
         max_id = int(cur.fetchone()[0]) + 1
 
-        cur.execute("INSERT INTO Device VALUES ('" + str(max_id) + "', '" + name + "', '" + state + "', '" + maintenance + "')")
+        cur.execute("INSERT INTO Device VALUES ('" + str(max_id) + "', '" + name + "', '" + state + "', '" + maintenance + "', '" + pin_led + "', '" + pin_button + "', '" + pin_servo + "')")
         cur.execute("INSERT INTO device_center VALUES ('" + str(id_center) + "', '" + str(max_id)+ "')")
 
         cur.close()
@@ -210,3 +213,23 @@ class Door_Model:
         conn.close()
 
         return datos
+
+
+    def getAllDoorsByIdCenterToWeb(self, id_center):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * " +
+            " FROM device WHERE id_device IN (SELECT id_device FROM device_center WHERE id_center = '" + str(
+                id_center) + "')")
+
+        datos = []
+
+        for row in cur.fetchall():
+            datos.append(row)
+
+        cur.close()
+        conn.close()
+
+        return datos
+

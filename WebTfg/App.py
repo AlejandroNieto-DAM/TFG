@@ -65,7 +65,10 @@ def add_device():
         name = request.form['name']
         state = request.form['state']
         maintenance = request.form['maintenance']
-        getMyThread(session['username']).addDevice(name, state, maintenance)
+        pin_led = request.form['pin_led']
+        pin_button = request.form['pin_button']
+        pin_servo = request.form['pin_servo']
+        getMyThread(session['username']).addDevice(name, state, maintenance, pin_led, pin_button, pin_servo)
         return redirect(url_for('Index'))
 
 @app.route('/devices')
@@ -99,8 +102,11 @@ def update_device(id):
         name = request.form['name']
         state = request.form['state']
         maintenance = request.form['maintenance']
+        pin_led = request.form['pin_led']
+        pin_button = request.form['pin_button']
+        pin_servo = request.form['pin_servo']
 
-        getMyThread(session['username']).updateDevice(id, name, state, maintenance)
+        getMyThread(session['username']).updateDevice(id, name, state, maintenance, pin_led, pin_button, pin_servo)
         flash('Contact Updated Successfully')
         return redirect(url_for('Index'))
 

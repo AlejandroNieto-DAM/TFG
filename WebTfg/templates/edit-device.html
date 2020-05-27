@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-md-4 offset-md-3">
+      <div class="col-md-4 offset-md-2 d-inline mt-4">
         <div class="card card-body">
           <form action="/updatedevice/{{device.id}}" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -42,6 +42,15 @@
               </select>
             </div>
             <div class="form-group">
+              <input type="text" name="pin_led" value="{{device.pin_led}}" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="pin_button" value="{{device.pin_button}}" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="pin_servo" value="{{device.pin_servo}}" class="form-control">
+            </div>
+            <div class="form-group">
               <label>New Image</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="uploadImage" id="uploadImage">
@@ -56,7 +65,8 @@
           </form>
         </div>
       </div>
-      <div class="col-md-4">
+    </div>
+      <div class="col-md-4 d-inline mt-4 ml-4">
         <img src="" id="img" alt="DeviceImage">
         <script>
             data = "{{image}}"
@@ -66,6 +76,5 @@
             document.getElementById("img").src = "data:image/png;base64,"+data; // set src
         </script>
       </div>
-    </div>
   </body>
 </html>

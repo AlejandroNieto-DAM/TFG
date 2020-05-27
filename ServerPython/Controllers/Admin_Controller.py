@@ -12,3 +12,10 @@ class Admin_Controller:
 
     def getAllAdminsByIdCenter(self, id_center):
         return self.__admin_model.getUsersByIdCenter(id_center)
+
+
+    def setConnected(self, id_admin, state):
+        self.__admin_model.setConnected(id_admin, state)
+
+    def couldLogin(self, id, password):
+        return self.__admin_model.couldLogin(id, password)

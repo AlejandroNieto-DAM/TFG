@@ -22,7 +22,11 @@ class TFGServer(threading.Thread):
         self.sock.bind(self.server_address)
         self.sock.listen(1)
         self.clients_threads = []
+        self.center_threads = []
+        self.web_threads = []
         self.clients_threads.clear()
+        self.center_threads.clear()
+        self.web_threads.clear()
         self.user_controller = User_Controller()
         self.door_controller = Door_Controller()
         self.center_controller = Center_Controller()
@@ -40,7 +44,7 @@ class TFGServer(threading.Thread):
             # en este caso, se trata de un servir multihilado
             ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller, self.admin_controller)
             ct.start()
-            self.clients_threads.append(ct)
+
 
     """
     *   @brief Send an alert to the clients in the array of students in same centre less the thread owner to let then know there was an action to one of the devices.
@@ -67,9 +71,9 @@ class TFGServer(threading.Thread):
     """
     def sendSignalToThisCenter(self, id_center, output):
         print("output que envio -> " + output)
-        for client in self.clients_threads:
-            if client.protocol.thread_owner == id_center:
-                client.sendBySocket(output)
+        for center in self.center_threads:
+            if center.protocol.thread_owner == id_center:
+                center.sendBySocket(output)
 
     """
         *   @brief Delete the thread of the specific owner when is disconnected
@@ -87,6 +91,38 @@ class TFGServer(threading.Thread):
 
         if position != -1:
             self.clients_threads.pop(position)
+
+        position = -1
+        contador = 0
+        for client in self.center_threads:
+            if client.getThreadOwner() == thread_owner:
+                position = contador
+            contador += 1
+
+        if position != -1:
+            self.center_threads.pop(position)
+
+        position = -1
+        contador = 0
+        for client in self.web_threads:
+            if client.getThreadOwner() == thread_owner:
+                position = contador
+            contador += 1
+
+        if position != -1:
+            self.web_threads.pop(position)
+
+
+
+    def addCenter(self, thread):
+        self.center_threads.append(thread)
+
+    def addAdmin(self, thread):
+        self.web_threads.append(thread)
+
+
+    def addUser(self, thread):
+        self.clients_threads.append(thread)
 
 
 server = TFGServer()
