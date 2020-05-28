@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>FLASK CRUD</title>
+    <!-- BOOSTRAP 4 -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">ADF</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="devices">Devices<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="users">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admins">Admins</a>
+          </li>
+        </ul>
+        <div>
+          <a class="nav-link" href="logout">Logout</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container pt-4">
+      <div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('add_device')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name">
+          </div>
+          <div class="from-group">
+            <select id="state" name="state" class="form-control">
+              <option value="1">Abierto</option>
+              <option value="0">Cerrado</option>
+            </select>
+          </div>
+          <div class="from-group">
+            <select id="maintenance" name="maintenance" class="form-control">
+              <option value="1">En mantenimiento</option>
+              <option value="0">Funcional</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" name="pin_led" class="form-control" placeholder="Pin LED">
+          </div>
+          <div class="form-group">
+            <input type="text" name="pin_button" class="form-control" placeholder="Pin Button">
+          </div>
+          <div class="form-group">
+            <input type="text" name="pin_servo" class="form-control" placeholder="Pin Servo">
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top: 10%;">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+      <div class="col-md-7">
+        <table class="table table-striped table-hover table-bordered table-sm bg-white">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Name</td>
+              <td>State</td>
+              <td>Maintenance</td>
+              <td>Pin LED</td>
+              <td>Pin Button</td>
+              <td>Pin Server</td>
+            </tr>
+          </thead>
+          <tbody>
+          {% for device in devices %}
+            <tr>
+              <td>{{device.id}}</td>
+              <td>{{device.name}}</td>
+              <td>{{device.state}}</td>
+              <td>{{device.maintenance}}</td>
+              <td>{{device.pin_led}}</td>
+              <td>{{device.pin_button}}</td>
+              <td>{{device.pin_servo}}</td>
+              <td>
+                <a href="/editdevice/{{device.id}}" class="btn btn-secondary">edit</a>
+                <a href="/deletedevice/{{device.id}}" class="btn btn-danger btn-delete">delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+  </body>
+
+
+
