@@ -1,7 +1,6 @@
 import threading
 import socket
 from Device import Device
-from adafruit_servokit import ServoKit
 
 class ClientThread(threading.Thread):
 	def __init__(self):
@@ -11,7 +10,6 @@ class ClientThread(threading.Thread):
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.connect((self.socket_address, self.socket_port))
 		self.devices = []
-		self.kit = ServoKit(channels=16)
 
 	def run(self):
 		output = "PROTOCOLTFG#" + "FECHA" + "#CLIENT#MOTORS#LOGINCENTER#100#1234#END"
@@ -67,20 +65,17 @@ class ClientThread(threading.Thread):
 				if row == "DEVICE" or row == "END":
 
 					aux = Device(id, pin_led, pin_button, pin_servo, state, self)
-					self.devices.append(aux)
 					aux.startListenToButton()
 					indexD = 0
 				indexD  += 1
 		elif fromServer.__contains__("OPENDEVICE"):
 			for device in self.devices:
 				if device.id == "2":
-					self.kit.servo[device.pin_servo].angle = 90
 					device.open()
 
 		elif fromServer.__contains__("CLOSEDEVICE"):
 			for device in self.devices:
 				if device.id == "2":
-					self.kit.servo[device.pin_servo].angle = 0
 					device.close()
 if __name__ == '__main__':
 	servo = ClientThread()
