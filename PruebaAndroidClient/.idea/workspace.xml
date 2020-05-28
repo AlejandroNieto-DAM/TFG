@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="76696ae1-9a93-4134-b7f0-24512323e9d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Alejandro 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Alejandro.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/pruebaandroidclient/ExampleInstrumentedTest 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/pruebaandroidclient/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/logo 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_back_arrow-playstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher-playstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ClientProtocol 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ClientProtocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ClientThread 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/Device 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/Device.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/DeviceAdapter 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/DeviceAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/LoggedActivity 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/LoggedActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/MainActivity 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Exif 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Exif.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Links 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Links.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Links_ 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Links_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Location 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Position 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Position.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/ProfileImage 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/ProfileImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/RandomImage 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/RandomImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/RetrofitCall/DoorService 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/RetrofitCall/DoorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/RetrofitCall/RetrofitInstance 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/RetrofitCall/RetrofitInstance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Urls 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/Urls.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/User 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RandomPhotoClasses/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RetrofitInstance 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/RetrofitInstance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/DoorService 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/DoorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Exif 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Exif.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Links 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Links.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Links_ 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Links_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Location 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Position 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Position.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/ProfileImage 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/ProfileImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/RandomImage 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/RandomImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Urls 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/Urls.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/User 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebaandroidclient/ui/main/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/gradient 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/gradient.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_back_48px 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_back_48px.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_gc 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_gc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_gcs 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_gcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_login 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_login.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_rv 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout_rv.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/logo 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_clitem 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_clitem.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_clitemopen 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_clitemopen.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_clitemopening 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_clitemopening.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_signin 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_button_signin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_device_item 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_device_item.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/logged_activity 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/logged_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_minimap 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_minimap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/pruebaandroidclient/ExampleUnitTest 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/pruebaandroidclient/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper 2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/minimap 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/minimap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Podfile 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Podfile 2.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Podfile 3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Podfile 4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Podfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/LICENSE 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/README 2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/AFError 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/AFError.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/AlamofireExtended 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/AlamofireExtended.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/CachedResponseHandler 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/CachedResponseHandler.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/DispatchQueue+Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/DispatchQueue+Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/EventMonitor 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/EventMonitor.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/HTTPHeaders 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/HTTPHeaders.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/HTTPMethod 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/HTTPMethod.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/MultipartFormData 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/MultipartFormData.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/MultipartUpload 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/MultipartUpload.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/NetworkReachabilityManager 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/NetworkReachabilityManager.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Notifications 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Notifications 3.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Notifications 4.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Notifications.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/OperationQueue+Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/OperationQueue+Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ParameterEncoder 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ParameterEncoder.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ParameterEncoding 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ParameterEncoding.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Protected 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Protected.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RedirectHandler 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RedirectHandler 3.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RedirectHandler 4.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RedirectHandler.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Request 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Request.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RequestInterceptor 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RequestInterceptor.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RequestTaskMap 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RequestTaskMap 3.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RequestTaskMap 4.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RequestTaskMap.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Response 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Response.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ResponseSerialization 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ResponseSerialization.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Result+Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Result+Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RetryPolicy 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/RetryPolicy.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ServerTrustEvaluation 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/ServerTrustEvaluation.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Session 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Session.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/SessionDelegate 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/SessionDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/StringEncoding+Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/StringEncoding+Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLConvertible+URLRequestConvertible 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLConvertible+URLRequestConvertible.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLEncodedFormEncoder 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLEncodedFormEncoder.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLRequest+Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLRequest+Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLSessionConfiguration+Alamofire 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/URLSessionConfiguration+Alamofire.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Validation 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Alamofire/Source/Validation.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Manifest 2.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Manifest.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods 2.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods 2.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Alamofire.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods 2.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Pods-prueba5.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods 2.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Alamofire.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Pods-prueba5.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire 2.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-Info 2.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-dummy 2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-dummy.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-prefix 2.pch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-prefix.pch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-umbrella 2.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire.debug 2.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire.debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire.release 2.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Alamofire/Alamofire.release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5 2.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-Info 2.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-acknowledgements 2.markdown" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-acknowledgements 2.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-acknowledgements.markdown" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-acknowledgements.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-dummy 2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-dummy.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks 2.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Debug-input-files 2.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Debug-input-files 3.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Debug-input-files 4.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Debug-input-files.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Debug-output-files 2.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Debug-output-files.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Release-input-files 2.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Release-input-files 3.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Release-input-files 4.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Release-input-files.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Release-output-files 2.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks-Release-output-files.xcfilelist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-frameworks.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-umbrella 2.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5-umbrella.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5.debug 2.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5.debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5.release 2.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Target Support Files/Pods-prueba5/Pods-prueba5.release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5 2.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/AppDelegate 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/AppDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Assets.xcassets/AppIcon.appiconset/Contents 2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Assets.xcassets/Contents 2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Assets.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Base.lproj/LaunchScreen 2.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Base.lproj/LaunchScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Base.lproj/Main 2.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Base.lproj/Main.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Classes/Device 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Classes/Device.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Classes/DoorEjTableViewCell 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Classes/DoorEjTableViewCell 2.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Classes/DoorEjTableViewCell.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Classes/DoorEjTableViewCell.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Constants 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Constants.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread 3.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread 4.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ViewController 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ViewController.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/DoorTableView 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/DoorTableView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Info 2.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/SceneDelegate 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/SceneDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/UIViewExtensionBackground 2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/UIViewExtensionBackground.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/logo 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/logo_CristoRey_Movil 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/logo_CristoRey_Movil.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/RaspberryClient.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/Device.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/StartMotors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/.name 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/PruebaServerSocketPython 2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/PruebaServerSocketPython.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/dictionaries/Alejandro.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/inspectionProfiles/profiles_settings 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/misc 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/modules 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/vcs 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Admin_Controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Center_Controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/User_Controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Admin_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Center_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Device_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/User_Model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ProtocolCenter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ProtocolWeb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/deviceImages/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/deviceImages/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/deviceImages/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/deviceImages/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/deviceImages/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/deviceImages/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/WebTfg 2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/WebTfg.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/inspectionProfiles/profiles_settings 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/misc 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/modules 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/vcs 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/App.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Classes/Device 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Classes/Device.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Classes/User 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Classes/User.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/2 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/3 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Protocol 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Protocol.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/static/css/main 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/static/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/static/js/main 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/admins 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/admins.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-device 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-user 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/login 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/users 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/users.html" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_24" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1cX70nreLQYiDBERvfpAnlvQAtD" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76696ae1-9a93-4134-b7f0-24512323e9d1" name="Default Changelist" comment="" />
+      <created>1590662864156</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590662864156</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
