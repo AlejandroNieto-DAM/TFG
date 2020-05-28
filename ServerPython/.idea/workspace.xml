@@ -2,21 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Alejandro 2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Admin_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Admin_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Admin_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Device_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Device_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Admin_Controller 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Center_Controller 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/User_Controller 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Admin_Model 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Center_Model 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Device_Model 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User_Model 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ClientThread 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Protocol 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/TFGServer 2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/App2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/App.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/Classes/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/Classes/Device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/Protocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/1 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/2 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/3 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/4 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/5 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/6 2.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,26 +209,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1419" height="257" key="GridCell.Tab.0.bottom" timestamp="1590575565839">
+    <state width="1381" height="156" key="GridCell.Tab.0.bottom" timestamp="1590660242185">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1419" height="257" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590575565839" />
-    <state width="1419" height="257" key="GridCell.Tab.0.center" timestamp="1590575565839">
+    <state width="1381" height="156" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590660242185" />
+    <state width="1381" height="156" key="GridCell.Tab.0.center" timestamp="1590660242185">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1419" height="257" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590575565839" />
-    <state width="1419" height="257" key="GridCell.Tab.0.left" timestamp="1590575565838">
+    <state width="1381" height="156" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590660242185" />
+    <state width="1381" height="156" key="GridCell.Tab.0.left" timestamp="1590660242184">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1419" height="257" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590575565838" />
-    <state width="1419" height="257" key="GridCell.Tab.0.right" timestamp="1590575565839">
+    <state width="1381" height="156" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590660242184" />
+    <state width="1381" height="156" key="GridCell.Tab.0.right" timestamp="1590660242185">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1419" height="257" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590575565839" />
+    <state width="1381" height="156" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590660242185" />
     <state width="1419" height="257" key="GridCell.Tab.1.bottom" timestamp="1590575565841">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
