@@ -177,7 +177,7 @@ class Protocol:
     def getImage(self, fromClient):
 
         from_client = fromClient.split("#")
-        file = open("/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg", "rb")
+        file = open("/Users/alejandronietoalarcon/Desktop/VOLVER/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg", "rb")
         byte = file.read(512)
         time.sleep(0.08)
 

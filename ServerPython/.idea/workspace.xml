@@ -2,27 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Alejandro 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/DeviceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/DeviceAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Admin_Controller 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Center_Controller 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/User_Controller 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Admin_Model 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Center_Model 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Device_Model 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/User_Model 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ClientThread 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Protocol 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/TFGServer 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deviceImages/1 2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deviceImages/2 2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deviceImages/3 2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deviceImages/4 2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deviceImages/5 2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deviceImages/6 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Admin_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Device_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Device_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ProtocolWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolWeb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/deviceImages/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/deviceImages/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/App.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +40,23 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/deviceImages" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Alejandro\PycharmProjects\untitled" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Alejandro\Documents\PruebaComunicacionServer\ServerPython" />
       <recent name="C:\Users\Alejandro\Documents\PruebaComunicacionServer\ServerPython\venv" />
       <recent name="C:\Users\Alejandro\Documents\PruebaComunicacionServer\ServerPython\venv\Server" />
       <recent name="C:\Users\Alejandro\Documents\PruebaComunicacionServer\ServerPython\venv\Models2" />
       <recent name="C:\Users\Alejandro\Documents\PruebaComunicacionServer\ServerPython\venv\Controllers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/deviceImages" />
+      <recent name="C:\Users\Alejandro\PycharmProjects\untitled" />
     </key>
   </component>
   <component name="RunManager" selected="Python.TFGServer (3)">
@@ -172,8 +168,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.TFGServer (3)" />
-        <item itemvalue="Python.Admin_Model" />
         <item itemvalue="Python.Device_Model" />
+        <item itemvalue="Python.Admin_Model" />
         <item itemvalue="Python.User_Model" />
         <item itemvalue="Python.Center_Controller" />
       </list>
@@ -209,26 +205,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1381" height="156" key="GridCell.Tab.0.bottom" timestamp="1590660242185">
+    <state width="1381" height="156" key="GridCell.Tab.0.bottom" timestamp="1590749401274">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1381" height="156" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590660242185" />
-    <state width="1381" height="156" key="GridCell.Tab.0.center" timestamp="1590660242185">
+    <state width="1381" height="156" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590749401274" />
+    <state width="1381" height="156" key="GridCell.Tab.0.center" timestamp="1590749401273">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1381" height="156" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590660242185" />
-    <state width="1381" height="156" key="GridCell.Tab.0.left" timestamp="1590660242184">
+    <state width="1381" height="156" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590749401273" />
+    <state width="1381" height="156" key="GridCell.Tab.0.left" timestamp="1590749401273">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1381" height="156" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590660242184" />
-    <state width="1381" height="156" key="GridCell.Tab.0.right" timestamp="1590660242185">
+    <state width="1381" height="156" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590749401273" />
+    <state width="1381" height="156" key="GridCell.Tab.0.right" timestamp="1590749401273">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1381" height="156" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590660242185" />
+    <state width="1381" height="156" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590749401273" />
     <state width="1419" height="257" key="GridCell.Tab.1.bottom" timestamp="1590575565841">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -249,10 +245,14 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1589760393498" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1590566847794">
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1590666387626">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1590566847794" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1590666387626" />
+    <state x="383" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1590744004865">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="383" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1590744004865" />
   </component>
 </project>

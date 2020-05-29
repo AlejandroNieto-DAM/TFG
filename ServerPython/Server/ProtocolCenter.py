@@ -20,7 +20,10 @@ class ProtocolCenter:
     def process(self, from_client):
         output = ""
 
+
+
         if str(from_client).__contains__("LOGIN"):
+            print("hemos entrado pero es el login", self.thread_owner)
 
             from_client = self.splitString(from_client)
 
@@ -40,8 +43,11 @@ class ProtocolCenter:
                 allDevices = self.door_controller.getDevicesForCenter("100")
                 datos = self.makeDoorsToSend(allDevices)
 
+            output  = datos
 
-        elif str(from_client).__contains__("CENTER#CLOSEDDEVICE"):
+
+        if str(from_client).find("CENTER#CLOSEDDEVICE") != -1:
+            print("hemos entrado pero es el close", self.thread_owner)
             from_client = self.splitString(from_client)
             alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[4] + "#END"
             students_in_same_centre = self.user_controller.getAllUsersByIdCenter(self.thread_owner)
@@ -49,15 +55,28 @@ class ProtocolCenter:
             self.door_controller.closeDoor(from_client[4])
             print("Cerrao")
 
-        elif str(from_client).__contains__("LOGOUT"):
-            output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#1"
-
-        elif str(from_client.__contains__("CENTER#OPENEDDEVICE")):
+        if str(from_client).find("CENTER#OPENEDDEVICE") != -1:
+            print("hemos entrado pero es el open", self.thread_owner)
             from_client = self.splitString(from_client)
             alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#OPENINGDEVICE#" + from_client[4] + "#END"
             students_in_same_centre = self.user_controller.getAllUsersByIdCenter(self.thread_owner)
             self.server.alertOtherClients(students_in_same_centre, alert)
             self.door_controller.openDoor(from_client[4])
+
+        if str(from_client).find("LOGOUT") != -1:
+            print("hemos entrado pero es el logout", self.thread_owner)
+            output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#1"
+
+
+        if str(from_client).find("CENTER#GETUPDATEDDB") != -1:
+            print("hemos entrado", self.thread_owner)
+            allDevices = self.door_controller.getDevicesForCenter(self.thread_owner)
+            datos = self.makeDoorsToSend(allDevices)
+            output = datos
+
+
+
+        return output
 
     """
     *   @brief Makes a string with all the devices of the centre in which the client is to send them to his app

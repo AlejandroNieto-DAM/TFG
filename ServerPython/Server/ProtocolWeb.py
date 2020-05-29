@@ -62,15 +62,27 @@ class ProtocolWeb:
                 from_client = self.splitString(from_client)
                 self.door_controller.deleteDeviceById(from_client[5])
 
+                id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+                signal = "PROTOCOLTFG#FECHA#SERVER#DATABASEUPDATED#END"
+                self.server.sendSignalToThisCenter(str(id_center), signal)
+
         elif str(from_client).__contains__("WEB#UPDATEDEVICE"):
             if self.thread_owner != "":
                 from_client = self.splitString(from_client)
                 self.door_controller.updateDeviceById(from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10], from_client[11])
 
+                id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+                signal = "PROTOCOLTFG#FECHA#SERVER#DATABASEUPDATED#END"
+                self.server.sendSignalToThisCenter(str(id_center), signal)
+
         elif str(from_client).__contains__("WEB#ADDDEVICE"):
             if self.thread_owner != "":
                 from_client = self.splitString(from_client)
                 self.door_controller.addDevice(self.thread_owner, from_client[5], from_client[6], from_client[7], from_client[8], from_client[9], from_client[10])
+
+                id_center = self.center_controller.getCenterByIdAdmin(self.thread_owner)
+                signal = "PROTOCOLTFG#FECHA#SERVER#DATABASEUPDATED#END"
+                self.server.sendSignalToThisCenter(str(id_center), signal)
 
         # USER
         elif str(from_client).__contains__("WEB#GETUSERS"):
@@ -121,11 +133,14 @@ class ProtocolWeb:
         elif str(from_client).__contains__("WEB#FINUPLOADPHOTO"):
             from_client = self.splitString(from_client)
             f = open(
-                '/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/' + from_client[4] + '.jpg',
+                '/Users/alejandronietoalarcon/Desktop/VOLVER/TFG/ServerPython/deviceImages/' + from_client[4] + '.jpg',
                 'wb')
             for row in self.decoded:
                 f.write(row)
             f.close()
+
+        elif str(from_client).__contains__("GETPHOTO"):
+            self.getImage(from_client)
 
         return output
 
@@ -213,10 +228,10 @@ class ProtocolWeb:
 
         try:
             file = open(
-                "/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg", "rb")
+                "/Users/alejandronietoalarcon/Desktop/VOLVER/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg", "rb")
         except FileNotFoundError as e:
             file = open(
-                "/Users/alejandronietoalarcon/Desktop/TFG/TFG/ServerPython/deviceImages/1.jpg", "rb")
+                "/Users/alejandronietoalarcon/Desktop/VOLVER/TFG/ServerPython/deviceImages/1.jpg", "rb")
 
         byte = file.read(512)
         time.sleep(0.08)

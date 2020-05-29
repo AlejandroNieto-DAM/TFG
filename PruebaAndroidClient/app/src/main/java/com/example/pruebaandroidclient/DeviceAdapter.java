@@ -3,6 +3,7 @@ package com.example.pruebaandroidclient;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.doorViewHolder> {
 
-    public final Context context; //Stores the context where it will run
+    private final Context context; //Stores the context where it will run
     private ArrayList<Device> list; //Will store the devices to display
     private DeviceAdapter.OnItemClickListener listener; //Listener for when clicked
 
@@ -116,6 +117,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.doorViewHo
             identifier_name.setText(device.getIdentifier_name());
 
             byte[] imageBytes = device.getImage();
+            Log.i("NO se hace el  o klk?", String.valueOf(device.getId()));
             Bitmap bm = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
             image.setImageBitmap(bm);
 

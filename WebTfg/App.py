@@ -82,7 +82,7 @@ def get_device(id):
     device = getMyThread(session['username']).getDevice(id)
     getMyThread(session['username']).getPhoto(id)
 
-    with open("Images/2.jpg", "rb") as image_file:
+    with open("Images/" + str(id) + ".jpg", "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
 
     final = str(encoded_string)

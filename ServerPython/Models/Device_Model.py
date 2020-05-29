@@ -198,11 +198,9 @@ class Door_Model:
     def getDevicesForCenter(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute(
-            "SELECT id_device, pin_led, pin_button, pin_servo, device_state" +
-            " FROM device WHERE device_maintenance = 0 and id_device IN "
-            "(SELECT id_device FROM device_center WHERE id_center = '" + str(
-                id_center) + "')")
+
+        sql =  "SELECT id_device, pin_led, pin_button, pin_servo, device_state" + " FROM device WHERE device_maintenance = 0 and id_device IN " +"(SELECT id_device FROM device_center WHERE id_center = " +str(int(id_center)) + ")"
+        cur.execute(sql)
 
         datos = []
 

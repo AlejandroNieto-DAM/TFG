@@ -53,7 +53,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         socket = null;
         try {
-            socket = new Socket("192.168.1.143", 1234);
+            socket = new Socket("192.168.1.143", 1233);
         } catch (IOException e) {
             e.printStackTrace();
             Log.i("[EXCEPTION] " , e.toString());
@@ -204,7 +204,8 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     public void finImage(String message){
 
         if(getImagesIndex == this.allDevices.size() - 1){
-            this.allDevices.get(this.allDevices.size() - 1).setImage(outBytes);
+
+            this.allDevices.get(getImagesIndex).setImage(outBytes);
             this.mainActivity.startLoggedActivity(allDevices);
 
         } else {
