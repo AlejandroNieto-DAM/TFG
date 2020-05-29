@@ -3,22 +3,23 @@ import time
 import RPi.GPIO as GPIO
 import Adafruit_PCA9685
 
-
 class Device:
 	def __init__(self, id, pin_led, pin_button, pin_servo, state, mainThread):
+		print(id, pin_led, pin_button, pin_servo, state)
+
 		self.id = id
 		self.pin_led =  pin_led
 		self.pin_button = int(pin_button, base=10)
 		self.pin_servo = int(pin_servo)
 		self.state = state
+		self.buttonThread = None
 		self.mainThread = mainThread
 		self.pwm = Adafruit_PCA9685.PCA9685()
-		self.pwm.set_pwm_freq(60)
-
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setup(self.pin_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 	def listenButton(self):
+		print("Entramos en el listen button")
 		while True:
 			input_state = GPIO.input(self.pin_button)
 			if input_state == False:
@@ -33,17 +34,19 @@ class Device:
 					self.mainThread.sendCloseDevice(self.id)
 
 	def startListenToButton(self):
-		listen = threading.Thread(target=self.listenButton)
-		listen.start()
-
+		self.buttonThread = threading.Thread(target=self.listenButton)
+		self.buttonThread.start()
 
 	def open(self):
-		self.mainThread.sendOpenDevice(self.id)
+		print("Dentroo del open a vber si abre")
+		self.pwm.set_pwm_freq(60)
 		self.pwm.set_pwm(self.pin_servo, 0, 600)
+		self.mainThread.sendOpenDevice(self.id)
 		time.sleep(1)
 
 	def close(self):
-		self.mainThread.sendCloseDevice(self.id)
+		print("Dentro del close a ver si cierra")
+		self.pwm.set_pwm_freq(60)
 		self.pwm.set_pwm(self.pin_servo, 0, 150)
+		self.mainThread.sendCloseDevice(self.id)
 		time.sleep(1)
-

@@ -6,7 +6,7 @@ class ClientThread(threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
 		self.socket_address = "192.168.1.143"
-		self.socket_port = 1234
+		self.socket_port = 1233
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.connect((self.socket_address, self.socket_port))
 		self.devices = []
@@ -66,10 +66,13 @@ class ClientThread(threading.Thread):
 
 					aux = Device(id, pin_led, pin_button, pin_servo, state, self)
 					aux.startListenToButton()
+					self.devices.append(aux)
+					print("Listening?")
 					indexD = 0
 				indexD  += 1
 		elif fromServer.__contains__("OPENDEVICE"):
 			for device in self.devices:
+				print("DEvice.id", device.id)
 				if device.id == "2":
 					device.open()
 
@@ -77,6 +80,13 @@ class ClientThread(threading.Thread):
 			for device in self.devices:
 				if device.id == "2":
 					device.close()
+
+		elif fromServer.__contains__("DATABASEUPDATED"):
+			protocol = "PROTOCOLTFG#HORAFECHA#CLIENT#CENTER#GETUPDATEDDB#END"
+			self.devices.clear()
+			self.sendBySocket(protocol)
+
+
 if __name__ == '__main__':
 	servo = ClientThread()
 	servo.start()
