@@ -41,15 +41,15 @@ class Protocol:
             print("UserNormal")
             # comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
             self.thread_owner = "45936238A"
-            comprobacionCenterActive = self.center_controller.getCenterStatus(
-                self.center_controller.getCenterByIdStudent(self.thread_owner))
+            comprobacionCenterActive = self.center_controller.get_center_status(
+                self.center_controller.get_center_by_id_student(self.thread_owner))
 
             if comprobacionCenterActive:
                 if comprobacionLogin:
-                    self.user_controller.setUserState(self.thread_owner, "1")
+                    self.user_controller.set_user_state(self.thread_owner, "1")
 
             if comprobacionLogin:
-                allDoors = self.door_controller.getAllDoors(self.thread_owner)
+                allDoors = self.door_controller.get_all_devices(self.thread_owner)
                 datos = self.makeDoorsToSend(allDoors)
             else:
                 datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#LOGINERROR"
@@ -79,12 +79,12 @@ class Protocol:
     """
     def open_device(self, from_client):
         from_client = self.splitString(from_client)
-        couldBeOpened = self.door_controller.doorStatus(from_client[6])
+        couldBeOpened = self.door_controller.devices_status(from_client[6])
 
 
         if couldBeOpened:
 
-            id_center = self.center_controller.getCenterByIdStudent(self.thread_owner)
+            id_center = self.center_controller.get_center_by_id_student(self.thread_owner)
             signal = "PROTOCOLTFG#FECHA#SERVER#OPENDEVICE#END"
             self.server.sendSignalToThisCenter(str(id_center), signal)
             #datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYOPENING#" + from_client[6] + "#END"
@@ -107,10 +107,10 @@ class Protocol:
     def close_device(self, from_client):
 
         from_client = self.splitString(from_client)
-        couldBeOpened = self.door_controller.doorStatus(from_client[6])
+        couldBeOpened = self.door_controller.devices_status(from_client[6])
 
         if couldBeOpened == False:
-            id_center = self.center_controller.getCenterByIdStudent(self.thread_owner)
+            id_center = self.center_controller.get_center_by_id_student(self.thread_owner)
             signal = "PROTOCOLTFG#FECHA#SERVER#CLOSEDEVICE#END"
             self.server.sendSignalToThisCenter(str(id_center), signal)
             #datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
@@ -158,7 +158,7 @@ class Protocol:
     *   @post the user will be disconnected
     """
     def setDisconnected(self):
-        self.user_controller.setUserState(self.thread_owner, "0")
+        self.user_controller.set_user_state(self.thread_owner, "0")
 
     """
     *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)

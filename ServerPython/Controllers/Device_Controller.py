@@ -1,10 +1,11 @@
-from Models.Device_Model import Door_Model
-from Models.Center_Model import Center_Model
+from Models.DeviceModel import DeviceModel
+from Models.CenterModel import CenterModel
 
-class Door_Controller:
+
+class DoorController:
     def __init__(self):
-        self.__door_model = Door_Model()
-        self.__center_model = Center_Model()
+        self.__door_model = DeviceModel()
+        self.__center_model = CenterModel()
 
     """
     *   @brief Call a model method to get all the devices of the centre in which the student is registered
@@ -12,8 +13,9 @@ class Door_Controller:
     *   @pre the user and the center have to been registered in the system
     *   @return returns all the devices that arent in maintenance
     """
-    def getAllDoors(self, id_student):
-        datos = self.__door_model.getAllDoors(id_student)
+
+    def get_all_doors(self, id_student):
+        datos = self.__door_model.get_all_devices(id_student)
         return datos
 
     """
@@ -22,8 +24,9 @@ class Door_Controller:
     *   @pre the center has to been registered in the system
     *   @return returns all the devices that arent in maintenance of the centre
     """
-    def getAllDoorsByIdCenter(self, id_center):
-        datos = self.__door_model.getAllDoorsByCenterId(id_center)
+
+    def get_all_doors_by_id_center(self, id_center):
+        datos = self.__door_model.get_all_devices_by_center_id(id_center)
         return datos
 
     """
@@ -32,8 +35,9 @@ class Door_Controller:
     *   @pre a center has to been registered and has devices.
     *   @return returns the status of the specific device
     """
-    def doorStatus(self, id_device):
-        return self.__door_model.doorStatus(id_device)
+
+    def door_status(self, id_device):
+        return self.__door_model.devices_status(id_device)
 
     """
     *   @brief Call a model method to set the status of a specific device to open
@@ -41,8 +45,9 @@ class Door_Controller:
     *   @pre the selected device has to be not in maintenance
     *   @post the status of the device will be changed
     """
-    def openDoor(self, id_device):
-        self.__door_model.openDoor(id_device)
+
+    def open_door(self, id_device):
+        self.__door_model.open_device(id_device)
 
     """
     *   @brief Call a model method to set the status of a specific device to close
@@ -50,46 +55,26 @@ class Door_Controller:
     *   @pre the selected device has to be not in maintenance
     *   @post the status of the device will be changed
     """
-    def closeDoor(self, id_device):
-        self.__door_model.closeDoor(id_device)
 
-    """
-    *   @brief Call a model method to set the maintenance of a specific device to up
-    *   @param id_device which is the id of the device we want to put in maintenance
-    *   @pre the selected device has to be not in maintenance
-    *   @post the state of maintenance of the device will be changed
-    """
-    def doorInMaintenance(self, id_device):
-        self.__door_model.doorInMaintenance(id_device)
+    def close_door(self, id_device):
+        self.__door_model.close_device(id_device)
 
-    """
-    *   @brief Call a model method to set the maintenance of a specific device to not in maintenance
-    *   @param id_device which is the id of the device we want to put not in maintenance
-    *   @pre the selected device has to be in maintenance
-    *   @post the state of maintenance of the device will be changed
-    """
-    def doorNotInMaintenance(self, id_device):
-        self.__door_model.doorNotInMaintenance(id_device)
-
-
-    def getDoorById(self, id_device):
-        data = self.__door_model.getDoorById(id_device)
+    def get_door_by_id(self, id_device):
+        data = self.__door_model.get_device_by_id(id_device)
         return data
 
-    def deleteDeviceById(self, id_device):
-        self.__door_model.deleteDeviceById(id_device)
+    def delete_device_by_id(self, id_device):
+        self.__door_model.delete_device_by_id(id_device)
 
+    def add_device(self, id_admin, name, state, maintenance, pin_led, pin_button, pin_servo):
+        id_center = self.__center_model.get_center_by_id_admin(id_admin)
+        self.__door_model.add_device(id_center, name, state, maintenance, pin_led, pin_button, pin_servo)
 
-    def addDevice(self, id_admin, name, state, maintenance, pin_led, pin_button, pin_servo):
-        id_center = self.__center_model.getCenterByIdAdmin(id_admin)
-        self.__door_model.addDevice(id_center, name, state, maintenance, pin_led, pin_button, pin_servo)
+    def update_device_by_id(self, id_device, name, state, maintenance, pin_led, pin_button, pin_servo):
+        self.__door_model.update_device_by_id(id_device, name, state, maintenance, pin_led, pin_button, pin_servo)
 
-    def updateDeviceById(self, id_device, name, state, maintenance, pin_led, pin_button, pin_servo):
-        self.__door_model.updaDeviceById(id_device, name, state, maintenance, pin_led, pin_button, pin_servo)
-
-
-    def getDevicesForCenter(self, id_center):
-        return self.__door_model.getDevicesForCenter(id_center)
+    def get_devices_for_center(self, id_center):
+        return self.__door_model.get_devices_for_center(id_center)
 
     """
         *   @brief Call a model method to get all the devices of the centre
@@ -98,6 +83,6 @@ class Door_Controller:
         *   @return returns all the devices that arent in maintenance of the centre
         """
 
-    def getAllDoorsByIdCenterToWeb(self, id_center):
-        datos = self.__door_model.getAllDoorsByIdCenterToWeb(id_center)
+    def get_all_doors_by_id_center_to_web(self, id_center):
+        datos = self.__door_model.get_all_doors_by_id_center_for_web(id_center)
         return datos

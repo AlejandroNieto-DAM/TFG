@@ -1,10 +1,10 @@
 import socket
 import threading
 from Server.ClientThread import ClientThread
-from Controllers.User_Controller import User_Controller
-from Controllers.Device_Controller import Door_Controller
-from Controllers.Center_Controller import Center_Controller
-from Controllers.Admin_Controller import Admin_Controller
+from Controllers.UserController import UserController
+from Controllers.Device_Controller import DoorController
+from Controllers.CenterController import CenterController
+from Controllers.AdminController import AdminController
 
 
 class TFGServer(threading.Thread):
@@ -17,7 +17,7 @@ class TFGServer(threading.Thread):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Bind the socket to the port
-        self.server_address = ('192.168.1.143', 1233)
+        self.server_address = ('192.168.1.131', 1233)
         print('starting up on %s port %s' % self.server_address)
         self.sock.bind(self.server_address)
         self.sock.listen(1)
@@ -27,15 +27,16 @@ class TFGServer(threading.Thread):
         self.clients_threads.clear()
         self.center_threads.clear()
         self.web_threads.clear()
-        self.user_controller = User_Controller()
-        self.door_controller = Door_Controller()
-        self.center_controller = Center_Controller()
-        self.admin_controller = Admin_Controller()
+        self.user_controller = UserController()
+        self.door_controller = DoorController()
+        self.center_controller = CenterController()
+        self.admin_controller = AdminController()
 
     """
     *   @brief Wait for a connection to the server and when there is one accepts the connection and ads the new connection to the clients_threads
     """
     def run(self):
+
         while True:
             # Wait for a connection
             print('waiting for a connection')
@@ -44,6 +45,7 @@ class TFGServer(threading.Thread):
             # en este caso, se trata de un servir multihilado
             ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller, self.admin_controller)
             ct.start()
+
 
 
     """
@@ -58,7 +60,6 @@ class TFGServer(threading.Thread):
 
         for student in students_in_same_centre:
             for client in self.clients_threads:
-                print(student, " -- ", client.protocol.thread_owner)
                 if student == client.protocol.thread_owner:
                     client.sendBySocket(output)
 
@@ -70,7 +71,6 @@ class TFGServer(threading.Thread):
         *   @post the msg will be sent and the specific device will do an action
     """
     def sendSignalToThisCenter(self, id_center, output):
-        print("output que envio -> " + output)
         for center in self.center_threads:
             if center.protocol.thread_owner == id_center:
                 center.sendBySocket(output)
@@ -125,5 +125,6 @@ class TFGServer(threading.Thread):
         self.clients_threads.append(thread)
 
 
-server = TFGServer()
-server.start()
+if __name__ == '__main__':
+    server = TFGServer()
+    server.start()

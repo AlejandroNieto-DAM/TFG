@@ -1,26 +1,28 @@
 import pymysql
 import hashlib
 
-class Admin_Model:
+
+class AdminModel:
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
         self.__passwd = ""
         self.__db = "db1_tfg_v1"
 
-    def addAdmin(self, id_center, id_user, name, surname, lastname, password, active):
+    def add_admin(self, id_center, id_user, name, surname, lastname, password, active):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
 
         cur.execute(
-            "INSERT INTO Admin VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" + password + "', '" + str(0) + "', '" + active + "')")
+            "INSERT INTO Admin VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" + password + "', '" + str(
+                0) + "', '" + active + "')")
         cur.execute("INSERT INTO admin_center VALUES ('" + str(id_center) + "', '" + id_user + "')")
 
         cur.close()
         conn.commit()
         conn.close()
 
-    def getUsersByIdCenter(self, id_center):
+    def get_users_by_id_center(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute(
@@ -36,7 +38,7 @@ class Admin_Model:
 
         return datos
 
-    def setConnected(self, id_admin, state):
+    def set_connected(self, id_admin, state):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE admin SET connected = " + state + " WHERE id_admin = '" + id_admin + "'")
@@ -45,11 +47,12 @@ class Admin_Model:
         conn.commit()
         conn.close()
 
-    def couldLogin(self, id, password):
+    def could_login(self, id, password):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute(
-            "SELECT * FROM admin WHERE connected = 0 and active = 1 and id_admin = '" + id + "' and password = '" + self.computeMD5hash(password) + "'")
+            "SELECT * FROM admin WHERE connected = 0 and active = 1 and id_admin = '" + id + "' and password = '" + self.compute_MD5_hash(
+                password) + "'")
 
         exist = False
 
@@ -61,7 +64,7 @@ class Admin_Model:
 
         return exist
 
-    def computeMD5hash(self, my_string):
+    def compute_MD5_hash(self, my_string):
         m = hashlib.md5()
         m.update(my_string.encode('utf-8'))
         return m.hexdigest()

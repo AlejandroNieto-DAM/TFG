@@ -69,6 +69,7 @@ def add_device():
         pin_button = request.form['pin_button']
         pin_servo = request.form['pin_servo']
         getMyThread(session['username']).addDevice(name, state, maintenance, pin_led, pin_button, pin_servo)
+        flash('Device Added Successfully')
         return redirect(url_for('Index'))
 
 @app.route('/devices')
@@ -93,11 +94,10 @@ def get_device(id):
 @app.route('/updatedevice/<id>', methods=['POST'])
 def update_device(id):
     if request.method == 'POST':
-        if request.files:
-            uploadIma = request.files["uploadImage"]
+        uploadIma = request.files['uploadImage']
+        if not uploadIma.filename == '':
             uploadIma.save(os.path.join(app.config["IMAGE_UPLOADS"], str(id) + ".jpg"))
             getMyThread(session['username']).updatePhoto(id)
-
 
         name = request.form['name']
         state = request.form['state']
@@ -107,14 +107,14 @@ def update_device(id):
         pin_servo = request.form['pin_servo']
 
         getMyThread(session['username']).updateDevice(id, name, state, maintenance, pin_led, pin_button, pin_servo)
-        flash('Contact Updated Successfully')
+        flash('Device Updated Successfully')
         return redirect(url_for('Index'))
 
 
 @app.route('/deletedevice/<string:id>', methods = ['POST','GET'])
 def delete_device(id):
     getMyThread(session['username']).deleteDevice(id)
-    flash('Contact Removed Successfully')
+    flash('Device Removed Successfully')
     return redirect(url_for('Index'))
 
 @app.route('/add_user', methods=['POST'])
@@ -127,6 +127,7 @@ def add_user():
         password = request.form['password']
         active = request.form['active']
         getMyThread(session['username']).addUser(dni, name, surname, lastname, password, active)
+        flash('Student Updated Successfully')
         return redirect(url_for('IndexUser'))
 
 @app.route('/users')
@@ -149,13 +150,13 @@ def update_user(id):
         active = request.form['active']
 
         getMyThread(session['username']).updateUser(id, name, surname, lastname, password, active)
-        flash('User Updated Successfully')
+        flash('Student Updated Successfully')
         return redirect(url_for('IndexUser'))
 
 @app.route('/deleteuser/<string:id>', methods = ['POST','GET'])
 def delete_user(id):
     getMyThread(session['username']).deleteUser(id)
-    flash('User Removed Successfully')
+    flash('Student Removed Successfully')
     return redirect(url_for('IndexUser'))
 
 @app.route('/add_admin', methods=['POST'])
@@ -168,6 +169,7 @@ def add_admin():
         password = request.form['password']
         active = request.form['active']
         getMyThread(session['username']).addAdmin(dni, name, surname, lastname, password, active)
+        flash('Admin Added Successfully')
         return redirect(url_for('IndexAdmin'))
 
 @app.route('/admins')

@@ -1,7 +1,7 @@
 import pymysql
 
 
-class Center_Model:
+class CenterModel:
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
@@ -15,7 +15,7 @@ class Center_Model:
     *   @return the id of the center of the student will be given
     """
 
-    def getCenterByIdStudent(self, id_student):
+    def get_center_by_id_student(self, id_student):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT id_center FROM student_center WHERE id_student = '" + id_student + "'")
@@ -30,15 +30,10 @@ class Center_Model:
 
         return id_center
 
-    def getCenterByIdAdmin(self, id_admin):
+    def get_center_by_id_admin(self, id_admin):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT id_center FROM admin_center WHERE id_admin = '" + str(id_admin) + "'")
-
-        id_center = ""
-
-       # for row in cur.fetchone():
-        #    id_center = row
 
         id_center = cur.fetchone()[0]
 
@@ -54,7 +49,7 @@ class Center_Model:
     *   @return the status of the specific center
     """
 
-    def getCenterStatus(self, id_center):
+    def get_center_status(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT active FROM center WHERE id_center = '" + str(id_center) + "'")
@@ -77,7 +72,7 @@ class Center_Model:
     *   @post the state of the specific center will be changed
     """
 
-    def setActive(self, id_center, state):
+    def set_active(self, id_center, state):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE center SET active = " + state + " WHERE id_center = '" + id_center + "'")

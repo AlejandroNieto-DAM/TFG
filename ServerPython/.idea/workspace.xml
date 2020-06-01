@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="" />
+    <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Controllers/AdminController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Pods-prueba5.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Pods-prueba5.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Admin_Controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Center_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CenterController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/User_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AdminModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Center_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/CenterModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Device_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DeviceModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ProtocolWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolWeb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/App.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/admins.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/edit-device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/edit-user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/users.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +74,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.TFGServer (3)">
-    <configuration name="Admin_Model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminModel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -56,7 +86,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Admin_Model.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/AdminModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -65,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Center_Controller" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="CenterController" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -77,7 +107,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/Center_Controller.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/CenterController.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -86,7 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Device_Model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="DeviceModel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -98,7 +128,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Device_Model.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/DeviceModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -128,7 +158,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="User_Model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="UserModel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -140,7 +170,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/User_Model.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/UserModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -152,10 +182,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.TFGServer (3)" />
-        <item itemvalue="Python.Device_Model" />
-        <item itemvalue="Python.Admin_Model" />
-        <item itemvalue="Python.User_Model" />
-        <item itemvalue="Python.Center_Controller" />
+        <item itemvalue="Python.DeviceModel" />
+        <item itemvalue="Python.AdminModel" />
+        <item itemvalue="Python.UserModel" />
+        <item itemvalue="Python.CenterController" />
       </list>
     </recent_temporary>
   </component>
@@ -181,6 +211,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="415" y="42" key="#TFGServer_(3)/0.23.1440.809@0.23.1440.809" timestamp="1589760249633" />
+    <state x="167" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591040478107">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="167" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.809@0.23.1440.809" timestamp="1591040478107" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589187688613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -189,51 +223,55 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1381" height="156" key="GridCell.Tab.0.bottom" timestamp="1590749780203">
+    <state width="1381" height="241" key="GridCell.Tab.0.bottom" timestamp="1591040688434">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1381" height="156" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590749780203" />
-    <state width="1381" height="156" key="GridCell.Tab.0.center" timestamp="1590749780203">
+    <state width="1381" height="241" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1591040688434" />
+    <state width="1381" height="241" key="GridCell.Tab.0.center" timestamp="1591040688433">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1381" height="156" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1590749780203" />
-    <state width="1381" height="156" key="GridCell.Tab.0.left" timestamp="1590749780202">
+    <state width="1381" height="241" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1591040688433" />
+    <state width="1381" height="241" key="GridCell.Tab.0.left" timestamp="1591040688432">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1381" height="156" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1590749780202" />
-    <state width="1381" height="156" key="GridCell.Tab.0.right" timestamp="1590749780203">
+    <state width="1381" height="241" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1591040688432" />
+    <state width="1381" height="241" key="GridCell.Tab.0.right" timestamp="1591040688433">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1381" height="156" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1590749780203" />
-    <state width="1419" height="257" key="GridCell.Tab.1.bottom" timestamp="1590575565841">
+    <state width="1381" height="241" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1591040688433" />
+    <state width="1381" height="241" key="GridCell.Tab.1.bottom" timestamp="1591040688435">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="257" key="GridCell.Tab.1.bottom/0.23.1440.809@0.23.1440.809" timestamp="1590575565841" />
-    <state width="1419" height="257" key="GridCell.Tab.1.center" timestamp="1590575565840">
+    <state width="1381" height="241" key="GridCell.Tab.1.bottom/0.23.1440.809@0.23.1440.809" timestamp="1591040688435" />
+    <state width="1381" height="241" key="GridCell.Tab.1.center" timestamp="1591040688434">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="257" key="GridCell.Tab.1.center/0.23.1440.809@0.23.1440.809" timestamp="1590575565840" />
-    <state width="1419" height="257" key="GridCell.Tab.1.left" timestamp="1590575565839">
+    <state width="1381" height="241" key="GridCell.Tab.1.center/0.23.1440.809@0.23.1440.809" timestamp="1591040688434" />
+    <state width="1381" height="241" key="GridCell.Tab.1.left" timestamp="1591040688434">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="257" key="GridCell.Tab.1.left/0.23.1440.809@0.23.1440.809" timestamp="1590575565839" />
-    <state width="1419" height="257" key="GridCell.Tab.1.right" timestamp="1590575565840">
+    <state width="1381" height="241" key="GridCell.Tab.1.left/0.23.1440.809@0.23.1440.809" timestamp="1591040688434" />
+    <state width="1381" height="241" key="GridCell.Tab.1.right" timestamp="1591040688435">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="257" key="GridCell.Tab.1.right/0.23.1440.809@0.23.1440.809" timestamp="1590575565840" />
+    <state width="1381" height="241" key="GridCell.Tab.1.right/0.23.1440.809@0.23.1440.809" timestamp="1591040688435" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1589760393498">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1589760393498" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1590666387626">
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1591038975521">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1590666387626" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591038975521" />
+    <state x="479" y="62" key="refactoring.ChangeSignatureDialog" timestamp="1591040119037">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="479" y="62" key="refactoring.ChangeSignatureDialog/0.23.1440.809@0.23.1440.809" timestamp="1591040119037" />
     <state x="383" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1590744004865">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

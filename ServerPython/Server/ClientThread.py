@@ -65,7 +65,7 @@ class ClientThread(threading.Thread):
                 if fromClient.__contains__("LOGINWEB"):
                     self.protocol = ProtocolWeb(self.server, self, self.user_controller, self.device_controller,
                                                 self.center_controller, self.admin_controller)
-                    self.server.addAdmin(self)
+                    self.server.add_admin(self)
                     self.user = "WEB"
                 elif fromClient.__contains__("LOGINCENTER"):
                     self.protocol = ProtocolCenter(self.server, self, self.user_controller, self.device_controller,
@@ -75,7 +75,7 @@ class ClientThread(threading.Thread):
                 elif fromClient.__contains__("LOGIN"):
                     self.protocol = Protocol(self.server, self, self.user_controller, self.device_controller,
                                              self.center_controller, self.admin_controller)
-                    self.server.addUser(self)
+                    self.server.add_user(self)
                     self.user = "STUDENT"
 
                 output = self.protocol.process(fromClient)

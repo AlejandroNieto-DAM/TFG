@@ -1,9 +1,9 @@
-from Models.Center_Model import Center_Model
+from Models.CenterModel import CenterModel
 
 
-class Center_Controller:
+class CenterController:
     def __init__(self):
-        self.__center_model = Center_Model()
+        self.__center_model = CenterModel()
 
     """
     *   @brief Call a model method to get the center of the student
@@ -12,8 +12,8 @@ class Center_Controller:
     *   @return the id of the center of the student will be given
     """
 
-    def getCenterByIdStudent(self, id_student):
-        id_center = self.__center_model.getCenterByIdStudent(id_student)
+    def get_center_by_id_student(self, id_student):
+        id_center = self.__center_model.get_center_by_id_student(id_student)
         return id_center
 
     """
@@ -23,8 +23,8 @@ class Center_Controller:
     *   @return the status of the specific center
     """
 
-    def getCenterStatus(self, id_center):
-        status = self.__center_model.getCenterStatus(id_center)
+    def get_center_status(self, id_center):
+        status = self.__center_model.get_center_status(id_center)
         return status
 
     """
@@ -35,9 +35,9 @@ class Center_Controller:
     *   @post the state of the specific center will be changed
     """
 
-    def setActive(self, id_center, state):
-        self.__center_model.setActive(id_center, state)
+    def set_active(self, id_center, state):
+        self.__center_model.set_active(id_center, state)
 
-    def getCenterByIdAdmin(self, id_admin):
-        data = self.__center_model.getCenterByIdAdmin(id_admin)
+    def get_center_by_id_admin(self, id_admin):
+        data = self.__center_model.get_center_by_id_admin(id_admin)
         return data

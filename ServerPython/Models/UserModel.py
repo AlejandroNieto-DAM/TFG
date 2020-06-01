@@ -2,7 +2,7 @@ import pymysql
 import hashlib
 
 
-class User_Model:
+class UserModel:
 
     def __init__(self):
         self.__host = "localhost"
@@ -17,10 +17,10 @@ class User_Model:
     *   @pre the socket connection has to been successful
     *   @return returns if the user is correct and exists
     """
-    def existUser(self, id_student, password):
+    def exist_user(self, id_student, password):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM student WHERE connected = 0 and id_student = '" + id_student + "' and password = '" + self.computeMD5hash(password) + "'")
+        cur.execute("SELECT * FROM student WHERE connected = 0 and id_student = '" + id_student + "' and password = '" + self.compute_MD5_hash(password) + "'")
 
         exist = False
 
@@ -39,7 +39,7 @@ class User_Model:
     *   @pre the student has to been registered
     *   @post the student state will be changed
     """
-    def setUserState(self, id_student, state):
+    def set_user_state(self, id_student, state):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE student SET connected = " + state + " WHERE id_student = '" + id_student + "'")
@@ -54,7 +54,7 @@ class User_Model:
     *   @pre a center and a student of this center have been registed
     *   @return returns all the students in the same centre of the student given
     """
-    def getUsersInSameCenter(self, id_student):
+    def get_users_in_same_center(self, id_student):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT id_student " +
@@ -75,12 +75,12 @@ class User_Model:
 
         return students_in_same_center
 
-    def computeMD5hash(self, my_string):
+    def compute_MD5_hash(self, my_string):
         m = hashlib.md5()
         m.update(my_string.encode('utf-8'))
         return m.hexdigest()
 
-    def getUsersByIdCenter(self, id_center):
+    def get_users_by_id_center(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute(
@@ -95,7 +95,7 @@ class User_Model:
 
         return datos
 
-    def getUserById(self, id_user):
+    def get_user_by_id(self, id_user):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("SELECT * FROM student WHERE id_student = '" + str(id_user) + "'")
@@ -107,7 +107,7 @@ class User_Model:
 
         return data
 
-    def deleteUserById(self, id_user):
+    def delete_user_by_id(self, id_user):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("DELETE FROM student_center WHERE id_student = '" + str(id_user) + "'")
@@ -116,7 +116,7 @@ class User_Model:
         conn.commit()
         conn.close()
 
-    def updateUserById(self, id_user, name, surname, lastname, password, active):
+    def update_user_by_id(self, id_user, name, surname, lastname, password, active):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
         cur.execute("UPDATE student SET  student_name = '" + name + "'," +
@@ -129,7 +129,7 @@ class User_Model:
         conn.commit()
         conn.close()
 
-    def addUser(self, id_center, id_admin, id_user, name, surname, lastname, password, active):
+    def add_user(self, id_center, id_admin, id_user, name, surname, lastname, password, active):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
 
