@@ -123,8 +123,10 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.doorViewHo
 
             if(device.getState() == 1){
                 changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitemopen));
-            } else {
+            } else if (device.getState() == 0){
                 changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_clitem));
+            } else {
+                changeColour.setBackground(context.getResources().getDrawable(R.drawable.shape_button_try));
             }
 
             /** I place the listener in the view of the item*/

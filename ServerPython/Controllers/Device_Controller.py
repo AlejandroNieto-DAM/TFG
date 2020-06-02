@@ -2,7 +2,7 @@ from Models.DeviceModel import DeviceModel
 from Models.CenterModel import CenterModel
 
 
-class DoorController:
+class DeviceController:
     def __init__(self):
         self.__door_model = DeviceModel()
         self.__center_model = CenterModel()
@@ -14,7 +14,7 @@ class DoorController:
     *   @return returns all the devices that arent in maintenance
     """
 
-    def get_all_doors(self, id_student):
+    def get_all_devices(self, id_student):
         datos = self.__door_model.get_all_devices(id_student)
         return datos
 
@@ -25,7 +25,7 @@ class DoorController:
     *   @return returns all the devices that arent in maintenance of the centre
     """
 
-    def get_all_doors_by_id_center(self, id_center):
+    def get_all_devices_by_id_center(self, id_center):
         datos = self.__door_model.get_all_devices_by_center_id(id_center)
         return datos
 
@@ -36,7 +36,7 @@ class DoorController:
     *   @return returns the status of the specific device
     """
 
-    def door_status(self, id_device):
+    def device_status(self, id_device):
         return self.__door_model.devices_status(id_device)
 
     """
@@ -46,7 +46,7 @@ class DoorController:
     *   @post the status of the device will be changed
     """
 
-    def open_door(self, id_device):
+    def open_device(self, id_device):
         self.__door_model.open_device(id_device)
 
     """
@@ -56,10 +56,10 @@ class DoorController:
     *   @post the status of the device will be changed
     """
 
-    def close_door(self, id_device):
+    def close_device(self, id_device):
         self.__door_model.close_device(id_device)
 
-    def get_door_by_id(self, id_device):
+    def get_device_by_id(self, id_device):
         data = self.__door_model.get_device_by_id(id_device)
         return data
 
@@ -83,6 +83,6 @@ class DoorController:
         *   @return returns all the devices that arent in maintenance of the centre
         """
 
-    def get_all_doors_by_id_center_to_web(self, id_center):
+    def get_all_devices_by_id_center_to_web(self, id_center):
         datos = self.__door_model.get_all_doors_by_id_center_for_web(id_center)
         return datos

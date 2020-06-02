@@ -2,7 +2,7 @@ import socket
 import threading
 from Server.ClientThread import ClientThread
 from Controllers.UserController import UserController
-from Controllers.Device_Controller import DoorController
+from Controllers.Device_Controller import DeviceController
 from Controllers.CenterController import CenterController
 from Controllers.AdminController import AdminController
 
@@ -28,7 +28,7 @@ class TFGServer(threading.Thread):
         self.center_threads.clear()
         self.web_threads.clear()
         self.user_controller = UserController()
-        self.door_controller = DoorController()
+        self.door_controller = DeviceController()
         self.center_controller = CenterController()
         self.admin_controller = AdminController()
 
@@ -125,6 +125,5 @@ class TFGServer(threading.Thread):
         self.clients_threads.append(thread)
 
 
-if __name__ == '__main__':
-    server = TFGServer()
-    server.start()
+server = TFGServer()
+server.start()

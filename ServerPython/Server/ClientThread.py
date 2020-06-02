@@ -65,17 +65,19 @@ class ClientThread(threading.Thread):
                 if fromClient.__contains__("LOGINWEB"):
                     self.protocol = ProtocolWeb(self.server, self, self.user_controller, self.device_controller,
                                                 self.center_controller, self.admin_controller)
-                    self.server.add_admin(self)
+                    self.server.addAdmin(self)
                     self.user = "WEB"
                 elif fromClient.__contains__("LOGINCENTER"):
                     self.protocol = ProtocolCenter(self.server, self, self.user_controller, self.device_controller,
                                                    self.center_controller, self.admin_controller)
                     self.server.addCenter(self)
                     self.user = "CENTER"
+                    print("Aqui llega")
+
                 elif fromClient.__contains__("LOGIN"):
                     self.protocol = Protocol(self.server, self, self.user_controller, self.device_controller,
                                              self.center_controller, self.admin_controller)
-                    self.server.add_user(self)
+                    self.server.addUser(self)
                     self.user = "STUDENT"
 
                 output = self.protocol.process(fromClient)
@@ -85,6 +87,7 @@ class ClientThread(threading.Thread):
                 output = self.protocol.process(fromClient)
 
             return output
+
     """
     *   @brief Send a msg to the client by the socket
     *   @param output which is the msg that will be sent

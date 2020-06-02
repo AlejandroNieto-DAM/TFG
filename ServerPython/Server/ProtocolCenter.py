@@ -16,11 +16,8 @@ class ProtocolCenter:
         self.client_thread = client_thread
         self.decoded = []
 
-
     def process(self, from_client):
         output = ""
-
-
 
         if str(from_client).__contains__("LOGIN"):
             print("hemos entrado pero es el login", self.thread_owner)
@@ -39,43 +36,53 @@ class ProtocolCenter:
                 comprobacionLogin = True
 
             if comprobacionLogin:
+                print("1")
                 self.center_controller.set_active(self.thread_owner, "1")
+                print("2")
                 allDevices = self.door_controller.get_devices_for_center("100")
+                print("3")
                 datos = self.makeDoorsToSend(allDevices)
+                print("4")
 
-            output  = datos
+            output = datos
 
-
-        if str(from_client).find("CENTER#CLOSEDDEVICE") != -1:
-            print("hemos entrado pero es el close", self.thread_owner)
+        elif str(from_client).find("CENTER#CLOSEDDEVICE") != -1:
             from_client = self.splitString(from_client)
             alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[4] + "#END"
             students_in_same_centre = self.user_controller.get_all_users_by_id_center(self.thread_owner)
             self.server.alertOtherClients(students_in_same_centre, alert)
             self.door_controller.close_device(from_client[4])
-            print("Cerrao")
 
-        if str(from_client).find("CENTER#OPENEDDEVICE") != -1:
-            print("hemos entrado pero es el open", self.thread_owner)
+        elif str(from_client).find("CENTER#OPENEDDEVICE") != -1:
             from_client = self.splitString(from_client)
             alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#OPENINGDEVICE#" + from_client[4] + "#END"
             students_in_same_centre = self.user_controller.get_all_users_by_id_center(self.thread_owner)
             self.server.alertOtherClients(students_in_same_centre, alert)
             self.door_controller.open_device(from_client[4])
 
-        if str(from_client).find("LOGOUT") != -1:
+        elif str(from_client).find("CENTER#TRYOPENINGDEVICE") != 1:
+            from_client = self.splitString(from_client)
+            alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYOPENINGDEVICE#" + from_client[4] + "#END"
+            students_in_same_centre = self.user_controller.get_all_users_by_id_center(self.thread_owner)
+            self.server.alertOtherClients(students_in_same_centre, alert)
+
+        elif str(from_client).find("CENTER#TRYCLOSINGDEVICE") != 1:
+            from_client = self.splitString(from_client)
+            alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYCLOSINGDEVICE#" + from_client[4] + "#END"
+            students_in_same_centre = self.user_controller.get_all_users_by_id_center(self.thread_owner)
+            self.server.alertOtherClients(students_in_same_centre, alert)
+
+        elif str(from_client).find("LOGOUT") != -1:
             print("hemos entrado pero es el logout", self.thread_owner)
             output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#1"
 
-
-        if str(from_client).find("CENTER#GETUPDATEDDB") != -1:
+        elif str(from_client).find("CENTER#GETUPDATEDDB") != -1:
             print("hemos entrado", self.thread_owner)
             allDevices = self.door_controller.get_devices_for_center(self.thread_owner)
             datos = self.makeDoorsToSend(allDevices)
             output = datos
 
-
-
+        print("output -->", output)
         return output
 
     """
@@ -109,10 +116,10 @@ class ProtocolCenter:
         splitted_string = string_from_client.split("#")
         return splitted_string
 
-
     """
     *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)
     """
+
     def getDateTime(self):
         timestamp = 1545730073
         dt_object = datetime.fromtimestamp(timestamp)
@@ -123,5 +130,6 @@ class ProtocolCenter:
     *   @pre The client has to been logged successful
     *   @post the user will be disconnected
     """
+
     def setDisconnected(self):
         self.center_controller.set_active(self.thread_owner, "0")

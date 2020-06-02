@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c53b24-cedd-490e-9a00-05455f5eb7bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ServerPython/Controllers/AdminController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Pods-prueba5.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/Pods-prueba5.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/Pods/Pods.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/xcuserdata/alejandronietoalarcon.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Admin_Controller.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Center_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/CenterController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/User_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/UserController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Admin_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/AdminModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Center_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/CenterModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/Device_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/DeviceModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/User_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/UserModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ProtocolCenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ProtocolWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ProtocolWeb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/App.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClientThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admins.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit-device.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-device.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit-user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,10 +199,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1590054866801" />
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1591026126855">
+    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1591115331719">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591026126855" />
+    <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591115331719" />
     <state x="283" y="169" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589999829382">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

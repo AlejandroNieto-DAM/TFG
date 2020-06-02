@@ -53,7 +53,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         socket = null;
         try {
-            socket = new Socket("192.168.1.143", 1233);
+            socket = new Socket("192.168.1.131", 1233);
         } catch (IOException e) {
             e.printStackTrace();
             Log.i("[EXCEPTION] " , e.toString());
@@ -94,10 +94,14 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     public void processProtocol(String message) throws IOException {
         if(message.contains("PROTOCOLTFG")){
             if(message.contains("SERVERTFG")){
-                if(message.contains("TOTAL")){
+                if(message.contains("TOTAL")) {
 
                     this.receiveDevices(message);
 
+                } else if (message.contains("TRYOPENINGDEVICE")){
+                    this.deviceIsInAction(message);
+                } else if (message.contains("TRYCLOSINGDEVICE")){
+                    this.deviceIsInAction(message);
                 } else if (message.contains("OPENINGDEVICE")){
 
                     this.refreshOpenDoor(message);
@@ -118,6 +122,19 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
             }
         }
 
+    }
+
+
+    public void deviceIsInAction(String message){
+        String[] datos = message.split("#");
+
+        for(Device d : allDevices){
+            if(d.getId() == Integer.parseInt(datos[4])){
+                d.setState(2);
+            }
+        }
+
+        this.myLoggedActivity.refresh(allDevices);
     }
 
     /**
