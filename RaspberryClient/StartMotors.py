@@ -5,7 +5,7 @@ from Device import Device
 class ClientThread(threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
-		self.socket_address = "192.168.1.143"
+		self.socket_address = "192.168.1.131"
 		self.socket_port = 1233
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.connect((self.socket_address, self.socket_port))
@@ -25,6 +25,14 @@ class ClientThread(threading.Thread):
 	def sendBySocket(self, output):
 		print("LO que mando -->", output)
 		self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
+
+	def sendTryOpening(self, id_device):
+		output = "PROTOCOLTFG#FECHA#CENTER#TRYOPENINGDEVICE#" + id_device + "#END"
+		self.sendBySocket(output)
+
+	def sendTryClosing(self, id_device):
+		output = "PROTOCOLTFG#FECHA#CENTER#TRYCLOSINGDEVICE#" + id_device + "#END"
+		self.sendBySocket(output)
 
 	def sendOpenDevice(self, id_device):
 		output = "PROTOCOLTFG#FECHA#CENTER#OPENEDDEVICE#" + id_device + "#END"
