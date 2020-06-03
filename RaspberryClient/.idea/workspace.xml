@@ -2,13 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="051ac8d1-03ce-41f2-8a68-1c22f9485603" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/Device.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StartMotors.py" beforeDir="false" afterPath="$PROJECT_DIR$/StartMotors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/AdminController.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/AdminController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/CenterController.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/CenterController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/UserController.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/UserController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/AdminModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/AdminModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/CenterModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/CenterModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/DeviceModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/DeviceModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/UserModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/UserModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ProtocolCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/ProtocolWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/ProtocolWeb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/TFGServer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -39,9 +61,13 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="221" y="66" key="SettingsEditor" timestamp="1590655454763">
+    <state x="221" y="66" key="SettingsEditor" timestamp="1591202505014">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1590655454763" />
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1591202505014" />
+    <state x="395" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1591201324944">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="395" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591201324944" />
   </component>
 </project>

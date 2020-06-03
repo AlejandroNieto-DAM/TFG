@@ -8,10 +8,10 @@ from Controllers.AdminController import AdminController
 
 
 class TFGServer(threading.Thread):
-
     """
     *   @brief  Constructor. Initialize the server socket on the specific port and address
     """
+
     def __init__(self):
         threading.Thread.__init__(self)
         # Create a TCP/IP socket
@@ -35,6 +35,7 @@ class TFGServer(threading.Thread):
     """
     *   @brief Wait for a connection to the server and when there is one accepts the connection and ads the new connection to the clients_threads
     """
+
     def run(self):
 
         while True:
@@ -43,10 +44,9 @@ class TFGServer(threading.Thread):
             (clientsocket, address) = self.sock.accept()
             # ahora se trata el socket cliente
             # en este caso, se trata de un servir multihilado
-            ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller, self.admin_controller)
+            ct = ClientThread(clientsocket, self, self.user_controller, self.door_controller, self.center_controller,
+                              self.admin_controller)
             ct.start()
-
-
 
     """
     *   @brief Send an alert to the clients in the array of students in same centre less the thread owner to let then know there was an action to one of the devices.
@@ -56,6 +56,7 @@ class TFGServer(threading.Thread):
     *   @pre one user has to do an action over one device
     *   @post the users that are in students_in_same_centre will be alerted by one msg by socket
     """
+
     def alertOtherClients(self, students_in_same_centre, output):
 
         for student in students_in_same_centre:
@@ -70,6 +71,7 @@ class TFGServer(threading.Thread):
         *   @pre one user has to do an action over one device
         *   @post the msg will be sent and the specific device will do an action
     """
+
     def sendSignalToThisCenter(self, id_center, output):
         for center in self.center_threads:
             if center.protocol.thread_owner == id_center:
@@ -81,6 +83,7 @@ class TFGServer(threading.Thread):
         *   @pre one user has to logout
         *   @post the thread will be deleted
     """
+
     def deleteThisThread(self, thread_owner):
         position = -1
         contador = 0
@@ -112,15 +115,15 @@ class TFGServer(threading.Thread):
         if position != -1:
             self.web_threads.pop(position)
 
-
-
+    # Add a new center thread
     def addCenter(self, thread):
         self.center_threads.append(thread)
 
+    # Adds a new admin to the thread
     def addAdmin(self, thread):
         self.web_threads.append(thread)
 
-
+    # Adds a new user to the thread
     def addUser(self, thread):
         self.clients_threads.append(thread)
 

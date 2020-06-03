@@ -72,7 +72,6 @@ class ClientThread(threading.Thread):
                                                    self.center_controller, self.admin_controller)
                     self.server.addCenter(self)
                     self.user = "CENTER"
-                    print("Aqui llega")
 
                 elif fromClient.__contains__("LOGIN"):
                     self.protocol = Protocol(self.server, self, self.user_controller, self.device_controller,

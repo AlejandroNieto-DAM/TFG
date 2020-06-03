@@ -1,20 +1,23 @@
 from datetime import datetime
+from Server.ProtocolF import ProtocolF
 
 
-class ProtocolCenter:
+class ProtocolCenter(ProtocolF):
+
     """
     *   @brief Constructor
     """
 
     def __init__(self, server, client_thread, user_controller, device_controller, center_controller, admin_controller):
-        self.user_controller = user_controller
-        self.door_controller = device_controller
-        self.center_controller = center_controller
-        self.admin_controller = admin_controller
-        self.thread_owner = ""
-        self.server = server
-        self.client_thread = client_thread
-        self.decoded = []
+        ProtocolF.__init__(server, client_thread, user_controller, device_controller,
+                           center_controller, admin_controller)
+
+    """
+    *   @brief Process the msg received by the client
+    *   @param from_client which is the msg received by the client
+    *   @pre we have to receive a msg from the client
+    *   @post an answer will be generated to for the client if its needed 
+    """
 
     def process(self, from_client):
         output = ""
@@ -36,13 +39,9 @@ class ProtocolCenter:
                 comprobacionLogin = True
 
             if comprobacionLogin:
-                print("1")
                 self.center_controller.set_active(self.thread_owner, "1")
-                print("2")
                 allDevices = self.door_controller.get_devices_for_center("100")
-                print("3")
                 datos = self.makeDoorsToSend(allDevices)
-                print("4")
 
             output = datos
 
@@ -73,16 +72,13 @@ class ProtocolCenter:
             self.server.alertOtherClients(students_in_same_centre, alert)
 
         elif str(from_client).find("LOGOUT") != -1:
-            print("hemos entrado pero es el logout", self.thread_owner)
             output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#1"
 
         elif str(from_client).find("CENTER#GETUPDATEDDB") != -1:
-            print("hemos entrado", self.thread_owner)
             allDevices = self.door_controller.get_devices_for_center(self.thread_owner)
             datos = self.makeDoorsToSend(allDevices)
             output = datos
 
-        print("output -->", output)
         return output
 
     """
@@ -105,25 +101,6 @@ class ProtocolCenter:
 
         final_string_to_send += "TOTAL#" + str(door_count) + "#" + sub_info_door + "END"
         return final_string_to_send
-
-    """
-    *   @brief Splits the string
-    *   @param string_from_client which is the string we will split
-    *   @return returns the string[] generated
-    """
-
-    def splitString(self, string_from_client):
-        splitted_string = string_from_client.split("#")
-        return splitted_string
-
-    """
-    *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)
-    """
-
-    def getDateTime(self):
-        timestamp = 1545730073
-        dt_object = datetime.fromtimestamp(timestamp)
-        return dt_object
 
     """
     *   @brief Set the user of this thread disconnected when he does the logout

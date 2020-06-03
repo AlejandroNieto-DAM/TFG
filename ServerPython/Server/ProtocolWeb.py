@@ -2,20 +2,25 @@ import base64
 from datetime import datetime
 import time
 from base64 import b64encode
+from Server.ProtocolF import ProtocolF
 
 
-class ProtocolWeb:
+class ProtocolWeb(ProtocolF):
+
+    """
+    *   @brief Constructor
+    """
 
     def __init__(self, server, client_thread, user_controller, device_controller, center_controller, admin_controller):
-        self.user_controller = user_controller
-        self.door_controller = device_controller
-        self.center_controller = center_controller
-        self.admin_controller = admin_controller
-        self.thread_owner = ""
-        self.server = server
-        self.client_thread = client_thread
-        self.decoded = []
+        ProtocolF.__init__(self, server, client_thread, user_controller,
+                           device_controller, center_controller, admin_controller)
 
+    """
+    *   @brief Process the msg received by the client
+    *   @param from_client which is the msg received by the client
+    *   @pre we have to receive a msg from the client
+    *   @post an answer will be generated to for the client if its needed 
+    """
     def process(self, from_client):
 
         output = ""
@@ -167,16 +172,6 @@ class ProtocolWeb:
         return output
 
     """
-        *   @brief Splits the string
-        *   @param string_from_client which is the string we will split
-        *   @return returns the string[] generated
-        """
-
-    def splitString(self, string_from_client):
-        splitted_string = string_from_client.split("#")
-        return splitted_string
-
-    """
     *   @brief Makes a string with all the devices of the centre in which the client is to send them to his app
     *   @param doors_data which is the array of device that we get in the database
     *   @pre the user has to been logged successful
@@ -198,13 +193,12 @@ class ProtocolWeb:
         return final_string_to_send
 
     """
-    *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)
+    *   @brief Makes a string with the info of a device of the centre in which the client is to send them to his app
+    *   @param data which is the info of device that we get in the database
+    *   @pre the user has to been logged successful
+    *   @post the correct message of the protocol will be generated
+    *   @return returns the message that will be sent to the user
     """
-
-    def getDateTime(self):
-        timestamp = 1545730073
-        dt_object = datetime.fromtimestamp(timestamp)
-        return dt_object
 
     def makeDoorToSend(self, data):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#DEVICE"
@@ -216,11 +210,11 @@ class ProtocolWeb:
         return output
 
     """
-        *   @brief Sends the specific image of the device that the user wants
-        *   @param fromClient which is the msg received by the client
-        *   @pre the msg have the specific word GETPHOTO
-        *   @post the image will be sent to the user
-        """
+    *   @brief Sends the specific image of the device that the user wants
+    *   @param fromClient which is the msg received by the client
+    *   @pre the msg have the specific word GETPHOTO
+    *   @post the image will be sent to the user
+    """
 
     def getImage(self, fromClient):
 

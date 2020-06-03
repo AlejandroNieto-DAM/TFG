@@ -1,100 +1,68 @@
 import threading
 import socket
-from Device import Device
+from Protocol import Protocol
+
 
 class ClientThread(threading.Thread):
-	def __init__(self):
-		threading.Thread.__init__(self)
-		self.socket_address = "192.168.1.131"
-		self.socket_port = 1233
-		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.socket.connect((self.socket_address, self.socket_port))
-		self.devices = []
+    def __init__(self):
+        threading.Thread.__init__(self)
+        self.socket_address = "192.168.1.131"
+        self.socket_port = 1233
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.connect((self.socket_address, self.socket_port))
+        self.devices = []
+        self.id_center = "100"
+        self.password = "1234"
+        self.protocol = Protocol()
 
-	def run(self):
-		output = "PROTOCOLTFG#" + "FECHA" + "#CLIENT#MOTORS#LOGINCENTER#100#1234#END"
-		self.sendBySocket(output)
+    def run(self):
+        self.sendBySocket(self.protocol.sendLogin(self.id_center, self.password))
 
-		while True:
-			chunk = self.socket.recv(1024)
-			fromClient = str(chunk)
-			print("DEl server", fromClient)
-			self.proccessMsg(fromClient)
+        while True:
+            chunk = self.socket.recv(1024)
+            fromClient = str(chunk)
+            self.proccessMsg(fromClient)
 
+    def sendBySocket(self, output):
+        self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
 
-	def sendBySocket(self, output):
-		print("LO que mando -->", output)
-		self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
+    def sendTryOpening(self, id_device):
+        self.sendBySocket(self.protocol.sendTryOpening(id_device))
 
-	def sendTryOpening(self, id_device):
-		output = "PROTOCOLTFG#FECHA#CENTER#TRYOPENINGDEVICE#" + id_device + "#END"
-		self.sendBySocket(output)
+    def sendTryClosing(self, id_device):
+        self.sendBySocket(self.protocol.sendTryClosing(id_device))
 
-	def sendTryClosing(self, id_device):
-		output = "PROTOCOLTFG#FECHA#CENTER#TRYCLOSINGDEVICE#" + id_device + "#END"
-		self.sendBySocket(output)
+    def sendOpenDevice(self, id_device):
+        self.sendBySocket(self.protocol.sendOpenDevice(id_device))
 
-	def sendOpenDevice(self, id_device):
-		output = "PROTOCOLTFG#FECHA#CENTER#OPENEDDEVICE#" + id_device + "#END"
-		self.sendBySocket(output)
+    def sendCloseDevice(self, id_device):
+        self.sendBySocket(self.protocol.sendCloseDevice(id_device))
 
-	def sendCloseDevice(self, id_device):
-		output = "PROTOCOLTFG#FECHA#CENTER#CLOSEDDEVICE#" + id_device + "#END"
-		self.sendBySocket(output)
+    def proccessMsg(self, fromServer):
+        if fromServer.__contains__("TOTAL"):
+            self.devices = self.protocol.processDevices(fromServer)
 
-	def proccessMsg(self, fromServer):
-		if fromServer.__contains__("TOTAL"):
-			fromServer = fromServer[fromServer.index("DEVICE") +7: -5]
-			fromServer = fromServer.split("#")
+        elif fromServer.__contains__("OPENDEVICE"):
 
-			indexD = 1
-			id = ""
-			pin_led = ""
-			pin_button = ""
-			pin_servo = ""
-			state = ""
+            splitted_string = fromServer.split("#")
 
-			for row in fromServer:
-				if indexD == 1:
-					id = row
+            for device in self.devices:
+                if device.id == splitted_string[4]:
+                    device.open()
 
-				if indexD == 2:
-					pin_led = row
+        elif fromServer.__contains__("CLOSEDEVICE"):
 
-				if indexD == 3:
-					pin_button = row
+            splitted_string = fromServer.split("#")
 
-				if indexD == 4:
-					pin_servo = row
+            for device in self.devices:
+                if device.id == splitted_string[4]:
+                    device.close()
 
-				if indexD == 5:
-					state = row
-
-				if row == "DEVICE" or row == "END":
-
-					aux = Device(id, pin_led, pin_button, pin_servo, state, self)
-					aux.startListenToButton()
-					self.devices.append(aux)
-					print("Listening?")
-					indexD = 0
-				indexD  += 1
-		elif fromServer.__contains__("OPENDEVICE"):
-			for device in self.devices:
-				print("DEvice.id", device.id)
-				if device.id == "2":
-					device.open()
-
-		elif fromServer.__contains__("CLOSEDEVICE"):
-			for device in self.devices:
-				if device.id == "2":
-					device.close()
-
-		elif fromServer.__contains__("DATABASEUPDATED"):
-			protocol = "PROTOCOLTFG#HORAFECHA#CLIENT#CENTER#GETUPDATEDDB#END"
-			self.devices.clear()
-			self.sendBySocket(protocol)
+        elif fromServer.__contains__("DATABASEUPDATED"):
+            self.devices.clear()
+            self.sendBySocket(self.protocol.updateDb())
 
 
 if __name__ == '__main__':
-	servo = ClientThread()
-	servo.start()
+    servo = ClientThread()
+    servo.start()

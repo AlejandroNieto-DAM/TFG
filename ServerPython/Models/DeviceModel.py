@@ -2,6 +2,11 @@ import pymysql
 
 
 class DeviceModel:
+
+    """
+    *   @brief Constructor
+    """
+
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
@@ -114,6 +119,12 @@ class DeviceModel:
         conn.commit()
         conn.close()
 
+    """
+    *   @brief Get all the info of a device by his id
+    *   @param id_device which is the id of the device we want the info
+    *   @pre an admin has logged successfully
+    *   @return all the info of the selected device
+    """
     def get_device_by_id(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -126,6 +137,13 @@ class DeviceModel:
 
         return data
 
+    """
+    *   @brief Delete a device by his id
+    *   @param id_device which is the id of the device we want to delete
+    *   @pre an admin has logged successfully
+    *   @post the selected device will be deleted 
+    """
+
     def delete_device_by_id(self, id_device):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -134,6 +152,19 @@ class DeviceModel:
         cur.close()
         conn.commit()
         conn.close()
+
+    """
+    *   @brief Updates a device of a center.
+    *   @param id_device which is the id of the device that will be updated
+    *   @param name which is the name that will be set to the device
+    *   @param state which is the state that will be set to the device
+    *   @param maintenance which is the maintenance state that will be set to the device
+    *   @param pin_led which is the pin of the led that will be set to the device
+    *   @param pin_button which is the pin of the button that will be set to the device
+    *   @param pin_servo which is the pin of the servo that will be set to the device
+    *   @pre an admin has logged successfully
+    *   @post a new device will be updated
+    """
 
     def update_device_by_id(self, id_device, name, state, maintenance, pin_led, pin_button, pin_servo):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
@@ -149,6 +180,20 @@ class DeviceModel:
         conn.commit()
         conn.close()
 
+    """
+    *   @brief Adds a new device to the center that we get with the id.
+    *   @param id_center is the center in which the device will be added
+    *   @param id_device which is the id of the device that will be added
+    *   @param name which is the name that will be set to the device
+    *   @param state which is the state that will be set to the device
+    *   @param maintenance which is the maintenance state that will be set to the device
+    *   @param pin_led which is the pin of the led that will be set to the device
+    *   @param pin_button which is the pin of the button that will be set to the device
+    *   @param pin_servo which is the pin of the servo that will be set to the device
+    *   @pre an admin has logged successfully
+    *   @post a new device will be added
+    """
+
     def add_device(self, id_center, name, state, maintenance, pin_led, pin_button, pin_servo):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -163,6 +208,13 @@ class DeviceModel:
         cur.close()
         conn.commit()
         conn.close()
+
+    """
+    *   @brief Get all the devices to send them to the center
+    *   @param id_center which is the id of the center we want the devices.
+    *   @pre a center has logged successfully
+    *   @return the necessary info for the center 
+    """
 
     def get_devices_for_center(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
@@ -181,6 +233,13 @@ class DeviceModel:
         conn.close()
 
         return datos
+
+    """
+    *   @brief Get all the devices to send them to the web
+    *   @param id_center which is the id of the center we want the devices.
+    *   @pre an admin has logged successfully
+    *   @return the necessary info for the web 
+    """
 
     def get_all_doors_by_id_center_for_web(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)

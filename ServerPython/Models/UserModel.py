@@ -4,6 +4,10 @@ import hashlib
 
 class UserModel:
 
+    """
+    *   @brief Constructor
+    """
+
     def __init__(self):
         self.__host = "localhost"
         self.__user = "root"
@@ -17,6 +21,7 @@ class UserModel:
     *   @pre the socket connection has to been successful
     *   @return returns if the user is correct and exists
     """
+
     def exist_user(self, id_student, password):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -39,6 +44,7 @@ class UserModel:
     *   @pre the student has to been registered
     *   @post the student state will be changed
     """
+
     def set_user_state(self, id_student, state):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -54,6 +60,7 @@ class UserModel:
     *   @pre a center and a student of this center have been registed
     *   @return returns all the students in the same centre of the student given
     """
+
     def get_users_in_same_center(self, id_student):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -75,11 +82,19 @@ class UserModel:
 
         return students_in_same_center
 
+
+    #Encrypts the password
     def compute_MD5_hash(self, my_string):
         m = hashlib.md5()
         m.update(my_string.encode('utf-8'))
         return m.hexdigest()
 
+    """
+    *   @brief Get all the users of a center
+    *   @param id_center which is the id of the center we want to know the students
+    *   @pre an admin has been logged successfully
+    *   @return an array with all the students of the center
+    """
     def get_users_by_id_center(self, id_center):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -95,6 +110,13 @@ class UserModel:
 
         return datos
 
+    """
+    *   @brief Get all the info of a user by his id
+    *   @param id_user which is the id of the user we want the info
+    *   @pre an admin has logged successfully
+    *   @return all the info of the selected user
+    """
+
     def get_user_by_id(self, id_user):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -107,6 +129,13 @@ class UserModel:
 
         return data
 
+    """
+    *   @brief Delete a student by his id
+    *   @param id_user which is the id of the student we want to delete
+    *   @pre an admin has logged successfully
+    *   @post the selected user will be deleted 
+    """
+
     def delete_user_by_id(self, id_user):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()
@@ -115,6 +144,18 @@ class UserModel:
         cur.close()
         conn.commit()
         conn.close()
+
+    """
+    *   @brief Updates a student of a center.
+    *   @param id_user which is the dni of the student that will be updated
+    *   @param name which is the name that will be set to the student
+    *   @param surname which is the surname that will be set to the student
+    *   @param lastname which is the lastname that will be set to the student
+    *   @param password which is the password that will be set to the student
+    *   @param active which is the state that will be set to the student (if can log or not)
+    *   @pre an admin has logged successfully
+    *   @post a new student will be updated
+    """
 
     def update_user_by_id(self, id_user, name, surname, lastname, password, active):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
@@ -128,6 +169,20 @@ class UserModel:
         cur.close()
         conn.commit()
         conn.close()
+
+    """
+    *   @brief Adds a new user to the center that we get with the id.
+    *   @param id_center is the center in which the user will be added
+    *   @param id_admin which is the dni of the admin
+    *   @param id_user which is the dni of the student that will be added
+    *   @param name which is the name of the student
+    *   @param surname which is the surname of the student
+    *   @param lastname which is the lastname of the student
+    *   @param password which is the password of the student
+    *   @param active which is the state of the student (if can log or not)
+    *   @pre an admin has logged successfully
+    *   @post a new student will be added
+    """
 
     def add_user(self, id_center, id_admin, id_user, name, surname, lastname, password, active):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)

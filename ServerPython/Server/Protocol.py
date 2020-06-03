@@ -4,21 +4,18 @@ from base64 import b64encode
 from datetime import datetime
 import time
 
+from Server.ProtocolF import ProtocolF
 
-class Protocol:
+
+class Protocol(ProtocolF):
+
     """
     *   @brief Constructor
     """
 
     def __init__(self, server, client_thread, user_controller, device_controller, center_controller, admin_controller):
-        self.user_controller = user_controller
-        self.door_controller = device_controller
-        self.center_controller = center_controller
-        self.admin_controller = admin_controller
-        self.thread_owner = ""
-        self.server = server
-        self.client_thread = client_thread
-        self.decoded = []
+        ProtocolF.__init__(self, server, client_thread, user_controller,
+                           device_controller, center_controller, admin_controller)
 
     """
     *   @brief Process the msg received by the client
@@ -85,9 +82,8 @@ class Protocol:
         if couldBeOpened:
 
             id_center = self.center_controller.get_center_by_id_student(self.thread_owner)
-            signal = "PROTOCOLTFG#FECHA#SERVER#OPENDEVICE#END"
+            signal = "PROTOCOLTFG#FECHA#SERVER#OPENDEVICE#" + from_client[6] + "#END"
             self.server.sendSignalToThisCenter(str(id_center), signal)
-            # datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYOPENING#" + from_client[6] + "#END"
 
             # TODO Introducir datos cuando se ha abierto en la tabla de interaction
 
@@ -110,7 +106,7 @@ class Protocol:
 
         if couldBeOpened == False:
             id_center = self.center_controller.get_center_by_id_student(self.thread_owner)
-            signal = "PROTOCOLTFG#FECHA#SERVER#CLOSEDEVICE#END"
+            signal = "PROTOCOLTFG#FECHA#SERVER#CLOSEDEVICE" + from_client[6] + "#END"
             self.server.sendSignalToThisCenter(str(id_center), signal)
             # datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
 
@@ -120,15 +116,6 @@ class Protocol:
             print("Coudl be close false es que se puede --> " + str(couldBeOpened))
             # datos = "No se pudo abrir la puerta"
 
-    """
-    *   @brief Splits the string
-    *   @param string_from_client which is the string we will split
-    *   @return returns the string[] generated
-    """
-
-    def splitString(self, string_from_client):
-        splitted_string = string_from_client.split("#")
-        return splitted_string
 
     """
     *   @brief Makes a string with all the devices of the centre in which the client is to send them to his app
@@ -160,14 +147,6 @@ class Protocol:
     def setDisconnected(self):
         self.user_controller.set_user_state(self.thread_owner, "0")
 
-    """
-    *   @return returns the current time in a specific format (AAAA/MM/DD HH:mm:ss)
-    """
-
-    def getDateTime(self):
-        timestamp = 1545730073
-        dt_object = datetime.fromtimestamp(timestamp)
-        return dt_object
 
     """
     *   @brief Sends the specific image of the device that the user wants
@@ -196,33 +175,5 @@ class Protocol:
 
         file.close()
 
-    def makeDoorToSend(self, data):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#DEVICE"
-        for row in data:
-            output += "#" + str(row)
 
-        output += "#END"
 
-        return output
-
-    def makeUsersToSend(self, users_data):
-        final_string_to_send = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#START#"
-        user_count = 0
-        sub_info_user = ""
-        for user in users_data:
-            sub_info_user += "USER#"
-            for data in user:
-                sub_info_user += str(data) + "#"
-            user_count += 1
-
-        final_string_to_send += "TOTAL#" + str(user_count) + "#" + sub_info_user + "END"
-        return final_string_to_send
-
-    def makeUserToSend(self, data):
-        output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER" + "#USER"
-        for row in data:
-            output += "#" + str(row)
-
-        output += "#END"
-
-        return output

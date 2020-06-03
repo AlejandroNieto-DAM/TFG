@@ -30,6 +30,13 @@ class CenterModel:
 
         return id_center
 
+    """
+    *   @brief Consult to BD for the centre in which is the admin of the id given
+    *   @param id_admin which is the id of the admin of what we want to know his centre
+    *   @pre the admin has to be registered in the system
+    *   @return the id of the center of the admin will be given
+    """
+
     def get_center_by_id_admin(self, id_admin):
         conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
         cur = conn.cursor()

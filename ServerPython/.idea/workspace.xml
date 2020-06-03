@@ -2,15 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/DeviceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/DeviceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/Device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RaspberryClient/StartMotors.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/StartMotors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AdminController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AdminController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/CenterController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CenterController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/AdminModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AdminModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/CenterModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/CenterModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/DeviceModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DeviceModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/UserModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ProtocolWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolWeb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +199,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="415" y="42" key="#TFGServer_(3)/0.23.1440.809@0.23.1440.809" timestamp="1589760249633" />
+    <state x="434" y="236" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591203046614">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="434" y="236" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.809@0.23.1440.809" timestamp="1591203046614" />
     <state x="167" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591040478107">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
