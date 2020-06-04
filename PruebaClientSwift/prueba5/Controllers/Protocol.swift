@@ -89,7 +89,7 @@ class Protocol {
     }
     
     /**
-    * @brief Compounds the protocol to try to get logged into the application
+    * @brief makes the protocol to try to get logged into the application
     * @param login which is the login of the person who wants to get logged
     * @param password which is the password of the user who wants to get logged
     * @return Returns the protocol to try to get logged
@@ -100,7 +100,7 @@ class Protocol {
     }
     
     /**
-    * @brief Compounds the protocol to open a device with its id
+    * @brief Makes the protocol to open a device with its id
     * @param id which is the id of the device we want to open
     * @return Returns the protocol to open a device
     */
@@ -115,7 +115,7 @@ class Protocol {
     }
     
     /**
-    * @brief Compounds the protocol to close a device with its id
+    * @brief Makes the protocol to close a device with its id
     * @param id which is the id of the device we want to close
     * @return Returns the protocol to close a device
     */
@@ -130,7 +130,7 @@ class Protocol {
     }
     
     /**
-    * @brief Compounds the protocol to get logout into the application
+    * @brief Makes the protocol to get logout into the application
     * @pre The user has to been logged previously
     * @return Returns the protocol to get logout
     */
@@ -140,7 +140,7 @@ class Protocol {
     }
     
     /**
-    * @brief Compounds the protocol to get the photo of one device
+    * @brief Makes the protocol to get the photo of one device
     * @param id which is the id of the device we want to get the photo
     * @return Returns the protocol to get the device photo
     */

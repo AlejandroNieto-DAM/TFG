@@ -18,25 +18,66 @@ class Protocol:
         dt_object = datetime.fromtimestamp(timestamp)
         return dt_object
 
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device will be opened
+    *   @param id_device which is the id of the device we will open
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device will be opened
+    """
+
     def sendTryOpening(self, id_device):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#CENTER#TRYOPENINGDEVICE#" + id_device + "#END"
         return output
+
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device will be closed
+    *   @param id_device which is the id of the device we will closed
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device will be closed
+    """
 
     def sendTryClosing(self, id_device):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#CENTER#TRYCLOSINGDEVICE#" + id_device + "#END"
         return output
 
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device has been opened
+    *   @param id_device which is the id of the device opened
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device has been opened
+    """
+
     def sendOpenDevice(self, id_device):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#CENTER#OPENEDDEVICE#" + id_device + "#END"
         return output
+
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device has been closed
+    *   @param id_device which is the id of the device closed
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device has been closed
+    """
 
     def sendCloseDevice(self, id_device):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#CENTER#CLOSEDDEVICE#" + id_device + "#END"
         return output
 
+    """
+    *   @brief Makes the correct msg protocol to get again all the devices
+    *   @pre one admin has updated a device
+    *   @post the devices will be updated
+    """
+
     def updateDb(self):
         output = "PROTOCOLTFG#" + str(self.getDateTime()) + "#CLIENT#CENTER#GETUPDATEDDB#END"
         return output
+
+    """
+    *   @brief Process a string received by the server to get all the devices
+    *   @param fromServer which is the protocol msg that has the info of all devices
+    *   @return return all the devices processed
+    *   @post the devices will be created
+    """
 
     def processDevices(self, fromServer):
         devices = []

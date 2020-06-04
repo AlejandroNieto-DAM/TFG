@@ -15,6 +15,7 @@ class ClientThread(threading.Thread):
         self.password = "1234"
         self.protocol = Protocol()
 
+    #Body of the thread (listen to the server for messages)
     def run(self):
         self.sendBySocket(self.protocol.sendLogin(self.id_center, self.password))
 
@@ -23,20 +24,57 @@ class ClientThread(threading.Thread):
             fromClient = str(chunk)
             self.proccessMsg(fromClient)
 
+    #Sends a message by the socket to the server
     def sendBySocket(self, output):
         self.socket.send(bytes(str(output) + "\r\n", 'UTF-8'))
+
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device will be opened
+    *   @param id_device which is the id of the device we will open
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device will be opened
+    """
 
     def sendTryOpening(self, id_device):
         self.sendBySocket(self.protocol.sendTryOpening(id_device))
 
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device will be closed
+    *   @param id_device which is the id of the device we will closed
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device will be closed
+    """
+
     def sendTryClosing(self, id_device):
         self.sendBySocket(self.protocol.sendTryClosing(id_device))
+
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device has been opened
+    *   @param id_device which is the id of the device opened
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device has been opened
+    """
 
     def sendOpenDevice(self, id_device):
         self.sendBySocket(self.protocol.sendOpenDevice(id_device))
 
+    """
+    *   @brief Makes the correct msg protocol to advert the users that one device has been closed
+    *   @param id_device which is the id of the device closed
+    *   @pre we received an action of a user or some people are touching the door
+    *   @post the device has been closed
+    """
+
     def sendCloseDevice(self, id_device):
         self.sendBySocket(self.protocol.sendCloseDevice(id_device))
+
+    """
+    *   @brief Process the msgs received by the server
+    *   @param fromServer which is the msg received by the server
+    *   @pre the socket connection has been successfully
+    *   @return depending of the msg this will generate a response
+    *   @post an action will be executed
+    """
 
     def proccessMsg(self, fromServer):
         if fromServer.__contains__("TOTAL"):

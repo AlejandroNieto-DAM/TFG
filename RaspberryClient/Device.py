@@ -18,8 +18,8 @@ class Device:
         GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(18, GPIO.OUT)
 
+    #Thread that listen for the button (open, close door)
     def listenButton(self):
-        print("Entramos en el listen button")
         while True:
             input_state = GPIO.input(27)
             if input_state == 1:
@@ -33,12 +33,13 @@ class Device:
                     print("CLOSED")
                     self.mainThread.sendCloseDevice(self.id)
 
+    #Starts to listen the button thread
     def startListenToButton(self):
         self.buttonThread = threading.Thread(target=self.listenButton)
         self.buttonThread.start()
 
+    #Open the door
     def open(self):
-        print("Dentroo del open a vber si abre")
         self.mainThread.sendTryOpening(self.id)
         GPIO.output(18, GPIO.HIGH)
         time.sleep(1)
@@ -56,8 +57,8 @@ class Device:
         self.mainThread.sendOpenDevice(self.id)
         time.sleep(1)
 
+    #Close the door
     def close(self):
-        print("Dentro del close a ver si cierra")
         self.mainThread.sendTryClosing(self.id)
         GPIO.output(18, GPIO.HIGH)
         time.sleep(1)

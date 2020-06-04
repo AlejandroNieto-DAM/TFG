@@ -131,8 +131,10 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
         
         if self.allDevices[indexPath.section].getState() == 1 {
             cell.viewEsta.backgroundColor = Colors.open
-        } else {
+        } else if self.allDevices[indexPath.section].getState() == 0{
             cell.viewEsta.backgroundColor = UIColor.white
+        } else {
+            cell.viewEsta.backgroundColor = Colors.firstBlue
         }
                 
         //cell.mainImageView.image = self.allDevices[indexPath.section].getImage()

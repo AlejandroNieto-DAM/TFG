@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48c53b24-cedd-490e-9a00-05455f5eb7bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,14 +198,14 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1379" height="242" key="GridCell.Tab.1.right/0.23.1440.809@0.23.1440.809" timestamp="1590061473310" />
-    <state x="221" y="66" key="SettingsEditor" timestamp="1590054866801">
+    <state x="221" y="66" key="SettingsEditor" timestamp="1591289992619">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1590054866801" />
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1591115331719">
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1591289992619" />
+    <state x="396" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1591289967539">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591115331719" />
+    <state x="396" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591289967539" />
     <state x="283" y="169" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589999829382">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

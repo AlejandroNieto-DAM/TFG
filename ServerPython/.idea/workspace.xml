@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RaspberryClient/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/Device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RaspberryClient/StartMotors.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/StartMotors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AdminController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AdminController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CenterController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CenterController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UserController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/AdminModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AdminModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/CenterModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/CenterModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DeviceModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DeviceModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/UserModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ClientThread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolCenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ProtocolWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolWeb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,10 +242,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1381" height="241" key="GridCell.Tab.1.right/0.23.1440.809@0.23.1440.809" timestamp="1591040688435" />
-    <state x="221" y="66" key="SettingsEditor" timestamp="1589760393498">
+    <state x="221" y="66" key="SettingsEditor" timestamp="1591290039270">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1589760393498" />
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1591290039270" />
     <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1591122356771">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

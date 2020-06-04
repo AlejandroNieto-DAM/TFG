@@ -302,11 +302,19 @@ class ClientThread {
         self.allDevices = self.mProtocol.processDevices(from_client: from_client)
     }
     
+    /**
+    * @brief Logout the user of this device
+    * @pre the user has been logged successfully
+    * @post the user will log out
+     */
     func sendLogout(){
         let output = self.mProtocol.sendLogout()
         self.sendMsg(output: output)
     }
     
+    /**
+    * Set the thread to finished
+     */
     func setFinished(){
         self.listening = false
     }

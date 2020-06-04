@@ -49,7 +49,7 @@ class Protocol(ProtocolF):
                 allDoors = self.door_controller.get_all_devices(self.thread_owner)
                 datos = self.makeDoorsToSend(allDoors)
             else:
-                datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#LOGINERROR"
+                datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#ERROR#LOGIN"
 
             output = datos
 
@@ -88,8 +88,8 @@ class Protocol(ProtocolF):
             # TODO Introducir datos cuando se ha abierto en la tabla de interaction
 
         else:
-            print("Se puede abrir_? " + str(couldBeOpened))
-            # datos = "No se pudo abrir la puerta"
+            datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER#ERROR#CANTOPEN#END"
+            self.client_thread.sendBySocket(datos)
 
     """
     *   @brief Makes all the checks to know if the device in which has operated could be active or not and if its true the device will be closed
@@ -113,8 +113,8 @@ class Protocol(ProtocolF):
             # TODO Introducir datos cuando se ha abierto en la tabla de interaction
 
         else:
-            print("Coudl be close false es que se puede --> " + str(couldBeOpened))
-            # datos = "No se pudo abrir la puerta"
+            datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER#ERROR#CANTCLOSE#END"
+            self.client_thread.sendBySocket(datos)
 
 
     """

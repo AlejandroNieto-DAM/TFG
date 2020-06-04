@@ -43,6 +43,9 @@ class ProtocolCenter(ProtocolF):
                 allDevices = self.door_controller.get_devices_for_center("100")
                 datos = self.makeDoorsToSend(allDevices)
 
+            else:
+                datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER#ERROR#LOGIN#END"
+                
             output = datos
 
         elif str(from_client).find("CENTER#CLOSEDDEVICE") != -1:
