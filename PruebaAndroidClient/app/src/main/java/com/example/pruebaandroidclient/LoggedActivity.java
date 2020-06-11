@@ -139,8 +139,17 @@ public class LoggedActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Error loading background photo...", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-
-
+    /**
+     * @brief this method is called when an error occurs.
+     * @pre an error has been occurred
+     * @post a toast will show a msg of error
+     */
+    public void loadToastMsg(){
+        runOnUiThread(() -> {
+            final Toast toast = Toast.makeText(getApplicationContext(), "Ups...Ha ocurrido un error!", Toast.LENGTH_SHORT);
+            toast.show();
+        });
     }
 }

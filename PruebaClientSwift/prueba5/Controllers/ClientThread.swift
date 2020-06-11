@@ -26,6 +26,7 @@ class ClientThread {
     private var mProtocol: Protocol!
     
     private var listening = true
+    private var logged = false
     
     /**
     * @brief Constructor
@@ -73,7 +74,7 @@ class ClientThread {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
 
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, "192.168.1.135" as CFString, 12345, &readStream, &writeStream)
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, "192.168.1.146" as CFString, 1233, &readStream, &writeStream)
         
         inputStream = readStream?.takeRetainedValue()
         outputStream = writeStream?.takeRetainedValue()
@@ -140,6 +141,19 @@ class ClientThread {
 
             self.loadImage()
             
+        } else if from_clientS.contains("ERROR"){
+
+            if logged == false {
+                DispatchQueue.main.async { [unowned self] in
+                    self.mainViewController.showToast(message: "Ups...Ha ocurrido un error...")
+                }
+            } else {
+                DispatchQueue.main.async { [unowned self] in
+                    self.mainViewController.showToast(message: "Ups...Ha ocurrido un error...")
+                }
+            }
+            
+            
         }
         
         
@@ -156,7 +170,8 @@ class ClientThread {
         if self.imagePhotoIndex == (self.allDevices.count - 1) {
             self.allDevices[self.allDevices
                 .count - 1].setImage(image: image)
-            //self.mainViewController.startsSecondActivity()
+            self.mainViewController.startsSecondActivity()
+            self.logged = true
         } else {
             self.allDevices[self.imagePhotoIndex].setImage(image: image)
             self.imagePhotoIndex += 1

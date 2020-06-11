@@ -5,11 +5,9 @@
       <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcodeproj/project.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/LoggedViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/Protocol.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolCenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,26 +204,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1379" height="154" key="GridCell.Tab.0.bottom" timestamp="1591122736231">
+    <state width="1379" height="2" key="GridCell.Tab.0.bottom" timestamp="1591892537687">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1379" height="154" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1591122736231" />
-    <state width="1379" height="154" key="GridCell.Tab.0.center" timestamp="1591122736230">
+    <state width="1379" height="2" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1591892537687" />
+    <state width="1379" height="2" key="GridCell.Tab.0.center" timestamp="1591892537686">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1379" height="154" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1591122736230" />
-    <state width="1379" height="154" key="GridCell.Tab.0.left" timestamp="1591122736230">
+    <state width="1379" height="2" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1591892537686" />
+    <state width="1379" height="2" key="GridCell.Tab.0.left" timestamp="1591892537685">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1379" height="154" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1591122736230" />
-    <state width="1379" height="154" key="GridCell.Tab.0.right" timestamp="1591122736231">
+    <state width="1379" height="2" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1591892537685" />
+    <state width="1379" height="2" key="GridCell.Tab.0.right" timestamp="1591892537686">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1379" height="154" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1591122736231" />
+    <state width="1379" height="2" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1591892537686" />
     <state width="1381" height="241" key="GridCell.Tab.1.bottom" timestamp="1591040688435">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -246,11 +244,11 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1591290039270" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1591122356771">
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1591709276469">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591122356771" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591709276469" />
     <state x="479" y="62" key="refactoring.ChangeSignatureDialog" timestamp="1591040119037">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

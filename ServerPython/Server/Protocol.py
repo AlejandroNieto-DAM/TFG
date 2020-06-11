@@ -31,7 +31,7 @@ class Protocol(ProtocolF):
 
             from_client = self.splitString(from_client)
 
-            comprobacionLogin = True
+            comprobacionLogin = False
 
             datos = ""
 

@@ -27,6 +27,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
     private Boolean firstTimePassed;
     private int getImagesIndex;
     private String thread_owner;
+    private boolean loginSuccess;
 
     /**
      * @brief Constructor
@@ -40,6 +41,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
         thread_owner = "";
         getImagesIndex = 0;
         firstTimePassed = false;
+        loginSuccess = false;
     }
 
     /**
@@ -53,7 +55,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         socket = null;
         try {
-            socket = new Socket("192.168.1.131", 1233);
+            socket = new Socket("192.168.1.146", 1233);
         } catch (IOException e) {
             e.printStackTrace();
             Log.i("[EXCEPTION] " , e.toString());
@@ -117,6 +119,14 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
                 } else if (message.contains(("FINIMAGE"))){
 
                     this.finImage(message);
+
+                } else if (message.contains(("ERROR"))){
+
+                    if(!loginSuccess){
+                        this.mainActivity.loadToastMsg();
+                    } else {
+                        this.myLoggedActivity.loadToastMsg();
+                    }
 
                 }
             }
@@ -224,6 +234,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
             this.allDevices.get(getImagesIndex).setImage(outBytes);
             this.mainActivity.startLoggedActivity(allDevices);
+            this.loginSuccess = true;
 
         } else {
             this.allDevices.get(getImagesIndex).setImage(outBytes);
