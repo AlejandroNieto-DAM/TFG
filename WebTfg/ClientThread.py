@@ -9,7 +9,7 @@ from Protocol import Protocol
 class ClientThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.address = ("192.168.1.131", 1235)
+        self.address = ("192.168.1.107", 1235)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect(self.address)
         self.thread_owner = ""

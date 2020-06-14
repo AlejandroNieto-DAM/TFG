@@ -74,7 +74,7 @@ class ClientThread {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
 
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, "192.168.1.146" as CFString, 1233, &readStream, &writeStream)
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, "192.168.1.107" as CFString, 1235, &readStream, &writeStream)
         
         inputStream = readStream?.takeRetainedValue()
         outputStream = writeStream?.takeRetainedValue()
@@ -119,9 +119,8 @@ class ClientThread {
         if from_clientS.contains("TOTAL") {
             //print("Received puertas")
             self.receiveDevices(from_client: from_clientS)
-            self.mainViewController.startsSecondActivity()
             if self.allDevices.count > 0 {
-                //self.getPhoto(id_device: self.allDevices[0].getID())
+                self.getPhoto(id_device: self.allDevices[0].getID())
             }
             
         }
@@ -199,11 +198,12 @@ class ClientThread {
         let distance = sttms[4].distance(from: sttms[4].startIndex, to: index!)
         first = distance + 3
         
-        let index2 = sttms[4].range(of: "\r\n")?.lowerBound
+        let index2 = sttms[4].range(of: "'")?.lowerBound
         let distance2 = sttms[4].distance(from: sttms[4].startIndex, to: index2!)
         second = first + distance2
-        second = second - 4
-                
+        print("Mkralo a ver que es el sttms --> ", sttms[4])
+        print("Mira lo que voy a decodear ", String(sttms[4]).substring(with: 2..<String(sttms[4]).count - 1))
+        second = String(sttms[4]).count - 1
         let decode = Data(base64Encoded: String(sttms[4]).substring(with: 2..<second))!
         self.decodedData.append(contentsOf: decode)
         

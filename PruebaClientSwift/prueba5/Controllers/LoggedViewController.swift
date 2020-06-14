@@ -137,9 +137,9 @@ class LoggedViewController: UIViewController, UITableViewDelegate,  UITableViewD
             cell.viewEsta.backgroundColor = Colors.firstBlue
         }
                 
-        //cell.mainImageView.image = self.allDevices[indexPath.section].getImage()
+        cell.mainImageView.image = self.allDevices[indexPath.section].getImage()
         
-        cell.mainImageView.image = self.imagenes[0]
+        //cell.mainImageView.image = self.imagenes[0]
         
         cell.mainImageView.layer.cornerRadius = cell.mainImageView.bounds.height / 2
         cell.mainImageView.backgroundColor = UIColor.gray

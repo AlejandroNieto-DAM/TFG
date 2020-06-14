@@ -31,7 +31,7 @@ class Protocol(ProtocolF):
 
             from_client = self.splitString(from_client)
 
-            comprobacionLogin = False
+            comprobacionLogin = True
 
             datos = ""
 
@@ -162,13 +162,13 @@ class Protocol(ProtocolF):
             "/Users/alejandronietoalarcon/Desktop/VOLVER/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg",
             "rb")
         byte = file.read(512)
-        time.sleep(0.08)
+        time.sleep(0.15)
 
         while byte:
             self.client_thread.sendBySocket(
                 "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)) + "#END")
             byte = file.read(512)
-            time.sleep(0.08)
+            time.sleep(0.15)
 
         self.client_thread.sendBySocket(
             "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#FINIMAGE#" + str(from_client[6]) + "#END")

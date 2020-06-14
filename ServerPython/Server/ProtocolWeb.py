@@ -55,7 +55,7 @@ class ProtocolWeb(ProtocolF):
         elif str(from_client).__contains__("WEB#GETDEVICES"):
             if self.thread_owner != "":
                 id_center = self.center_controller.get_center_by_id_admin(self.thread_owner)
-                output = self.makeDoorsToSend(self.door_controller.get_all_doors_by_id_center_for_web(id_center))
+                output = self.makeDoorsToSend(self.door_controller.get_all_devices_by_id_center_to_web(id_center))
 
         elif str(from_client).__contains__("WEB#GETDEVICE"):
             if self.thread_owner != "":
