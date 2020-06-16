@@ -134,3 +134,6 @@ class DeviceController:
     def get_all_devices_by_id_center_to_web(self, id_center):
         datos = self.__door_model.get_all_doors_by_id_center_for_web(id_center)
         return datos
+
+    def interaction(self, id_student, id_device, fecha, hora):
+        print("Yeyo --> ", id_student, id_device, fecha, hora)

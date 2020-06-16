@@ -258,3 +258,14 @@ class DeviceModel:
         conn.close()
 
         return datos
+
+    def interaction(self, id_student, id_device, fecha, hora):
+        conn = pymysql.connect(self.__host, self.__user, self.__passwd, self.__db)
+        cur = conn.cursor()
+
+        cur.execute("INSERT INTO interaction VALUES ('" + str(id_student) + "', '" + str(id_device)
+                    + "', '" + str(fecha) + "', '" + str(hora) + "')")
+
+        cur.close()
+        conn.commit()
+        conn.close()

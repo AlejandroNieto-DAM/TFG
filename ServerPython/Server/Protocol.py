@@ -82,10 +82,12 @@ class Protocol(ProtocolF):
         if couldBeOpened:
 
             id_center = self.center_controller.get_center_by_id_student(self.thread_owner)
-            signal = "PROTOCOLTFG#FECHA#SERVER#OPENDEVICE#" + from_client[6] + "#END"
+            signal = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER#OPENDEVICE#" + from_client[6] + "#END"
             self.server.sendSignalToThisCenter(str(id_center), signal)
 
-            # TODO Introducir datos cuando se ha abierto en la tabla de interaction
+            datetime = from_client[1].split(" ")
+
+            self.door_controller.interaction(self.thread_owner, from_client[6], datetime[0], datetime[1][:-3])
 
         else:
             datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER#ERROR#CANTOPEN#END"
@@ -110,7 +112,8 @@ class Protocol(ProtocolF):
             self.server.sendSignalToThisCenter(str(id_center), signal)
             # datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
 
-            # TODO Introducir datos cuando se ha abierto en la tabla de interaction
+            datetime = from_client[1].split(" ")
+            self.door_controller.interaction(self.thread_owner, from_client[6], datetime[0], datetime[1][:-3])
 
         else:
             datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVER#ERROR#CANTCLOSE#END"
