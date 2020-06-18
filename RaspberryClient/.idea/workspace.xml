@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="051ac8d1-03ce-41f2-8a68-1c22f9485603" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Controllers/Device_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Models/DeviceModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Models/DeviceModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerPython/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Device.py" beforeDir="false" afterPath="$PROJECT_DIR$/Device.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +50,9 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1591202505014" />
-    <state x="395" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1591201324944">
+    <state x="395" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1592500959899">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="395" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1591201324944" />
+    <state x="395" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1592500959899" />
   </component>
 </project>

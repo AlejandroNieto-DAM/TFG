@@ -15,13 +15,13 @@ class Device:
         self.mainThread = mainThread
         self.pwm = Adafruit_PCA9685.PCA9685()
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(18, GPIO.OUT)
+        GPIO.setup(self.pin_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.pin_led, GPIO.OUT)
 
     #Thread that listen for the button (open, close door)
     def listenButton(self):
         while True:
-            input_state = GPIO.input(27)
+            input_state = GPIO.input(self.pin_button)
             if input_state == 1:
                 if self.state == str("0"):
                     self.state = "1"
@@ -41,17 +41,17 @@ class Device:
     #Open the door
     def open(self):
         self.mainThread.sendTryOpening(self.id)
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(18, GPIO.LOW)
+        GPIO.output(self.pin_led, GPIO.LOW)
         time.sleep(1)
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(18, GPIO.LOW)
+        GPIO.output(self.pin_led, GPIO.LOW)
         time.sleep(1)
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(18, GPIO.LOW)
+        GPIO.output(self.pin_led, GPIO.LOW)
         self.pwm.set_pwm_freq(60)
         self.pwm.set_pwm(self.pin_servo, 0, 600)
         self.mainThread.sendOpenDevice(self.id)
@@ -60,17 +60,17 @@ class Device:
     #Close the door
     def close(self):
         self.mainThread.sendTryClosing(self.id)
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(18, GPIO.LOW)
+        GPIO.output(self.pin_led, GPIO.LOW)
         time.sleep(1)
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(18, GPIO.LOW)
+        GPIO.output(self.pin_led, GPIO.LOW)
         time.sleep(1)
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(18, GPIO.LOW)
+        GPIO.output(self.pin_led, GPIO.LOW)
         self.pwm.set_pwm_freq(60)
         self.pwm.set_pwm(self.pin_servo, 0, 150)
         self.mainThread.sendCloseDevice(self.id)
