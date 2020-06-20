@@ -4,6 +4,9 @@ from Device import Device
 
 class Protocol:
 
+    def __init__(self, mainThread):
+        self.mainThread = mainThread
+
     def sendLogin(self, login, password):
         output = "PROTOCOLTFG#" + str(
             self.getDateTime()) + "#CLIENT#MOTORS#LOGINCENTER#" + login + "#" + password + "#END"
@@ -108,7 +111,8 @@ class Protocol:
                 state = row
 
             if row == "DEVICE" or row == "END":
-                aux = Device(id, pin_led, pin_button, pin_servo, state, self)
+                print("Is mainthread null? --> ", self.mainThread)
+                aux = Device(id, pin_led, pin_button, pin_servo, state, self.mainThread)
                 aux.startListenToButton()
                 devices.append(aux)
                 indexD = 0

@@ -8,7 +8,9 @@ class Device:
     def __init__(self, id, pin_led, pin_button, pin_servo, state, mainThread):
         self.id = id
         self.pin_led = int(pin_led)
+        print("Mira mi pin led", self.pin_led)
         self.pin_button = int(pin_button, base=10)
+        print("Mira el pin button", self.pin_button)
         self.pin_servo = int(pin_servo)
         self.state = state
         self.buttonThread = None
@@ -40,6 +42,7 @@ class Device:
 
     #Open the door
     def open(self):
+        print("Aqui tamo abriendo -->", self.id)
         self.mainThread.sendTryOpening(self.id)
         GPIO.output(self.pin_led, GPIO.HIGH)
         time.sleep(1)
