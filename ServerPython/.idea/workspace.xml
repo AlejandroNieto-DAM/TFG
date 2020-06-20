@@ -3,11 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="e965f857-532c-4c28-a506-f1f215338434" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaAndroidClient/app/src/main/java/com/example/pruebaandroidclient/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RaspberryClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5.xcworkspace/xcuserdata/alejandronietoalarcon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaClientSwift/prueba5/Controllers/ClientThread.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Device_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Device_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DeviceModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DeviceModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/AdminModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AdminModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/UserModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/ProtocolCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ProtocolCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/TFGServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/TFGServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deviceImages/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/deviceImages/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/App.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/ClientThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/ClientThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Images/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/Images/10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/Protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/Protocol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/admins.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/edit-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/edit-user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebTfg/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTfg/templates/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +63,7 @@
       <recent name="C:\Users\Alejandro\PycharmProjects\untitled" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.DeviceModel">
+  <component name="RunManager" selected="Python.TFGServer (3)">
     <configuration name="AdminModel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PruebaServerSocketPython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,8 +171,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.DeviceModel" />
         <item itemvalue="Python.TFGServer (3)" />
+        <item itemvalue="Python.DeviceModel" />
         <item itemvalue="Python.AdminModel" />
         <item itemvalue="Python.UserModel" />
         <item itemvalue="Python.CenterController" />
@@ -204,30 +217,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589221783594" />
-    <state width="1379" height="149" key="GridCell.Tab.0.bottom" timestamp="1592326027853">
+    <state width="1379" height="149" key="GridCell.Tab.0.bottom" timestamp="1592673694909">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1379" height="274" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1592154704468" />
-    <state width="1379" height="149" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1592326027853" />
-    <state width="1379" height="149" key="GridCell.Tab.0.center" timestamp="1592326027852">
+    <state width="1379" height="149" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1592670659895" />
+    <state width="1379" height="149" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1592673694909" />
+    <state width="1379" height="149" key="GridCell.Tab.0.bottom/0.23.1440.812@0.23.1440.812" timestamp="1592507950103" />
+    <state width="1379" height="149" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1592506746988" />
+    <state width="1379" height="149" key="GridCell.Tab.0.center" timestamp="1592673694906">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1379" height="274" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1592154704467" />
-    <state width="1379" height="149" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1592326027852" />
-    <state width="1379" height="149" key="GridCell.Tab.0.left" timestamp="1592326027852">
+    <state width="1379" height="149" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1592670659894" />
+    <state width="1379" height="149" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1592673694906" />
+    <state width="1379" height="149" key="GridCell.Tab.0.center/0.23.1440.812@0.23.1440.812" timestamp="1592507950101" />
+    <state width="1379" height="149" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1592506746987" />
+    <state width="1379" height="149" key="GridCell.Tab.0.left" timestamp="1592673694905">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741949" />
-    <state width="1379" height="274" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1592154704467" />
-    <state width="1379" height="149" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1592326027852" />
-    <state width="1379" height="149" key="GridCell.Tab.0.right" timestamp="1592326027852">
+    <state width="1379" height="149" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1592670659894" />
+    <state width="1379" height="149" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1592673694905" />
+    <state width="1379" height="149" key="GridCell.Tab.0.left/0.23.1440.812@0.23.1440.812" timestamp="1592507950101" />
+    <state width="1379" height="149" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1592506746987" />
+    <state width="1379" height="149" key="GridCell.Tab.0.right" timestamp="1592673694908">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1899" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589227741950" />
-    <state width="1379" height="274" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1592154704467" />
-    <state width="1379" height="149" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1592326027852" />
+    <state width="1379" height="149" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1592670659895" />
+    <state width="1379" height="149" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1592673694908" />
+    <state width="1379" height="149" key="GridCell.Tab.0.right/0.23.1440.812@0.23.1440.812" timestamp="1592507950102" />
+    <state width="1379" height="149" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1592506746988" />
     <state width="1381" height="241" key="GridCell.Tab.1.bottom" timestamp="1591040688435">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -248,11 +269,12 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1591290039270" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1592322286667">
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1592670512034">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589217642146" />
-    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1592322286667" />
+    <state x="492" y="290" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1592670512034" />
+    <state x="492" y="291" key="com.intellij.ide.util.TipDialog/0.23.1440.811@0.23.1440.811" timestamp="1592585539236" />
     <state x="479" y="62" key="refactoring.ChangeSignatureDialog" timestamp="1591040119037">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

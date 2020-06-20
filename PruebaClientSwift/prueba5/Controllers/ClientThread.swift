@@ -123,16 +123,24 @@ class ClientThread {
                 self.getPhoto(id_device: self.allDevices[0].getID())
             }
             
-        }
-        else if from_clientS.contains("OPENINGDEVICE"){
+        } else if from_clientS.contains("#OPENINGDEVICE"){
             
             self.openedDevice(from_client: from_clientS)
             
-        } else if from_clientS.contains("CLOSINGDEVICE"){
+        }else if from_clientS.contains("#CLOSINGDEVICE"){
 
             self.closedDevice(from_client: from_clientS)
             
-        } else if from_clientS.contains("PHOTO"){
+        }   else if from_clientS.contains("#TRYOPENINGDEVICE"){
+                  print("OPENINGTRY")
+                  self.tryClosedDevice(from_client: from_clientS)
+
+        } else if from_clientS.contains("#TRYCLOSINGDEVICE"){
+                  print("CLOSINGTRY")
+
+            self.tryClosedDevice(from_client: from_clientS)
+
+        }else if from_clientS.contains("PHOTO"){
 
             self.processPhoto(from_client: from_clientS)
             
@@ -293,6 +301,44 @@ class ClientThread {
         for device in allDevices {
             if String(device.getID()) == sttms[4] {
                 device.setState(state: "0")
+            }
+        }
+        
+        self.loggedViewController.refresh()
+    }
+    
+    /**
+    * @brief Process the message of the server that says that one door was opened
+    * @param from_client which is the message received by the server with the id of the opened device
+    * @pre the socket has to been connected
+    * @post the data of the recycler view in the LoggedActivity will be updated with the new value
+    */
+    func tryOpenedDevice(from_client: String){
+        
+        let sttms = from_client.split(separator: "#")
+        
+        for device in allDevices {
+            if String(device.getID()) == sttms[4] {
+                device.setState(state: "2")
+            }
+        }
+        
+        self.loggedViewController.refresh()
+    }
+    
+    /**
+    * @brief Process the message of the server that says that one door was closed
+    * @param from_client which is the message received by the server with the id of the closed device
+    * @pre the socket has to been connected
+    * @post the data of the recycler view in the LoggedActivity will be updated with the new value
+    */
+    func tryClosedDevice(from_client: String){
+        
+        let sttms = from_client.split(separator: "#")
+        
+        for device in allDevices {
+            if String(device.getID()) == sttms[4] {
+                device.setState(state: "2")
             }
         }
         

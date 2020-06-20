@@ -163,7 +163,7 @@ class UserModel:
         cur.execute("UPDATE student SET  student_name = '" + name + "'," +
                     "student_surname1 = '" + surname + "'," +
                     "student_surname2 = '" + lastname + "'," +
-                    "password = '" + password + "'," +
+                    "password = '" + self.compute_MD5_hash(password) + "'," +
                     "active = '" + active + "'"
                                             "WHERE id_student = '" + str(id_user) + "'")
         cur.close()
@@ -189,7 +189,8 @@ class UserModel:
         cur = conn.cursor()
 
         cur.execute(
-            "INSERT INTO Student VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" + password + "', '" + str(0) + "', '" + active + "')")
+            "INSERT INTO Student VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" +
+            self.compute_MD5_hash(password) + "', '" + str(0) + "', '" + active + "')")
         cur.execute("INSERT INTO register VALUES ('" + id_user + "', '" + id_admin + "')")
         cur.execute("INSERT INTO student_center VALUES ('" + str(id_center) + "', '" + id_user + "')")
 

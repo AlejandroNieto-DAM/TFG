@@ -147,6 +147,18 @@ class Protocol:
     """
     def processDevice(self, fromServer):
         fromServer = fromServer.split("#")
+        print("Mira el id --> ", fromServer[4])
+        print("Mira el id --> ", fromServer[5])
+
+        print("Mira el id --> ", fromServer[6])
+
+        print("Mira el id --> ", fromServer[7])
+
+        print("Mira el id --> ", fromServer[8])
+        print("Mira el id --> ", fromServer[9])
+
+        print("Mira el id --> ", fromServer[10])
+
         device = Device(fromServer[4], fromServer[5], fromServer[6], fromServer[7], fromServer[8], fromServer[9], fromServer[10])
         return device
 

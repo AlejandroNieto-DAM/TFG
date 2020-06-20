@@ -9,8 +9,8 @@ class ProtocolCenter(ProtocolF):
     """
 
     def __init__(self, server, client_thread, user_controller, device_controller, center_controller, admin_controller):
-        ProtocolF.__init__(server, client_thread, user_controller, device_controller,
-                           center_controller, admin_controller)
+        ProtocolF.__init__(self, server, client_thread, user_controller,
+                           device_controller, center_controller, admin_controller)
 
     """
     *   @brief Process the msg received by the client
@@ -27,13 +27,14 @@ class ProtocolCenter(ProtocolF):
 
             from_client = self.splitString(from_client)
 
-            comprobacionLogin = True
+            comprobacionLogin = False
 
             datos = ""
 
             print("UserCenter")
 
-            self.thread_owner = "100"
+            #self.thread_owner = "100"
+            self.thread_owner = from_client[4]
 
             if self.center_controller.get_center_status("100") == 1:
                 comprobacionLogin = True
@@ -62,13 +63,15 @@ class ProtocolCenter(ProtocolF):
             self.server.alertOtherClients(students_in_same_centre, alert)
             self.door_controller.open_device(from_client[4])
 
-        elif str(from_client).find("CENTER#TRYOPENINGDEVICE") != 1:
+        elif str(from_client).find("CENTER#TRYOPENINGDEVICE") != -1:
+            print("TRYOPENING")
             from_client = self.splitString(from_client)
             alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYOPENINGDEVICE#" + from_client[4] + "#END"
             students_in_same_centre = self.user_controller.get_all_users_by_id_center(self.thread_owner)
             self.server.alertOtherClients(students_in_same_centre, alert)
 
-        elif str(from_client).find("CENTER#TRYCLOSINGDEVICE") != 1:
+        elif str(from_client).find("CENTER#TRYCLOSINGDEVICE") != -1:
+            print("TRYCLOSING")
             from_client = self.splitString(from_client)
             alert = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#TRYCLOSINGDEVICE#" + from_client[4] + "#END"
             students_in_same_centre = self.user_controller.get_all_users_by_id_center(self.thread_owner)

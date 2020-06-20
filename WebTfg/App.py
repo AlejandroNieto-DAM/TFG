@@ -89,6 +89,8 @@ def get_device(id):
     final = str(encoded_string)
     final.encode("utf-8")
 
+    print("Mira el device --< ", device.state)
+
     return render_template('edit-device.html', device = device, image = final)
 
 @app.route('/updatedevice/<id>', methods=['POST'])

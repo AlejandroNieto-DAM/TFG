@@ -55,7 +55,7 @@ public class ClientThread extends AsyncTask<Void, Void, Void> {
 
         socket = null;
         try {
-            socket = new Socket("192.168.1.107", 1235);
+            socket = new Socket("192.168.1.107", 1237);
         } catch (IOException e) {
             e.printStackTrace();
             Log.i("[EXCEPTION] " , e.toString());

@@ -17,7 +17,7 @@ class TFGServer(threading.Thread):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Bind the socket to the port
-        self.server_address = ('192.168.1.107', 1235)
+        self.server_address = ('192.168.1.107', 1237)
         print('starting up on %s port %s' % self.server_address)
         self.sock.bind(self.server_address)
         self.sock.listen(1)
@@ -61,7 +61,10 @@ class TFGServer(threading.Thread):
 
         for student in students_in_same_centre:
             for client in self.clients_threads:
-                if student == client.protocol.thread_owner:
+                print("Mira el estudiante vector1 --> ", student)
+                print("Mira el estudiante vector2 --> ", student)
+                if student[0] == client.protocol.thread_owner:
+                    print("SE MANDA ", student)
                     client.sendBySocket(output)
 
     """

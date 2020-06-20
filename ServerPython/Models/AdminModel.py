@@ -26,8 +26,9 @@ class AdminModel:
         cur = conn.cursor()
 
         cur.execute(
-            "INSERT INTO Admin VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" + password + "', '" + str(
-                0) + "', '" + active + "')")
+            "INSERT INTO Admin VALUES ('" + id_user + "', '" + name + "', '" + surname + "', '" + lastname + "', '" +
+            self.compute_MD5_hash(password) + "', '" + str(0) + "', '" + active + "')")
+
         cur.execute("INSERT INTO admin_center VALUES ('" + str(id_center) + "', '" + id_user + "')")
 
         cur.close()

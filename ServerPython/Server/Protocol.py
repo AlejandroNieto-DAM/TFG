@@ -31,13 +31,14 @@ class Protocol(ProtocolF):
 
             from_client = self.splitString(from_client)
 
-            comprobacionLogin = True
+            comprobacionLogin = False
 
-            datos = ""
+            #datos = ""
 
             print("UserNormal")
-            # comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
-            self.thread_owner = "45936238A"
+            comprobacionLogin = self.user_controller.existUser(from_client[4], from_client[5])
+            #self.thread_owner = "45936238A"
+            self.thread_owner = from_client[4]
             comprobacionCenterActive = self.center_controller.get_center_status(
                 self.center_controller.get_center_by_id_student(self.thread_owner))
 
@@ -108,7 +109,7 @@ class Protocol(ProtocolF):
 
         if couldBeOpened == False:
             id_center = self.center_controller.get_center_by_id_student(self.thread_owner)
-            signal = "PROTOCOLTFG#FECHA#SERVER#CLOSEDEVICE" + from_client[6] + "#END"
+            signal = "PROTOCOLTFG#FECHA#SERVER#CLOSEDEVICE#" + from_client[6] + "#END"
             self.server.sendSignalToThisCenter(str(id_center), signal)
             # datos = "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#CLOSINGDEVICE#" + from_client[6] + "#END"
 
@@ -165,13 +166,13 @@ class Protocol(ProtocolF):
             "/Users/alejandronietoalarcon/Desktop/VOLVER/TFG/ServerPython/deviceImages/" + str(from_client[6]) + ".jpg",
             "rb")
         byte = file.read(512)
-        time.sleep(0.15)
+        #time.sleep(0.15)
 
         while byte:
             self.client_thread.sendBySocket(
                 "PROTOCOLTFG#" + str(self.getDateTime()) + "#SERVERTFG#PHOTO#" + str(b64encode(byte)) + "#END")
             byte = file.read(512)
-            time.sleep(0.15)
+            #time.sleep(0.15)
 
         self.client_thread.sendBySocket(
             "PROTOCOLTFG#" + str(self.getDateTime()) + "SERVERTFG#FINIMAGE#" + str(from_client[6]) + "#END")
